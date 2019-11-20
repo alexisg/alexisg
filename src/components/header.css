@@ -1,0 +1,63 @@
+
+.header:hover .icon--andre {
+  background-position: 0 -70px;
+}
+
+.header__logo {
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: color .3s;
+}
+
+a:hover .header__logo {
+  color: hsl(205, 80%, 50%);
+}
+
+.header__intro p {
+  line-height: 2rem;
+  font-size: 1.1428571429rem;
+  margin-bottom: 2.2628471429rem;
+  padding-top: 0.7371528571rem;
+  margin-top: 1rem;
+}
+
+.header__intro a:hover {
+  text-decoration: underline;
+}
+
+.portrait {
+  position: relative;
+  margin: 0 auto;
+}
+
+.portrait__img {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  height: 9rem;
+  width: 9rem;
+}
+
+.portrait__img:before {
+  content: '';
+  position: absolute;
+  border-radius: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.portrait__img img {
+  border-radius: 100%;
+}
+
+.portrait__icon {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  margin-left: 36px;
+}
