@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -12,7 +12,7 @@ const IndexPage = () => (
 
       <h2 className="font-size-4">Twitch Rebrand</h2>
       <p>In 2019, the brand and product design teams at Twitch worked with our friends over at Collins to re-imagine our brand. The Twitch you see today is the culmination of this amazing work. You can read more about this incredible transformation on the  
-        <a href="https://blog.twitch.tv/en/2019/09/26/nice-to-meet-you-again-for-the-first-time/" target="_blank" rel="noopener">Twitch blog</a> and at <a href="https://www.wearecollins.com/work/twitch/" target="_blank" rel="noopener">We Are Collins</a>.
+        <a href="https://blog.twitch.tv/en/2019/09/26/nice-to-meet-you-again-for-the-first-time/" target="_blank" rel="noopener noreferrer">Twitch blog</a> and at <a href="https://www.wearecollins.com/work/twitch/" target="_blank" rel="noopener noreferrer">We Are Collins</a>.
       </p>
       
       <div className="js-media-hold nav-portfolio__media shadow aspect mg-b-2" data-video="/static/media/twitch-uv.mp4" data-img="/static/media/twitch-uv.jpg" data-title="Twitch" data-id="Twitch">

@@ -1,8 +1,6 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
-
-import Image from "./image"
+import { Link } from "gatsby"
+import ProfileImage from "../images/pic216.jpg"
 import "./header.css"
 
 const Header = ({ siteTitle }) => (
@@ -13,24 +11,16 @@ const Header = ({ siteTitle }) => (
     >
       <div className="portrait transition">
         <div className="portrait__img">
-          <Image />
+          <img src={ProfileImage} />
         </div>
         <span className="portrait__icon icon icon--andre"></span>
       </div>
       <h1 className="header__logo align-center">
-        {siteTitle}
+        Alexis Gallis&aacute;
       </h1>
     </Link>
 
   </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
