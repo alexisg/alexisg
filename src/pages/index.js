@@ -49,14 +49,7 @@ const IndexPage = () => (
         data-title="Twitch"
         data-id="Twitch"
       >
-        <video
-          id="Twitch"
-          playsinline=""
-          muted=""
-          autoPlay=""
-          loop=""
-          className="aspect__fill"
-        >
+        <video id="Twitch" playsInline muted autoPlay loop width="100%">
           <source
             src="//www.alexisgallisa.com/static/media/twitch-uv.mp4"
             type="video/mp4"
