@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
+import styled from "styled-components"
 import ProfileImage from "../images/pic216.jpg"
 import AndreImage from "../images/icon-andre@2x.png"
-import styled from "styled-components"
 
-const Portrait = styled.div({ 
+const Portrait = styled.div({
   width: "9rem",
   height: "9rem",
-  position: "relative" ,
+  position: "relative",
   margin: "0 auto",
 })
 
@@ -15,7 +15,7 @@ const PortraitImage = styled.img({
   width: "9rem",
   height: "9rem",
   borderRadius: "50%",
-  display: "block" 
+  display: "block",
 })
 
 const PortraitIcon = styled.div(({ isHovered }) => ({
@@ -30,27 +30,26 @@ const PortraitIcon = styled.div(({ isHovered }) => ({
 }))
 
 const PortraitState = () => {
-
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
     <Link
       to="/"
       onMouseOver={() => setIsHovered(true)}
+      onFocus={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onBlur={() => setIsHovered(true)}
     >
       <Portrait>
         <PortraitImage src={ProfileImage} alt=" " />
         <PortraitIcon isHovered={isHovered} />
       </Portrait>
-      <h1>
-        Alexis Gallis&aacute;
-      </h1>
+      <h1>Alexis Gallis&aacute;</h1>
     </Link>
   )
 }
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <header>
     <PortraitState />
   </header>

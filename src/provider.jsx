@@ -21,7 +21,6 @@ const Provider = ({ children }) => (
       {children}
     </Fragment>  
   </ThemeProvider>
-  
 )
 
-export default Provider;
+export default Provider
