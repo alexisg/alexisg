@@ -11,7 +11,7 @@ const Header = ({ siteTitle }) => (
     >
       <div className="portrait transition">
         <div className="portrait__img">
-          <img src={ProfileImage} />
+          <img src={ProfileImage} alt="" />
         </div>
         <span className="portrait__icon icon icon--andre"></span>
       </div>
