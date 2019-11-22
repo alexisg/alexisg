@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import Text from "./text"
 import ProfileImage from "../images/pic216.jpg"
 import AndreImage from "../images/icon-andre@2x.png"
 
@@ -44,7 +45,7 @@ const PortraitState = () => {
         <PortraitImage src={ProfileImage} alt=" " />
         <PortraitIcon isHovered={isHovered} />
       </Portrait>
-      <h1>Alexis Gallis&aacute;</h1>
+      <Text>Alexis Gallis&aacute;</Text>
     </Link>
   )
 }
