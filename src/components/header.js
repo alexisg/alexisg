@@ -45,7 +45,7 @@ const PortraitState = () => {
         <PortraitImage src={ProfileImage} alt=" " />
         <PortraitIcon isHovered={isHovered} />
       </Portrait>
-      <Text>Alexis Gallis&aacute;</Text>
+      <Text string="Alexis Gallis&aacute;" />
     </Link>
   )
 }
