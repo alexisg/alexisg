@@ -7,10 +7,14 @@
 // const shortcodes = require('./utils/shortcodes.js')
 // const iconsprite = require('./utils/iconsprite.js')
 
+const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
+
+
 module.exports = function (config) {
     // // Plugins
     // config.addPlugin(pluginRss)
     //config.addPlugin(pluginNavigation)
+    config.addPlugin(inclusiveLangPlugin);
 
     // // Filters
     // Object.keys(filters).forEach((filterName) => {
