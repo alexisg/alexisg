@@ -1,0 +1,49 @@
+{%- set pageUrl =  page.url -%}
+
+<nav
+  {% if pageUrl != '/' %}
+    class="nav-portfolio-hold transition"
+  {% endif %}
+  >
+  <ul class="
+    {% if pageUrl == '/' %}
+       grid grid--xs-1-1 grid--sm-1-2 nav-portfolio
+    {% else %}
+       flex flex--space-between flex--stretch nav-portfolio nav-portfolio--row
+    {% endif %}
+  ">
+    {% if pageUrl != '/' %}
+      <li class="nav-portfolio__toggle nav-portfolio__item">
+        <button class="js-nav-toggle no-smoothstate nav-portfolio__hdr"><span></span> Portfolio</button>
+      </li>
+    {% endif %}
+
+
+    {%- for item in collections.portfolio -%}
+      {%- set itemUrl = (item.url == page.url) -%}
+        {% if item.title != 'Home' %}
+          <li class="nav-portfolio__item">
+            <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
+              {% if pageUrl == '/' %}
+                <div class="transition transition--fall transition--fadein">
+                  <div class="js-media-hold nav-portfolio__media shadow aspect aspect--square"
+                    data-video="{{item.data.video}}"
+                    data-img="{{ item.data.image }}"
+                    data-title="{{ item.data.title }}"
+                    data-id="{{item.data.title|replace(' ', '-', 'g') }}"
+                    {% if item.data.title == 'Twitch' %}
+                    style="background: hsl(266, 100%, 66%)"
+                    {% endif %}
+                  >
+                  </div>                  
+                </div>
+              {% endif %}
+              
+              <h2 class="nav-portfolio__hdr nav-portfolio__hide">{{item.data.title}}</h2>
+              <p class="nav-portfolio__deck nav-portfolio__hide">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}      
+  </ul>
+</nav>

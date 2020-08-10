@@ -1,0 +1,41 @@
+---
+layout: base
+---
+
+<div class="js-media-hold aspect 
+  {% if title != 'Twitch' %}
+    aspect--square 
+  {% endif %}
+  shadow shadow--lg mg-y-2"
+  data-video="{{ video }}"
+  data-img="{{ image }}"
+  data-title="{{ title }}"
+  data-id="{{ title|replace(' ', '-', 'g') }}"
+></div>
+
+<h3>{{ title }}</h3>
+
+{% if deck %}
+  <h4>{{ deck|replace('<br>', ', ', 'g') }}</h4>
+{% endif %}
+
+{% if website %}
+  <h5>
+    <a href="{{website}}" class="no-smoothstate" target="_blank">
+      {{website|replace('https://', '') }}
+    </a>
+  </h5>
+{% endif %}
+
+<hr>
+
+{{ content | safe }}
+
+{% if gallery %}
+  <hr>
+  {% for item in gallery %}
+    <div class="shadow mg-b-2">
+      <img src="{{ item }}">
+    </div>
+  {% endfor %}
+{% endif %}
