@@ -1,18 +1,16 @@
-{%- set pageUrl =  page.url -%}
-
 <nav
-  {% if pageUrl != '/' %}
+  {% if notHome %}
     class="nav-portfolio-hold transition"
   {% endif %}
   >
   <ul class="
-    {% if pageUrl == '/' %}
+    {% if isHome %}
        grid grid--xs-1-1 grid--sm-1-2 nav-portfolio
     {% else %}
        flex flex--space-between flex--stretch nav-portfolio nav-portfolio--row
     {% endif %}
   ">
-    {% if pageUrl != '/' %}
+    {% if notHome %}
       <li class="nav-portfolio__toggle nav-portfolio__item">
         <button class="js-nav-toggle no-smoothstate nav-portfolio__hdr"><span></span> Portfolio</button>
       </li>
@@ -24,7 +22,7 @@
         {% if item.title != 'Home' %}
           <li class="nav-portfolio__item">
             <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
-              {% if pageUrl == '/' %}
+              {% if isHome %}
                 <div class="transition transition--fall transition--fadein">
                   <div class="js-media-hold nav-portfolio__media shadow aspect aspect--square"
                     data-video="{{item.data.video}}"

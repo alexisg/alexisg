@@ -1,12 +1,16 @@
 <header class="header">
 
+  {% if notHome %}
   <a href="/">
+  {% endif %}
     <div class="portrait transition">
       <div class="portrait__img"><img src="/static/images/pic216.jpg" alt="Portrait image"></div>
     </div>
     <h1 class="header__logo align-center">
       Alexis Gallis&aacute;
     </h1>
+  {% if notHome  %}
   </a>
+  {% endif %}
 
 </header>
