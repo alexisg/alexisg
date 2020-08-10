@@ -1,7 +1,7 @@
 ---
 title: Giant Bomb
 deck: Creative Techincal Director 2011-2014
-date: 2020-01-04
+date: 2020-01-05
 website: https://www.giantbomb.com
 video: /static/media/vid-giantbomb-1280x1280.mp4
 image: /static/media/giantbomb-ryan.png
