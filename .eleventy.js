@@ -1,9 +1,14 @@
-const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
-
+const inclusiveLangPlugin = require('@11ty/eleventy-plugin-inclusive-language')
+const filters = require('./utils/filters.js')
 
 module.exports = function (config) {
     // // Plugins
     config.addPlugin(inclusiveLangPlugin);
+
+    // Filters
+    Object.keys(filters).forEach((filterName) => {
+        config.addFilter(filterName, filters[filterName])
+    })
 
     // // Asset Watch Targets
     config.addWatchTarget('./src/sass')
@@ -25,8 +30,8 @@ module.exports = function (config) {
             input: 'src',
             output: 'dist',
             includes: 'includes',
-            layouts: 'layouts'
-            // data: 'data'
+            layouts: 'layouts',
+            data: 'data'
         },
         templateFormats: ['njk', 'md', '11ty.js'],
         htmlTemplateEngine: 'njk',

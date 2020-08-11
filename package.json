@@ -4,15 +4,22 @@
     "@11ty/eleventy-navigation": "^0.1.6",
     "@11ty/eleventy-plugin-inclusive-language": "^1.0.0",
     "clean-css": "^4.2.3",
+    "color": "^3.1.2",
     "cssesc": "^3.0.0",
+    "lodash": "^4.17.19",
+    "luxon": "^1.24.1",
     "markdown-it": "^11.0.0",
     "modularscale-sass": "^3.0.10",
-    "node-sass": "^4.14.1"
+    "node-sass": "^4.14.1",
+    "sanitize-html": "^1.27.2"
   },
   "name": "alexisg",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:alexisg/alexisg.git",
   "author": "Alexis Gallisa <alexis@alexisgallisa.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "tornis": "^0.3.2"
+  }
 }

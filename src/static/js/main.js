@@ -94,4 +94,3 @@ $(function() {
   $(document).on('click', '.js-nav-toggle', navToggle);
 
 });
-
