@@ -1,0 +1,11 @@
+@import 'variables';
+
+:root {
+  --color-body: #{$color-body};
+  --color-text: #{$color-text};
+  --color-hdr: #{$color-hdr};
+  --color-sub-hdr: #{$color-sub-hdr};
+  --color-text-light: #{$color-text-light};
+  --color-link: #{$color-link};
+  --color-link-hover: #{$color-link-hover};
+}
