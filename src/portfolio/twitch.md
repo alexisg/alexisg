@@ -4,6 +4,7 @@ date: 2020-01-01
 deck: Sr. Director of Product Design
 website: https://www.twitch.tv
 video: /static/media/twitch-uv.mp4
+videoSmall: /static/media/twitch-uv-640x360.mp4
 image: /static/media/twitch-uv.jpg
 gallery:
     - /static/media/twitch-2020-homepage-light.png

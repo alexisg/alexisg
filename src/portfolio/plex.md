@@ -1,6 +1,6 @@
 ---
 title: Plex
-deck: Brand, App Icons 2008-2012
+deck: Identity &amp; Product Design 2008-2012
 date: 2020-01-06
 website: https://www.plex.tv
 video: 

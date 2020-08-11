@@ -4,6 +4,7 @@ deck: Sr. Designer/Developer 2014-2016
 date: 2020-01-02
 website: https://www.twitchcon.com
 video: /static/media/vid-twitchcon-1280x1280.mp4
+videoSmall: /static/media/vid-twitchcon-640x640.mp4
 image: /static/media/twitchcon2015.png
 gallery:
 ---

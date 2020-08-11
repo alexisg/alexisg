@@ -32,6 +32,10 @@
   padding-top: 0
   margin-bottom: 0
 
+.nav-portfolio__media
+  border-radius: 4px
+  overflow: hidden
+
 $hamburger-height: 4px
 $hamburger-width: guv(2)
 
@@ -138,6 +142,6 @@ $hamburger-width: guv(2)
 .nav-portfolio__deck
   color: var(--color-sub-hdr)
   display: none
-  +baseline($font-size-6, $below: 3)
+  +baseline($font-size-7, $lineheight: 2, $below: 3)
   [data-enter='enter-'] &
     display: block
