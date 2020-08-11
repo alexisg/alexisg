@@ -1,0 +1,171 @@
+//------------------------------------------------//
+// $FORCE HSL OUTPUT - Breaks on rgba($color,x) use
+//------------------------------------------------//
+@function hsl($h, $s, $l)
+  @return unquote('hsl(#{$h}, #{$s}, #{$l})')
+
+//------------------------------------------------//
+// $CLEARFIX
+//------------------------------------------------//
+=clearfix
+  &:after
+    content: ''
+    display: table
+    clear: both
+
+//------------------------------------------------//
+// $IMAGE REPLACEMENT
+//------------------------------------------------//
+
+=ir
+  display: inline-block
+  background-color: transparent
+  border: 0
+  overflow: hidden
+  font-size: 0
+  text-rendering: optimizeSpeed
+  &:before
+    content: ""
+    display: block
+    width: 0
+    height: 150%
+
+.ir
+  +ir
+
+//------------------------------------//
+//  $Retina
+//------------------------------------//
+
+=retina
+  @media only screen and (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx)
+    @content
+
+
+//------------------------------------------------//
+// $TRUNCATE
+//------------------------------------------------//
+
+=truncate
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+//------------------------------------------------//
+// THIN OUT WHITE FONTS
+//------------------------------------------------//
+
+=font-smooth
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+//------------------------------------------------//
+// Force webkit browsers into hardware acceleration
+//------------------------------------------------//
+
+=forcehw($enable:true)
+  @if ($enable == true)
+    -webkit-backface-visibility: hidden
+  @else
+    -webkit-backface-visibility: visible
+
+//------------------------------------------------//
+// Want some line clamping?
+//
+// Use with caution, its funky and only works in webkit
+//------------------------------------------------//
+
+=line-clamp($lines)
+  overflow: hidden
+  display: -webkit-box
+  -webkit-line-clamp: $lines
+  -webkit-box-orient: vertical
+
+// ------------------------------------------------//
+// MQ Mixin
+// ------------------------------------------------//
+
+=mq-clear
+  float: none !important
+  display: block
+  width: auto !important
+  max-height: initial
+  min-width: initial
+  max-width: initial
+  margin-left: 0
+  margin-right: 0
+  padding-left: 0 !important
+  padding-right: 0 !important
+  text-shadow: none
+  // overflow: hidden
+
+// ------------------------------------------------//
+// CREATE DUMMY CONTENT BLOCK FOR AFTER/BEFORE
+// ------------------------------------------------//
+=content-block
+  content: " "
+  display: block
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+
+// ------------------------------------------------//
+// FOR ADDING THE INPUT PLACEHOLDER STYLES
+// ------------------------------------------------//
+=placeholder()
+  input::-webkit-input-placeholder
+    @content
+  input:-moz-placeholder
+    @content
+  input::-moz-placeholder
+    @content
+  input:-ms-input-placeholder
+    @content
+
+// ------------------------------------------------//
+// CSS ARROW http://codepen.io/kirkas/pen/otqyJ
+// ------------------------------------------------//
+=triangle($dir: right, $color: black, $width: 20px, $height: $width)
+  border-style: inset
+  transform: rotate(360deg)
+  width: 0
+  height: 0
+  border: transparent solid 0
+  @if $dir == top
+    border-bottom-width: $height
+    border-right-width: $width / 2
+    border-left-width: $width / 2
+    border-bottom-color: $color
+  @else if $dir == right
+    border-left-width: $width
+    border-top-width: $height / 2
+    border-bottom-width: $height / 2
+    border-left-color: $color
+  @else if $dir == bottom
+    border-top-width: $height
+    border-right-width: $width / 2
+    border-left-width: $width / 2
+    border-top-color: $color
+  @else if $dir == left
+    border-right-width: $width
+    border-top-width: $height / 2
+    border-bottom-width: $height / 2
+    border-right-color: $color
+  @else if $dir == "top right"
+    border-right-width: $width
+    border-bottom-width: $width
+    border-right-color: $color
+  @else if $dir == "bottom right"
+    border-left-width: $width
+    border-bottom-width: $width
+    border-bottom-color: $color
+  @else if $dir == "bottom left"
+    border-left-width: $width
+    border-top-width: $width
+    border-left-color: $color
+  @else if $dir == "top left"
+    border-right-width: $width
+    border-top-width: $width
+    border-top-color: $color

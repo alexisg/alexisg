@@ -1,0 +1,109 @@
+/* Vendor Import */
+@import vendor/modularscale
+
+/* Native Imports */
+// Math
+@import modules/mixin
+@import modules/fontface
+@import modules/measure
+@import modules/variables
+// Layout
+@import modules/aspect
+@import modules/flex
+@import modules/grid
+@import modules/responsive
+// Pretty
+@import modules/baseline
+@import modules/transitions
+@import modules/helpers
+// Components
+@import components/icons
+@import components/header
+@import components/nav
+@import components/footer
+
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  background: $color-body
+  color: $color-text
+  font-family: 'AvenirPro', sans-serif
+  font-weight: normal
+  font-style: normal
+  padding: guv(2)
+
+// Avoid img and video elements to grow outside our containters.
+// Allows us to put non width defined images in our containers for maximum flexibility
+// Paint performance gains can be reintroduced by using our aspect classes
+img,video
+  max-width: 100%
+
+// Reset our buttons. We need to be super careful about killing outline and make sure that we re-introduce it on any new buttons we create.
+button
+  background: none
+  border: 0
+  font-family: inherit
+  &::-moz-focus-inner
+    border: 0
+
+// ------------------------------------------------------------------
+// Base Typography addition on our baseline sizing from baseline.sass
+// ------------------------------------------------------------------
+
+h1
+  color: $color-hdr
+  font-weight: bold
+
+h2
+  color: $color-hdr
+  font-weight: bold
+
+h3
+  color: $color-hdr
+  font-weight: bold
+
+h4
+  color: $color-sub-hdr
+  font-weight: normal
+
+h5
+  color: $color-sub-hdr
+  font-weight: normal
+
+h6
+  color: $color-sub-hdr
+  font-weight: normal
+
+a
+  color: $color-link
+  cursor: pointer
+  text-decoration: none
+  transform-origin: 0 0
+  transition: .3s color
+
+  svg
+    fill: $color-link
+
+  &:hover
+    color: $color-link-hover
+    cursor: pointer
+
+    svg
+      fill: $color-link-hover
+
+  li &
+    display: block
+
+ul
+  list-style: none
+  text-align: left
+
+.font-avenir
+  font-family: 'AvenirPro', sans-serif
+
+.font-born, article p
+  font-family: 'Born', serif

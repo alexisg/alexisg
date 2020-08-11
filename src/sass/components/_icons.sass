@@ -1,0 +1,63 @@
+// ---------------------------
+// Icons
+// ---------------------------
+.icon
+  background-repeat: no-repeat
+  background-size: auto 100%
+  display: inline-block
+  fill:  $color-sub-hdr
+  height: guv(32px)
+  width: guv(32px)
+  vertical-align: middle
+
+.icon--xs
+  height: guv(16px)
+  width: guv(16px)
+
+.icon--sm
+  height: guv(24px)
+  width: guv(24px)
+
+.icon--text-top
+  vertical-align: text-top
+
+.icon--fill-link
+  fill: $color-link
+  a:hover &
+    fill: $color-link-hover
+
+.icon--andre
+  background: url('/static/images/icon-andre.png') 0 0
+  background-size: 24px auto
+  overflow: hidden
+  width: 24px
+  height: 46px
+  &:hover
+    background-position: 0 -70px
+  +retina
+    background-image: url('/static/images/icon-andre@2x.png')
+
+.icon--doc
+  background-image: url('/static/images/icon-door-32x32.png')
+
+.icon--castle
+  background-image: url('/static/images/icon-castle-32x32.png')
+  position: relative
+  top: -3px
+
+
+.icon--tent
+  position: relative
+  top: -3px
+
+a:hover
+  .icon--dribbble
+    fill: hsl(337, 70%, 45%)
+  .icon--codepen
+    fill: black
+  .icon--github
+    fill: hsl(214, 50%, 50%)
+  .icon--twitter
+    fill: hsl(203, 89%, 53%)
+  .icon--linkedin
+    fill: hsl(201, 100%, 35%)

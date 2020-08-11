@@ -1,0 +1,89 @@
+html
+  text-size-adjust: 100%
+  +rootsize
+
+// If you want to inject the baseline grid image onto the site, uncomment this
+// body
+//   +show-baseline
+.show-baseline
+  +show-baseline
+
+// Site-wide base styles.
+body
+  font-size: $font-size-base
+  line-height: 2rem
+
+// Add this class to any container to show the baseline
+.show-baseline
+  +show-baseline
+
+// Typography
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+h1
+  +baseline($font-size-1,$below: 1)
+
+h2
+  +baseline($font-size-2,$below: 1)
+
+h3
+  +baseline($font-size-3,$below: 1)
+
+h4
+  +baseline($font-size-4,$below: 1)
+
+h5
+  +baseline($font-size-5,$below: 1)
+
+h6
+  +baseline($font-size-6,$below: 1)
+
+p
+  +baseline($below: 2)
+
+
+// Horizontal Rule
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+// Use a transparent box with an after element as to not throw off the baseline
+hr
+  clear: both
+  border: 0
+  position: relative
+  height: guv(3)
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    top: 50%
+    right: 0
+    height: 1px
+    background: rgba(black,.15)
+
+// Lists
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ul
+  list-style: disc inside
+
+ol
+  list-style: decimal inside
+
+dl,ul,ol
+  padding: 0
+  margin: guv(1) 0
+
+li,dd,dt
+  margin-bottom: guv(1)
+
+
+li
+  +baseline()
+
+// Table styles
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+table
+  width: 100%
+
+th,td
+  text-align: left
+  padding: 10px
+  border-bottom: 1px solid rgba(black,.1)

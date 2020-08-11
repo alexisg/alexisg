@@ -1,0 +1,69 @@
+// Baseline variables
+$base-font-size               : 16
+$base-cap-height              : 0.46
+$base-line-height             : 14 // Half of desired lineheight
+$base-unit                    : 1rem
+
+// Modular Scale Variables
+$ms-base                      : $base-font-size
+$ms-ratio                     : $major-third
+$font-size-max                : 5
+$font-size-1                  : ms($font-size-max)
+$font-size-2                  : ms($font-size-max - 1)
+$font-size-3                  : ms($font-size-max - 2)
+$font-size-4                  : ms($font-size-max - 3)
+$font-size-5                  : ms($font-size-max - 4)
+$font-size-6                  : ms($font-size-max - 5)
+$font-size-7                  : ms($font-size-max - 6)
+$font-size-8                  : ms($font-size-max - 7)
+
+$font-size-1                  : ms-to-rem($font-size-1)
+$font-size-2                  : ms-to-rem($font-size-2)
+$font-size-3                  : ms-to-rem($font-size-3)
+$font-size-4                  : ms-to-rem($font-size-4)
+$font-size-5                  : ms-to-rem($font-size-5)
+$font-size-6                  : ms-to-rem($font-size-6)
+$font-size-7                  : ms-to-rem($font-size-7)
+$font-size-8                  : ms-to-rem($font-size-8)
+
+$font-size-base               : ms-to-rem($base-font-size)
+
+/* Add all font-sizes to a map list so they are
+   available to us in the future */
+$font-sizes: $font-size-1, $font-size-2, $font-size-3, $font-size-4, $font-size-5, $font-size-6, $font-size-7, $font-size-8
+
+// Uncomment to output font-sizes to terminal in px values for developers
+@debug "font-size-1:" + rem-to-px($font-size-1)
+@debug "font-size-2:" + rem-to-px($font-size-2)
+@debug "font-size-3:" + rem-to-px($font-size-3)
+@debug "font-size-4:" + rem-to-px($font-size-4)
+@debug "font-size-5:" + rem-to-px($font-size-5)
+@debug "font-size-6:" + rem-to-px($font-size-6)
+@debug "font-size-7:" + rem-to-px($font-size-7)
+@debug "font-size-8:" + rem-to-px($font-size-8)
+
+// Tower
+$grid-columns                 : 12
+$grid-gutter-width            : 1.5rem
+$grid-gutter-width-lg         : 2rem
+$grid-gutter-width-sm         : 1.0rem
+$grid-gutter-width-xs         : 0.5rem
+// Since we are using sqaures for most of our main images we want the grid max to be a factor of our baseline height
+// This ensures our larger images/videos will stay on the baseline
+$grid-max-width               : $base-line-height * 55 + 0px
+$break-sm                     : 768px
+$break-md                     : 1024px
+$break-lg                     : 1200px
+$break-xl                     : 1440px
+$breakpoints                  : ("sm":$break-sm,"md": $break-md,"lg": $break-lg,"xl": $break-xl)
+
+
+$hue                          : 205
+$color-body                   : hsl($hue, 10%, 96%)
+$color-text                   : hsl($hue, 20%, 20%)
+$color-hdr                    : hsl($hue, 20%, 20%)
+$color-sub-hdr                : hsl($hue, 20%, 30%)
+$color-text-light             : hsl($hue, 20%, 43%) //This is the lightest text color we can use on color-body
+$color-link                   : hsl($hue, 60%, 50%)
+$color-link-hover             : hsl($hue, 80%, 50%)
+

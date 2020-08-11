@@ -1,0 +1,53 @@
+// Aspect Ratio
+//
+// Use the .aspect class to create a box which will scale with the viewport.
+// The default ratio is 16/9 but other sizes can be created by either changing the default padding-bottom of percentage(9/16)
+// or adding an extra padding-top to the aspect to include a pixels sized addition such as with .aspect--player-chrome
+//
+// Markup:
+// <ul class="grid grid--xs-1-4 show-grid show-grid--child">
+//  <li>
+//     <div class="aspect">
+//       <div class="aspect__fill">.aspect</div>
+//     </div>
+//  </li>
+//  <li>
+//     <div class="aspect aspect--player-chrome">
+//       <div class="aspect__fill">.aspect .aspect--player-chrome</div>
+//     </div>
+//  </li>
+//  <li>
+//     <div class="aspect aspect--square">
+//       <div class="aspect__fill">.aspect .aspect--square</div>
+//     </div>
+//  </li>
+// </ul>
+//
+// Styleguide 5
+
+.aspect
+  position: relative
+  padding-bottom: percentage(9/16)
+  height: 0
+
+.aspect__fill
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  height: 100%
+  width: 100%
+  iframe
+    height: 100%
+    width: 100%
+
+.aspect--square
+  padding-bottom: 100%
+
+.aspect--crop-bottom
+  overflow: hidden
+  .aspect__fill
+    bottom: auto
+    height: auto
+
