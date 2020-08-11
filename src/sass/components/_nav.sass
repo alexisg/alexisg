@@ -43,7 +43,7 @@ $hamburger-width: guv(2)
   +mq-tablet
     display: none
   button
-    color: $color-hdr
+    color: var(--color-hdr)
     padding-left: guv(3)
     position: relative
     text-align: left
@@ -56,7 +56,7 @@ $hamburger-width: guv(2)
   span, span:before, span:after
     height: $hamburger-height
     width: $hamburger-width
-    background: $color-hdr
+    background: var(--color-hdr)
     position: absolute
     display: block
     content: ''
@@ -82,14 +82,14 @@ $hamburger-width: guv(2)
       transform: rotate(-45deg)
 
 .nav-portfolio__link--active
-  color: $color-link-hover
+  color: var(--color-link-hover)
   position: relative
   .nav-portfolio__hdr
-    color: $color-link
+    color: var(--color-link)
   +mq-tablet
     &:after
       content: ''
-      background: $color-link
+      background: var(--color-link)
       position: absolute
       left: 0
       right: 0
@@ -121,11 +121,11 @@ $hamburger-width: guv(2)
     white-space: nowrap
 
 .nav-portfolio__hdr
-  color: $color-hdr
+  color: var(--color-hdr)
   white-space: nowrap
   +baseline($font-size-5, $lineheight: 3, $below: 0)
   a:hover &
-    color: $color-link-hover
+    color: var(--color-link-hover)
   .nav-portfolio--row &
     font-size: $font-size-4
     line-height: 4rem
@@ -136,7 +136,7 @@ $hamburger-width: guv(2)
       +baseline($font-size-base, $lineheight: 2, $below: 1)
 
 .nav-portfolio__deck
-  color: $color-sub-hdr
+  color: var(--color-sub-hdr)
   display: none
   +baseline($font-size-6, $below: 3)
   [data-enter='enter-'] &

@@ -8,6 +8,7 @@
 @import modules/measure
 @import modules/variables
 @import modules/variables-css
+
 // Layout
 @import modules/aspect
 @import modules/flex
@@ -30,8 +31,8 @@
   box-sizing: border-box
 
 body
-  background: $color-body
-  color: $color-text
+  background: var(--color-body)
+  color: var(--color-text)
   font-family: 'AvenirPro', sans-serif
   font-weight: normal
   font-style: normal
@@ -56,45 +57,45 @@ button
 // ------------------------------------------------------------------
 
 h1
-  color: $color-hdr
+  color: var(--color-hdr)
   font-weight: bold
 
 h2
-  color: $color-hdr
+  color: var(--color-hdr)
   font-weight: bold
 
 h3
-  color: $color-hdr
+  color: var(--color-hdr)
   font-weight: bold
 
 h4
-  color: $color-sub-hdr
+  color: var(--color-sub-hdr)
   font-weight: normal
 
 h5
-  color: $color-sub-hdr
+  color: var(--color-sub-hdr)
   font-weight: normal
 
 h6
-  color: $color-sub-hdr
+  color: var(--color-sub-hdr)
   font-weight: normal
 
 a
-  color: $color-link
+  color: var(--color-link)
   cursor: pointer
   text-decoration: none
   transform-origin: 0 0
   transition: .3s color
 
   svg
-    fill: $color-link
+    fill: var(--color-link)
 
   &:hover
-    color: $color-link-hover
+    color: var(--color-link-hover)
     cursor: pointer
 
     svg
-      fill: $color-link-hover
+      fill: var(--color-link-hover)
 
   li &
     display: block
