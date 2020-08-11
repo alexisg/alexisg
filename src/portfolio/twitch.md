@@ -6,6 +6,10 @@ website: https://www.twitch.tv
 video: /static/media/twitch-uv.mp4
 image: /static/media/twitch-uv.jpg
 gallery:
+    - /static/media/twitch-2020-homepage-light.png
+    - /static/media/twitch-2020-theme-swipe.gif
+    - /static/media/twitch-2020-core-ui-stickersheet-dark.png
+    - /static/media/twitch-2020-core-ui-light-system.png
 ---
 
 #### Twitch Rebrand
