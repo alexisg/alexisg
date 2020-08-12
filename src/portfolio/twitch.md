@@ -1,5 +1,5 @@
 ---
-title: Twitch
+title: Twitch.tv
 date: 2020-01-01
 deck: Sr. Director of Product Design
 website: https://www.twitch.tv

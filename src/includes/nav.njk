@@ -5,9 +5,9 @@
   >
   <ul class="
     {% if isHome %}
-       grid grid--xs-1-1 grid--sm-1-3 grid--gutter-sm nav-portfolio
+       grid grid--xs-1-1 grid--sm-1-2 grid--gutter-sm nav-portfolio
     {% else %}
-       flex flex--space-between flex--stretch nav-portfolio nav-portfolio--row
+       flex flex--horizontal-center nav-portfolio nav-portfolio--row
     {% endif %}
   ">
     {% if notHome %}
@@ -20,7 +20,7 @@
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
         {% if item.title != 'Home' %}
-          <li class="nav-portfolio__item">
+          <li class="nav-portfolio__item pd-x-1">
             <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
               {% if isHome %}
                 <div class="transition transition--fall transition--fadein">
@@ -29,7 +29,7 @@
                     data-img="{{ item.data.image }}"
                     data-title="{{ item.data.title }}"
                     data-id="{{item.data.title|replace(' ', '-', 'g') }}"
-                    {% if item.data.title == 'Twitch' %}
+                    {% if item.data.title == 'Twitch.tv' %}
                     style="background: #000"
                     {% endif %}
                   >
