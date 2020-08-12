@@ -8,7 +8,8 @@
             "hdr": "hsl(206, 0%, 0%)",
             "subHdr": "hsl(206, 0%, 30%)",
             "link": "hsl(206, 60%, 50%)",
-            "linkHover": "hsl(206, 80%, 50%)"
+            "linkHover": "hsl(206, 80%, 50%)",
+            "themeGlow": "hsla(51, 100%, 50%, .5)"
         }
     },
     {
@@ -20,7 +21,8 @@
             "hdr": "hsl(206, 0%, 90%)",
             "subHdr": "hsl(206, 0%, 70%)",
             "link": "hsl(206, 60%, 50%)",
-            "linkHover": "hsl(206, 80%, 50%)"
+            "linkHover": "hsl(206, 80%, 50%)",
+            "themeGlow": "hsla(210, 100%, 50%, .5)"
         }
     }
 ]

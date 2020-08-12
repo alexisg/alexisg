@@ -2,26 +2,18 @@ const SELECTORS = {
     picker: '.js-themepicker',
     toggleBtn: '.js-themepicker-toggle',
     themeSelectBtn: '.js-themepicker-themeselect',
-    closeBtn: '.js-themepicker-close',
-    // navToggleBtn: '.js-nav-toggle'
+    closeBtn: '.js-themepicker-close'
 }
 
 const CLASSES = {
-    open: 'is-open',
     active: 'is-active'
 }
 const THEME_STORAGE_KEY = 'theme'
 
 class ThemePicker {
     constructor() {
-        this.isOpen = false
-        this.activeTheme = 'default'
+        this.activeTheme = 'light'
         this.hasLocalStorage = typeof Storage !== 'undefined'
-
-        // this.picker = document.querySelector(SELECTORS.picker)
-        // this.toggleBtn = document.querySelector(SELECTORS.toggleBtn)
-        // this.navToggleBtn = document.querySelector(SELECTORS.navToggleBtn)
-        // this.closeBtn = document.querySelector(SELECTORS.closeBtn)
         this.themeSelectBtns = Array.from(
             document.querySelectorAll(SELECTORS.themeSelectBtn)
         )
@@ -39,24 +31,16 @@ class ThemePicker {
             this.activeTheme = systemPreference
         }
 
-        this.setActiveItem()
+        this.setTheme(this.activeTheme)
         this.bindEvents()
     }
 
     bindEvents() {
-        // this.toggleBtn.addEventListener('click', () => this.togglePicker())
-        // this.closeBtn.addEventListener('click', () => this.togglePicker(false))
-
-        // this.navToggleBtn.addEventListener('click', () => {
-        //     if (this.isOpen) {
-        //         this.togglePicker(false)
-        //     }
-        // })
-
         this.themeSelectBtns.forEach((btn) => {
             const id = btn.dataset.theme
             if (id) {
-                btn.addEventListener('click', () => this.setTheme(id))
+                btn.addEventListener('click', () => this.setTheme(id));
+                btn.blur();
             }
         })
     }
@@ -70,7 +54,8 @@ class ThemePicker {
 
     getStoredPreference() {
         if (this.hasLocalStorage) {
-            return localStorage.getItem(THEME_STORAGE_KEY)
+            return localStorage.getItem(THEME_STORAGE_KEY);
+            console.log(localStorage.getItem(THEME_STORAGE_KEY));
         }
         return false
     }
@@ -94,34 +79,9 @@ class ThemePicker {
         if (this.hasLocalStorage) {
             localStorage.setItem(THEME_STORAGE_KEY, id)
         }
-
         this.setActiveItem()
     }
 
-    // togglePicker(force) {
-    //     this.isOpen = typeof force === 'boolean' ? force : !this.isOpen
-
-    //     this.toggleBtn.setAttribute('aria-expanded', String(this.isOpen))
-
-    //     if (this.isOpen) {
-    //         this.picker.removeAttribute('hidden')
-    //         window.setTimeout(() => {
-    //             this.picker.classList.add(CLASSES.open)
-    //         }, 1)
-    //         this.themeSelectBtns[0].focus()
-    //     } else {
-    //         const transitionHandler = () => {
-    //             this.picker.removeEventListener(
-    //                 'transitionend',
-    //                 transitionHandler
-    //             )
-    //             this.picker.setAttribute('hidden', true)
-    //         }
-    //         this.picker.addEventListener('transitionend', transitionHandler)
-    //         this.picker.classList.remove(CLASSES.open)
-    //         this.toggleBtn.focus()
-    //     }
-    // }
 }
 
 if (window.CSS && CSS.supports('color', 'var(--fake-var)')) {

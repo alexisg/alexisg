@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width">
 
     <link rel="icon" href="/static/images/favicon.png" />
-    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png"/>    
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png"/>
     <link rel="stylesheet" href="/static/css/theme.css"/>
     <link rel="stylesheet" href="/static/css/alexis.css"/>
 
@@ -31,16 +31,17 @@
 
   <body>
 
-    <!-- SVG Use sprite -->
     {% include "sprite.svg" %}
+
+    {% include "themepicker.njk" %}
 
     <div id="js-main" data-page="home">
       <div class="container">
-        
+
         {% include "header.njk" %}
-        {% include "themepicker.njk" %}
+
         {% block intro %}{% endblock %}
-        
+
         {% include "nav.njk" %}
 
         <article class="transition transition--fadein">
@@ -57,7 +58,7 @@
     <script src="/static/js/tornis.es5.js"></script>
     <script src="/static/js/main.js"></script>
     <script src="/static/js/themePicker.js"></script>
-    
+
     {% block js_extra %}{% endblock %}
 
     <!-- =^.^= -->

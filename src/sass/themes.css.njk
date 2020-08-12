@@ -9,13 +9,14 @@ excludeFromSitemap: true
     --color-sub-hdr: {{ colors.subHdr }};
     --color-link: {{ colors.link }};
     --color-link-hover: {{ colors.linkHover }};
+    --color-theme-glow: {{ colors.themeGlow }};
 {% endmacro %}
 
-{%- set default = themes|getTheme('default') -%}
+{%- set light = themes|getTheme('light') -%}
 {%- set dark = themes|getTheme('dark') -%}
 
 :root {
-    {{ colorscheme(default.colors) }}
+    {{ colorscheme(light.colors) }}
 }
 
 @media(prefers-color-scheme: dark) {
