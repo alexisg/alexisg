@@ -20,7 +20,7 @@
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
         {% if item.title != 'Home' %}
-          <li class="nav-portfolio__item">
+          <li class="nav-portfolio__item pd-x-2">
             <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
               {% if isHome %}
                 <div class="transition transition--fall transition--fadein">
