@@ -10,17 +10,10 @@
        flex flex--horizontal-center nav-portfolio nav-portfolio--row
     {% endif %}
   ">
-    {% if notHome %}
-      <li class="nav-portfolio__toggle nav-portfolio__item">
-        <button class="js-nav-toggle no-smoothstate nav-portfolio__hdr"><span></span> Portfolio</button>
-      </li>
-    {% endif %}
-
-
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
         {% if item.title != 'Home' %}
-          <li class="nav-portfolio__item pd-x-2">
+          <li class="nav-portfolio__item pd-x-1">
             <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
               {% if isHome %}
                 <div class="transition transition--fall transition--fadein">
@@ -33,15 +26,15 @@
                     style="background: #000"
                     {% endif %}
                   >
-                  </div>                  
+                  </div>
                 </div>
               {% endif %}
-              
+
               <h2 class="nav-portfolio__hdr nav-portfolio__hide">{{item.data.title}}</h2>
               <p class="nav-portfolio__deck nav-portfolio__hide">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
             </a>
           </li>
         {% endif %}
-      {% endfor %}      
+      {% endfor %}
   </ul>
 </nav>

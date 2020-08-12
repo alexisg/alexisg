@@ -8,12 +8,6 @@ var getEnterExitString = function(e) {
 
 // Smoothstate needs typicall document onready functions to be fired again once a new page loads. So we move typical actions like this into their own functions and call them with the smooothState OnAfter function.
 
-// Init the mobile nav function
-var navToggle = function (e) {
-  $('body').toggleClass('is-navbar-active');
-  e.preventDefault();
-}
-
 // Force collapes of the navbar on anchor links and scroll top function
 var anchorSetup = function (e) {
   $( "a" ).click(function() {
@@ -90,15 +84,13 @@ $(function() {
     .addClass('transition-start')
     .smoothState();
 
-  // Set up navToggle Function
-  $(document).on('click', '.js-nav-toggle', navToggle);
-
 });
 
 
 // Andre high fives
 const trackValues = ({ mouse, size, scroll, position, orientation }) => {
   if (mouse.changed) {
+
     mouseVelocity = mouse.velocity.y;
     // console.log(mouseVelocity);
     if (mouseVelocity < 0) {
@@ -108,7 +100,7 @@ const trackValues = ({ mouse, size, scroll, position, orientation }) => {
       document.getElementById('js-andre').classList.replace("up", "down");
       // console.log('down');
     }
-    
+
   }
 }
 __TORNIS.watchViewport(trackValues);

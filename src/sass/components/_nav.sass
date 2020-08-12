@@ -1,32 +1,11 @@
 // ---------------------------
 // Main portfolio nav with grid
 // ---------------------------
-// Create a hold div to allow nav to collapse with css for mobile
-// Flex forces its items in to a row mode if the height is too small for its items
-// so we need to set the height and overfow on parent hold container
-.nav-portfolio-hold
-  max-height: guv(5)
-  overflow: hidden
-  transition-duration: .3s
-  .is-navbar-active &
-    max-height: 100vh
-    overflow: auto
-  +mq-tablet
-    height: auto
-    overflow: visible
 
 .nav-portfolio
   margin-top: 0
   margin-bottom: 0
   text-align: center
-
-.nav-portfolio--row
-  display: flex
-  flex-direction: column
-  flex-wrap: wrap
-  text-align: left
-  +mq-tablet
-    flex-direction: row
 
 .nav-portfolio__item
   padding-top: 0
@@ -36,82 +15,29 @@
   border-radius: 4px
   overflow: hidden
 
-$hamburger-height: 4px
-$hamburger-width: guv(2)
-
-.nav-portfolio__toggle
-  box-shadow: rgba(black,.1) 0 -1px 0 0 inset,rgba(black,.1) 0 1px 0 0 inset
-  margin-bottom: guv(1)
-  padding-top: 0
-  position: relative
-  +mq-tablet
-    display: none
-  button
-    color: var(--color-hdr)
-    padding-left: guv(3)
-    position: relative
-    text-align: left
-    top: 2px
-    width: 100%
-    &:focus
-      outline: none
-    &:hover
-      cursor: pointer
-  span, span:before, span:after
-    height: $hamburger-height
-    width: $hamburger-width
-    background: var(--color-hdr)
-    position: absolute
-    display: block
-    content: ''
-    transition: all .3s ease-in-out
-    transform-origin: 50% 50%
-    left: 0
-    top: 50%
-    transform: translateY(-50%)
-    margin-top: -3px
-  span:before
-    margin-top: $hamburger-height * 2 * -1
-  span:after
-    margin-top: $hamburger-height * 2
-
-  .is-navbar-active &
-    span
-      background-color: transparent
-    span:before, span:after
-      margin-top: -1px
-    span:before
-      transform: rotate(45deg)
-    span:after
-      transform: rotate(-45deg)
-
 .nav-portfolio__link--active
   color: var(--color-link-hover)
   position: relative
   .nav-portfolio__hdr
     color: var(--color-link)
-  +mq-tablet
-    &:after
-      content: ''
-      background: var(--color-link)
-      position: absolute
-      left: 0
-      right: 0
-      top: 100%
-      height: 1px
-      animation: spread .2s 1 .2s
-      transition: all .2s
-      .transition-end &
-        transform: scaleX(0)
+  &:after
+    content: ''
+    background: var(--color-link)
+    position: absolute
+    left: 0
+    right: 0
+    top: 100%
+    height: 1px
+    animation: spread .2s 1 .2s
+    transition: all .2s
+    .transition-end &
+      transform: scaleX(0)
 
 @keyframes spread
   0%
     scaleX(0)
   100%
     scaleX(1)
-
-// .nav-portfolio__media
-//   margin-bottom: guv(1)
 
 .nav-portfolio__hide
   margin-left: auto
@@ -131,10 +57,7 @@ $hamburger-width: guv(2)
   a:hover &
     color: var(--color-link-hover)
   .nav-portfolio--row &
-    font-size: $font-size-4
-    line-height: 4rem
-    margin-bottom: 0
-    padding-top: 0
+    +baseline($font-size-7, $lineheight: 2, $below: 0)
     font-weight: normal
     +mq-tablet
       +baseline($font-size-base, $lineheight: 2, $below: 1)
