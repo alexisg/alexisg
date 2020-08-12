@@ -7,7 +7,6 @@
 @import modules/fontface
 @import modules/measure
 @import modules/variables
-@import modules/variables-css
 
 // Layout
 @import modules/aspect
@@ -23,6 +22,7 @@
 @import components/header
 @import components/nav
 @import components/footer
+@import components/themepicker
 
 
 *
@@ -48,7 +48,9 @@ img,video
 button
   background: none
   border: 0
+  color: var(--color-text)
   font-family: inherit
+  outline: none
   &::-moz-focus-inner
     border: 0
 

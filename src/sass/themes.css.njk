@@ -3,14 +3,12 @@ permalink: '/static/css/theme.css'
 excludeFromSitemap: true
 ---
 {% macro colorscheme(colors) %}
-    --color-body: {{ colors.background }};
-    --color-bg-offset: {{ colors.backgroundOffset }};
+    --color-body: {{ colors.body }};
     --color-text: {{ colors.text }};
-    --color-text-offset: {{ colors.textOffset }};
-    --color-border: {{ colors.border }};
-    --color-primary: {{ colors.primary }};
-    --color-primary-offset: {{ colors.primaryOffset }};
-    --color-secondary: {{ colors.secondary }};
+    --color-hdr: {{ colors.hdr }};
+    --color-sub-hdr: {{ colors.subHdr }};
+    --color-link: {{ colors.link }};
+    --color-link-hover: {{ colors.linkHover }};
 {% endmacro %}
 
 {%- set default = themes|getTheme('default') -%}

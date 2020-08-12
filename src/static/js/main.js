@@ -99,15 +99,14 @@ $(function() {
 // Andre high fives
 const trackValues = ({ mouse, size, scroll, position, orientation }) => {
   if (mouse.changed) {
-
     mouseVelocity = mouse.velocity.y;
-    console.log(mouseVelocity);
+    // console.log(mouseVelocity);
     if (mouseVelocity < 0) {
       document.getElementById('js-andre').classList.replace("down", "up");
-      console.log('up');
+      // console.log('up');
     } else if (mouseVelocity > 0) {
       document.getElementById('js-andre').classList.replace("up", "down");
-      console.log('down');
+      // console.log('down');
     }
     
   }

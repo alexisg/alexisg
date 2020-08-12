@@ -18,10 +18,10 @@ class ThemePicker {
         this.activeTheme = 'default'
         this.hasLocalStorage = typeof Storage !== 'undefined'
 
-        this.picker = document.querySelector(SELECTORS.picker)
-        this.toggleBtn = document.querySelector(SELECTORS.toggleBtn)
+        // this.picker = document.querySelector(SELECTORS.picker)
+        // this.toggleBtn = document.querySelector(SELECTORS.toggleBtn)
         // this.navToggleBtn = document.querySelector(SELECTORS.navToggleBtn)
-        this.closeBtn = document.querySelector(SELECTORS.closeBtn)
+        // this.closeBtn = document.querySelector(SELECTORS.closeBtn)
         this.themeSelectBtns = Array.from(
             document.querySelectorAll(SELECTORS.themeSelectBtn)
         )
@@ -44,8 +44,8 @@ class ThemePicker {
     }
 
     bindEvents() {
-        this.toggleBtn.addEventListener('click', () => this.togglePicker())
-        this.closeBtn.addEventListener('click', () => this.togglePicker(false))
+        // this.toggleBtn.addEventListener('click', () => this.togglePicker())
+        // this.closeBtn.addEventListener('click', () => this.togglePicker(false))
 
         // this.navToggleBtn.addEventListener('click', () => {
         //     if (this.isOpen) {
@@ -98,30 +98,30 @@ class ThemePicker {
         this.setActiveItem()
     }
 
-    togglePicker(force) {
-        this.isOpen = typeof force === 'boolean' ? force : !this.isOpen
+    // togglePicker(force) {
+    //     this.isOpen = typeof force === 'boolean' ? force : !this.isOpen
 
-        this.toggleBtn.setAttribute('aria-expanded', String(this.isOpen))
+    //     this.toggleBtn.setAttribute('aria-expanded', String(this.isOpen))
 
-        if (this.isOpen) {
-            this.picker.removeAttribute('hidden')
-            window.setTimeout(() => {
-                this.picker.classList.add(CLASSES.open)
-            }, 1)
-            this.themeSelectBtns[0].focus()
-        } else {
-            const transitionHandler = () => {
-                this.picker.removeEventListener(
-                    'transitionend',
-                    transitionHandler
-                )
-                this.picker.setAttribute('hidden', true)
-            }
-            this.picker.addEventListener('transitionend', transitionHandler)
-            this.picker.classList.remove(CLASSES.open)
-            this.toggleBtn.focus()
-        }
-    }
+    //     if (this.isOpen) {
+    //         this.picker.removeAttribute('hidden')
+    //         window.setTimeout(() => {
+    //             this.picker.classList.add(CLASSES.open)
+    //         }, 1)
+    //         this.themeSelectBtns[0].focus()
+    //     } else {
+    //         const transitionHandler = () => {
+    //             this.picker.removeEventListener(
+    //                 'transitionend',
+    //                 transitionHandler
+    //             )
+    //             this.picker.setAttribute('hidden', true)
+    //         }
+    //         this.picker.addEventListener('transitionend', transitionHandler)
+    //         this.picker.classList.remove(CLASSES.open)
+    //         this.toggleBtn.focus()
+    //     }
+    // }
 }
 
 if (window.CSS && CSS.supports('color', 'var(--fake-var)')) {

@@ -5,7 +5,7 @@
   >
   <ul class="
     {% if isHome %}
-       grid grid--xs-1-1 grid--sm-1-2 grid--gutter-sm nav-portfolio
+       grid grid--xs-1-1 grid--sm-1-2 grid--gutter-md mg-t-2 nav-portfolio
     {% else %}
        flex flex--horizontal-center nav-portfolio nav-portfolio--row
     {% endif %}
@@ -20,7 +20,7 @@
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
         {% if item.title != 'Home' %}
-          <li class="nav-portfolio__item pd-x-1">
+          <li class="nav-portfolio__item">
             <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
               {% if isHome %}
                 <div class="transition transition--fall transition--fadein">
