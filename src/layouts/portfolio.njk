@@ -2,9 +2,9 @@
 layout: base
 ---
 
-<div class="js-media-hold aspect 
+<div class="js-media-hold aspect
   {% if title != 'Twitch.tv' %}
-    aspect--square 
+    aspect--square
   {% endif %}
   shadow shadow--lg mg-y-2"
   data-video="{{ video }}"
@@ -34,7 +34,7 @@ layout: base
 {% if gallery %}
   <hr>
   {% for item in gallery %}
-    <div class="shadow mg-b-2">
+    <div class="shadow shadow--lg mg-y-2">
       <img src="{{ item }}">
     </div>
   {% endfor %}
