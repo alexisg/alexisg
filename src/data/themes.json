@@ -16,7 +16,7 @@
         "id": "dark",
         "name": "Dark",
         "colors": {
-            "body": "hsl(206, 10%, 8%)",
+            "body": "hsl(206, 10%, 10%)",
             "text": "hsl(206, 0%, 80%)",
             "hdr": "hsl(206, 0%, 90%)",
             "subHdr": "hsl(206, 0%, 70%)",
