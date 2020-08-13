@@ -9,6 +9,7 @@ image: /static/media/twitch-uv.jpg
 gallery:
     - /static/media/twitch-2020-homepage-light.png
     - /static/media/twitch-2020-media-cards.gif
+    - /static/media/twitch-2020-mobile-2550.png
     - /static/media/twitch-2020-theme-swipe.gif
     - /static/media/twitch-2020-core-ui-stickersheet-dark.png
     - /static/media/twitch-2020-accessible.png
