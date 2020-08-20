@@ -2,6 +2,7 @@
     position: absolute;
     right: 2rem;
     top: 0rem;
+    z-index: 1000;
 
     &__btn {
         background:  var(--color-body);
