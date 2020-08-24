@@ -34,8 +34,12 @@ layout: base
 {% if gallery %}
   <hr>
   {% for item in gallery %}
-    <div class="shadow shadow--lg mg-y-2">
-      <img src="{{ item }}">
-    </div>
+    {% if '.mp4' in item %}
+      <div class="js-media-hold aspect aspect--square shadow" data-video="{{ item }}" data-img="{{ item | replace('.mp4', '.png') }}" data-title="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}" data-id="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}"></div>
+    {% else %}
+      <div class="shadow shadow--lg mg-y-2">
+        <img src="{{ item }}">
+      </div>
+    {% endif %}
   {% endfor %}
 {% endif %}

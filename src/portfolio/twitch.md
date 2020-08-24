@@ -14,6 +14,8 @@ gallery:
     - /static/media/twitch-2020-core-ui-stickersheet-dark.png
     - /static/media/twitch-2020-accessible.png
     - /static/media/twitch-2020-core-ui-light-system.png
+    - /static/media/vid-twitchcon-1280x1280.mp4
+    - /static/media/vid-twitch-retrospective-1280x1280.mp4
 ---
 
 ### Teamwork created these things
