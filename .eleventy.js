@@ -23,6 +23,7 @@ module.exports = function (config) {
     config.addPassthroughCopy('src/static/webfonts')
     config.addPassthroughCopy('src/static/css')
     config.addPassthroughCopy('src/static/js')
+    config.addPassthroughCopy('src/static/api')
 
     // Base Config
     return {
