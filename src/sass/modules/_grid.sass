@@ -168,7 +168,7 @@
   // .col-xs-#{$i}
   //   width: percentage($i/$grid-columns)
   .grid--xs-1-#{$i} > *
-    width: percentage(1/$i)
+    width:  calc(1 / $i * 100%)
 
 /* Now the create the breakpoints override sizes at different screen sizes */
 @each $slug, $size in $breakpoints
@@ -177,4 +177,4 @@
       // .col-#{$slug}-#{$i}
       //   width: percentage($i/$grid-columns)
       .grid--#{$slug}-1-#{$i} > *
-        width: percentage(1/$i)
+        width: calc(1 / $i  * 100%)

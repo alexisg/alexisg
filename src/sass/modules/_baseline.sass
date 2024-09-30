@@ -1,44 +1,30 @@
 html
   text-size-adjust: 100%
-  +rootsize
 
-// If you want to inject the baseline grid image onto the site, uncomment this
-// body
-//   +show-baseline
-.show-baseline
-  +show-baseline
+h1 
+  font-size: 3rem
+  line-height: 3rem
+  padding-top: 2rem
+  margin-bottom: 1rem  
 
-// Site-wide base styles.
-body
-  font-size: $font-size-base
+h2 
+  font-size: 1.4rem
+  line-height: 2rem  
+  padding-top: 1rem
+  
+h3 
+  font-size: 1.4rem
   line-height: 2rem
+  
 
-// Add this class to any container to show the baseline
-.show-baseline
-  +show-baseline
+h4 
+  font-size: 1.2rem
+  line-height: 2rem  
 
-// Typography
-//––––––––––––––––––––––––––––––––––––––––––––––––––
-h1
-  +baseline($font-size-1,$below: 1)
-
-h2
-  +baseline($font-size-2,$below: 1)
-
-h3
-  +baseline($font-size-3,$below: 1)
-
-h4
-  +baseline($font-size-4,$below: 1)
-
-h5
-  +baseline($font-size-5,$below: 1)
-
-h6
-  +baseline($font-size-6,$below: 1)
-
-p
-  +baseline($below: 2)
+p 
+  font-size: 1rem
+  line-height: 2rem  
+  margin-bottom: 1rem
 
 
 // Horizontal Rule
@@ -73,10 +59,6 @@ dl,ul,ol
 
 li,dd,dt
   margin-bottom: guv(1)
-
-
-li
-  +baseline()
 
 // Table styles
 //––––––––––––––––––––––––––––––––––––––––––––––––––

@@ -1,9 +1,15 @@
-const inclusiveLangPlugin = require('@11ty/eleventy-plugin-inclusive-language')
+// const inclusiveLangPlugin = require('@11ty/eleventy-plugin-inclusive-language')
 const filters = require('./utils/filters.js')
+const postcss = require("postcss");
+const cssnano = require("cssnano");
+const eleventySass = require("eleventy-sass");
 
 module.exports = function (config) {
     // // Plugins
-    config.addPlugin(inclusiveLangPlugin);
+    // config.addPlugin(inclusiveLangPlugin);
+    config.addPlugin(eleventySass, {
+        postcss: postcss([cssnano])
+      });
 
     // Filters
     Object.keys(filters).forEach((filterName) => {
