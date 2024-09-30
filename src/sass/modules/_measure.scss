@@ -47,9 +47,9 @@
 @function guv($q: 1) {
   @if unit($q) == 'px' {
     @return px-to-rem($q);
-  } @elseif unit($q) == 'rem' {
+  } @else if unit($q) == 'rem' {
     @return $q;
-  } @elseif unit($q) == '' {
+  } @else if unit($q) == '' {
     @return $q + 0rem;
   } @else {
     @warn ('You must send a rem, px, or unitless value to the guv function');

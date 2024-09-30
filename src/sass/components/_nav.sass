@@ -7,9 +7,16 @@
   margin-bottom: 0
   text-align: center
 
-.nav-portfolio__item
-  padding-top: 0
-  margin-bottom: 0
+  .nav-portfolio__item
+    padding-top: 0
+    margin-bottom: 1rem
+
+.nav-portfolio:not(.nav-portfolio--row)
+  .nav-portfolio__item
+    &:first-child
+      margin-bottom: 2rem
+      width: 100% !important
+
 
 .nav-portfolio__media
   border-radius: 4px
@@ -35,9 +42,9 @@
 
 @keyframes spread
   0%
-    scaleX(0)
+    transform: scaleX(0)
   100%
-    scaleX(1)
+    transform: scaleX(1)
 
 .nav-portfolio__hide
   margin-left: auto
@@ -53,18 +60,14 @@
 .nav-portfolio__hdr
   color: var(--color-hdr)
   white-space: nowrap
-  +baseline($font-size-5, $lineheight: 3, $below: 0)
+ 
   a:hover &
     color: var(--color-link-hover)
   .nav-portfolio--row &
-    +baseline($font-size-7, $lineheight: 2, $below: 0)
     font-weight: normal
-    +mq-tablet
-      +baseline($font-size-base, $lineheight: 2, $below: 1)
-
+ 
 .nav-portfolio__deck
   color: var(--color-sub-hdr)
   display: none
-  +baseline($font-size-7, $lineheight: 2, $below: 3)
   [data-enter='enter-'] &
     display: block

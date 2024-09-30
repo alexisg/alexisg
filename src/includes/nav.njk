@@ -17,7 +17,11 @@
             <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
               {% if isHome %}
                 <div class="transition transition--fall transition--fadein">
-                  <div class="js-media-hold nav-portfolio__media shadow aspect aspect--square"
+                  <div class="js-media-hold nav-portfolio__media shadow aspect 
+                  {% if item.data.title != 'Frame.io' %}
+                  aspect--square
+                  {% endif %}
+                  "
                     data-video="{{item.data.videoSmall}}"
                     data-img="{{ item.data.image }}"
                     data-title="{{ item.data.title }}"
