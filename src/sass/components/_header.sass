@@ -1,6 +1,11 @@
 // ---------------------------
 // Logo and portrait
 // ---------------------------
+.header
+  display: flex
+  align-items: center
+  gap: 4rem
+
 .header__logo
   margin-left: auto
   margin-right: auto
@@ -17,15 +22,18 @@
     text-decoration: underline
 
 .portrait
+  height: 12rem
   position: relative
   margin: 0 auto
+  &:hover
+    cursor: url(/static/images/winner.svg), auto
 
 .portrait__img
   display: block
   margin: 0 auto
   position: relative
-  height: guv(9)
-  width: guv(9)
+  width: 12rem
+  height: 12rem
   border-radius: 100%
   overflow: hidden
 
