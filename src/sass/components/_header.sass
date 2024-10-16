@@ -5,6 +5,9 @@
   display: flex
   align-items: center
   gap: 4rem
+  @media (max-width: 640px)
+    flex-direction: column
+    gap: 0rem
 
 .header__logo
   margin-left: auto
@@ -24,7 +27,7 @@
 .portrait
   height: 12rem
   position: relative
-  margin: 0 auto
+  margin: 0 auto 1rem
   &:hover
     cursor: url(/static/images/winner.svg), auto
 
