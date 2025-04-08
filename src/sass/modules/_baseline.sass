@@ -1,3 +1,5 @@
+@use "measure" as measure
+
 html
   text-size-adjust: 100%
 
@@ -32,7 +34,7 @@ hr
   clear: both
   border: 0
   position: relative
-  height: guv(3)
+  height: measure.guv(3)
   &:after
     content: ''
     position: absolute
@@ -53,10 +55,10 @@ ol
 
 dl,ul,ol
   padding: 0
-  margin: guv(1) 0
+  margin: measure.guv(1) 0
 
 li,dd,dt
-  margin-bottom: guv(1)
+  margin-bottom: measure.guv(1)
 
 // Table styles
 //––––––––––––––––––––––––––––––––––––––––––––––––––

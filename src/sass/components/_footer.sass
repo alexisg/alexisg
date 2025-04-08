@@ -1,15 +1,17 @@
+@use "../modules/measure" as measure
+
 // ---------------------------
 // List of networks in footer
 // ---------------------------
 .network
-  margin: guv(2) auto
+  margin: measure.guv(2) auto
   width: 100%
 
 .network__item
   color: var(--color-hdr)
   flex: 0 0 auto
   font-size: .8rem
-  margin: 0 guv(2)
+  margin: 0 measure.guv(2)
   &:hover
     color: var(--color-hdr)
 

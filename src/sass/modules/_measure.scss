@@ -2,6 +2,9 @@
 // MIXINS
 //===============================================
 
+@use 'sass:math';
+@use 'variables';
+
 @mixin show-baseline($color: rgba(cyan,.75)) {
   position: relative;
   &:before {
@@ -30,26 +33,26 @@
 
 // Convert px,rem,modular scale values
 @function px-to-rem($fontsize) {
-  @return $fontsize/1px / $base-line-height + 0rem;
+  @return math.div(math.div($fontsize, 1px), variables.$base-line-height) + 0rem;
 }
 @function ms-to-rem($fontsize) {
-  @return $fontsize / $base-line-height + 0rem;
+  @return math.div($fontsize, variables.$base-line-height) + 0rem;
 }
 @function rem-to-px($fontsize: 1) {
-  @return $fontsize/1rem * $base-line-height + 0px;
+  @return math.div($fontsize, 1rem) * variables.$base-line-height + 0px;
 }
 @function rem-to-ms($fontsize: 1) {
-  @return $fontsize * $base-line-height;
+  @return $fontsize * variables.$base-line-height;
 }
 
 // GET UNIT VERTICAL - send in PX, REM or unitless
 // Since we always want to use rems for our output in vertical space we use the guv() function to show where we are trying to achieve vertical rhytm and spacing. A simple unit type test checks for px, rem or unitless values. Although the rem and unitlesss functions might seem meaningless it will show consistency and frame of mind when looking through subsequent projects
 @function guv($q: 1) {
-  @if unit($q) == 'px' {
+  @if math.unit($q) == 'px' {
     @return px-to-rem($q);
-  } @else if unit($q) == 'rem' {
+  } @else if math.unit($q) == 'rem' {
     @return $q;
-  } @else if unit($q) == '' {
+  } @else if math.unit($q) == '' {
     @return $q + 0rem;
   } @else {
     @warn ('You must send a rem, px, or unitless value to the guv function');
@@ -62,13 +65,13 @@
 
 // Root font-size in %, outputted in correct breakpoints.
 @mixin rootsize ($line-height: $base-line-height ) {
-  font-size: $line-height / 16 * 100%;
+  font-size: math.div($line-height, 16) * 100%;
 }
 
 // Font-size in rems.
 // Use values as you would for pixels i.e. 16 or use values from the modular scale.
 @mixin fontsize($fontsize) {
-  font-size: #{$fontsize / $base-line-height}rem;
+  font-size: #{math.div($fontsize, $base-line-height)}rem;
 }
 
 // Set fontsize and baseline at once. Mix of fontsize and baseline mixin.
@@ -85,10 +88,10 @@
     line-height: #{$lineheight}rem;
   }
 
-  $baseline-shift: #{($fontsize / 2 * (($lineheight * $base-line-height / $fontsize) - $base-cap-height)) / $base-line-height + 0.00001};
-  $baseline-push: #{$below - (($fontsize / 2 * (($lineheight * $base-line-height / $fontsize) - $base-cap-height)) / $base-line-height + 0.00001)};
+  $baseline-shift: #{math.div(math.div($fontsize, 2) * ((math.div($lineheight * $base-line-height, $fontsize)) - $base-cap-height), $base-line-height) + 0.00001};
+  $baseline-push: #{$below - (math.div(math.div($fontsize, 2) * ((math.div($lineheight * $base-line-height, $fontsize)) - $base-cap-height), $base-line-height) + 0.00001)};
 
-  font-size: #{$fontsize / $base-line-height}rem;
+  font-size: #{math.div($fontsize, $base-line-height)}rem;
   margin-bottom: #{$baseline-push}rem;
   padding-top: #{$baseline-shift}rem;
 
