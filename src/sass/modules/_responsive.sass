@@ -1,3 +1,5 @@
+@use "variables"
+
 // Responsive media query mixins
 // based on our breakpoints set in _sizes.sass
 // For reference
@@ -11,26 +13,26 @@
 
 // Smaller than break-sm
 =mq-mobile
-  @media (max-width: $break-sm)
+  @media (max-width: variables.$break-sm)
     @content
 
 =mq-tablet
-  @media (min-width: $break-sm)
+  @media (min-width: variables.$break-sm)
     @content
 
 // Desktop and higher
 =mq-desktop
-  @media (min-width: $break-md)
+  @media (min-width: variables.$break-md)
     @content
 
 // Desktop - Widescreen and higher
 =mq-wide
-  @media (min-width: $break-lg)
+  @media (min-width: variables.$break-lg)
     @content
 
 // Desktop - Super Widescreen and higher
 =mq-super
-  @media (min-width: $break-xl )
+  @media (min-width: variables.$break-xl)
     @content
 
 // Detect Retina

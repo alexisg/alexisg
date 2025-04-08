@@ -1,3 +1,5 @@
+@use "variables"
+
 // Flex
 //
 // When you need a generic flex class use .flex.
@@ -28,7 +30,6 @@
 //   <div class="flex__item">.flex__item 3</div>
 // </div>
 //
-
 
 // ===============
 //   Flex classes
@@ -108,7 +109,7 @@
   .flex__item--order-xs-#{$i}
     order: $i
 
-@each $slug, $size in $breakpoints
+@each $slug, $size in variables.$breakpoints
   @media (min-width: #{$size})
     @for $i from 1 through 4
       .flex__item--order-#{$slug}-#{$i}

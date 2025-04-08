@@ -1,3 +1,5 @@
+@use "variables"
+
 // Grid
 //
 // Mobile first 12 column fluid grid system based on flexbox FTW.
@@ -38,30 +40,27 @@
 //
 // Styleguide 3
 
-
 /* Desktop Container */
 .container
   margin: 0 auto
   padding: 0
-  max-width: $grid_max_width
+  max-width: variables.$grid-max-width
   width: 100%
 
 .container--fluid
   max-width: 100%
-  width: 100%
 
 .container--sm
-  max-width: $break-sm
+  max-width: variables.$break-sm
 
 .container--md
-  max-width: $break-md
+  max-width: variables.$break-md
 
 .container--lg
-  max-width: $break-lg
+  max-width: variables.$break-lg
 
 .container--xl
-  max-width: $break-xl
-
+  max-width: variables.$break-xl
 
 /* Create base grid */
 .grid
@@ -72,24 +71,24 @@
   // Set base flex and padding on child elements of .grid
   > *
     flex: 0 0 auto
-    padding: 0 $grid-gutter-width
+    padding: 0 variables.$grid-gutter-width
 
 // When nesting rows and grids lets margin them back in
 .grid
-  margin-left: $grid-gutter-width * -1
-  margin-right: $grid-gutter-width * -1
+  margin-left: variables.$grid-gutter-width * -1
+  margin-right: variables.$grid-gutter-width * -1
 
 .grid--gutter-xs
-  margin-left: $grid-gutter-width-xs * -1
-  margin-right: $grid-gutter-width-xs * -1
+  margin-left: variables.$grid-gutter-width-xs * -1
+  margin-right: variables.$grid-gutter-width-xs * -1
 
 .grid--gutter-sm
-  margin-left: $grid-gutter-width-sm * -1
-  margin-right: $grid-gutter-width-sm * -1
+  margin-left: variables.$grid-gutter-width-sm * -1
+  margin-right: variables.$grid-gutter-width-sm * -1
 
 .grid--gutter-lg
-  margin-left: $grid-gutter-width-lg * -1
-  margin-right: $grid-gutter-width-lg * -1
+  margin-left: variables.$grid-gutter-width-lg * -1
+  margin-right: variables.$grid-gutter-width-lg * -1
 
 .grid--gutter-none
   margin-left: 0
@@ -125,15 +124,15 @@
 // Set child elements of grid to be spaced at half our standard gutter width
 .grid--gutter-xs
   > *
-    padding: 0 $grid-gutter-width-xs
+    padding: 0 variables.$grid-gutter-width-xs
 // Set child elements of grid to be spaced at 3/4 our standard gutter width
 .grid--gutter-sm
   > *
-    padding: 0 $grid-gutter-width-sm
+    padding: 0 variables.$grid-gutter-width-sm
 // Set child elements of grid to be spaced at 3/4 our standard gutter width
 .grid--gutter-lg
   > *
-    padding: 0 $grid-gutter-width-lg
+    padding: 0 variables.$grid-gutter-width-lg
 // Use .grid--nopad as a depreciation for creative
 .grid--gutter-none
   > *
@@ -143,17 +142,17 @@
 // grids and use padding properly. But if you need to drop grid into a
 // non-grid enviroment use the --bleed modifier to force the neg margin
 .grid--bleed
-  margin-left: $grid-gutter-width * -1
-  margin-right: $grid-gutter-width * -1
+  margin-left: variables.$grid-gutter-width * -1
+  margin-right: variables.$grid-gutter-width * -1
   &.grid--gutter-xs
-    margin-left: $grid-gutter-width-xs * -1
-    margin-right: $grid-gutter-width-xs * -1
+    margin-left: variables.$grid-gutter-width-xs * -1
+    margin-right: variables.$grid-gutter-width-xs * -1
   &.grid--gutter-sm
-    margin-left: $grid-gutter-width-sm * -1
-    margin-right: $grid-gutter-width-sm * -1
+    margin-left: variables.$grid-gutter-width-sm * -1
+    margin-right: variables.$grid-gutter-width-sm * -1
   &.grid--gutter-lg
-    margin-left: $grid-gutter-width-lg * -1
-    margin-right: $grid-gutter-width-lg * -1
+    margin-left: variables.$grid-gutter-width-lg * -1
+    margin-right: variables.$grid-gutter-width-lg * -1
 
 // Force child elements of grid to not wrap and show in a single line
 .grid--nowrap
@@ -164,17 +163,34 @@
   flex-grow: 0
 
 /* Create the .col-columns base sizes */
-@for $i from 1 through $grid-columns
+@for $i from 1 through variables.$grid-columns
   // .col-xs-#{$i}
   //   width: percentage($i/$grid-columns)
   .grid--xs-1-#{$i} > *
-    width:  calc(1 / $i * 100%)
+    width: calc(1 / $i * 100%)
 
 /* Now the create the breakpoints override sizes at different screen sizes */
-@each $slug, $size in $breakpoints
+@each $slug, $size in variables.$breakpoints
   @media (min-width: #{$size})
-    @for $i from 1 through $grid-columns
+    @for $i from 1 through variables.$grid-columns
       // .col-#{$slug}-#{$i}
       //   width: percentage($i/$grid-columns)
       .grid--#{$slug}-1-#{$i} > *
-        width: calc(1 / $i  * 100%)
+        width: calc(1 / $i * 100%)
+
+// Media queries
+@media (min-width: variables.$break-sm)
+  .container
+    max-width: variables.$break-sm
+
+@media (min-width: variables.$break-md)
+  .container
+    max-width: variables.$break-md
+
+// @media (min-width: variables.$break-lg)
+//   .container
+//     max-width: variables.$break-lg
+
+// @media (min-width: variables.$break-xl)
+//   .container
+//     max-width: variables.$break-xl

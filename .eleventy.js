@@ -31,6 +31,28 @@ module.exports = function (config) {
         }
     });
 
+    config.addExtension("scss", {
+        outputFileExtension: "css",
+        compile: async function(inputContent, inputPath) {
+            if (path.basename(inputPath).startsWith("_")) {
+                return;
+            }
+            
+            let result = sass.compileString(inputContent, {
+                loadPaths: [
+                    path.dirname(inputPath),
+                    "node_modules"
+                ],
+                style: "compressed"
+            });
+            
+            // Process with PostCSS
+            const postCssResult = await postcss([cssnano]).process(result.css, { from: undefined });
+            
+            return async () => postCssResult.css;
+        }
+    });
+
     // Filters
     Object.keys(filters).forEach((filterName) => {
         config.addFilter(filterName, filters[filterName])

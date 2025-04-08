@@ -9,7 +9,7 @@
 @use "modules/_flex";
 @use "modules/_grid";
 @use "modules/_responsive";
-@use "modules/_measure";
+@use "modules/_measure" as measure;
 
 // Pretty
 @use "modules/_baseline";
@@ -35,7 +35,7 @@ body {
   font-family: 'bookmania', sans-serif;
   font-weight: normal;
   font-style: normal;
-  padding: guv(2);
+  padding: measure.guv(2);
   transition: background 0.3s ease, color 0.3s ease;
 }
 

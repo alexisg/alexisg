@@ -1,3 +1,6 @@
+@use "../modules/responsive"
+@use "../modules/measure" as measure
+
 // ---------------------------
 // Icons
 // ---------------------------
@@ -6,17 +9,17 @@
   background-size: auto 100%
   display: inline-block
   fill: var(--color-sub-hdr)
-  height: guv(32px)
-  width: guv(32px)
+  height: measure.guv(32px)
+  width: measure.guv(32px)
   vertical-align: middle
 
 .icon--xs
-  height: guv(16px)
-  width: guv(16px)
+  height: measure.guv(16px)
+  width: measure.guv(16px)
 
 .icon--sm
-  height: guv(24px)
-  width: guv(24px)
+  height: measure.guv(24px)
+  width: measure.guv(24px)
 
 .icon--text-top
   vertical-align: text-top
@@ -34,7 +37,7 @@
   height: 46px
   &.up
     background-position: 0 -70px
-  +retina
+  +responsive.retina
     background-image: url('/static/images/icon-andre@2x.png')
 
 .icon--doc
