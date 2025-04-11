@@ -9,47 +9,59 @@ module.exports = function (config) {
     config.addTemplateFormats("sass");
     config.addTemplateFormats("scss");
     
+    // Track dependencies for SASS/SCSS files
+    let sassDependencies = new Map();
+    
+    const compileSass = async (inputPath, inputContent) => {
+        let result = sass.compile(inputPath, {
+            loadPaths: [
+                path.dirname(inputPath),
+                "node_modules"
+            ],
+            style: "compressed"
+        });
+        
+        // Store dependencies for this file
+        sassDependencies.set(inputPath, result.loadedUrls.map(url => url.pathname));
+        
+        // Process with PostCSS
+        const postCssResult = await postcss([cssnano]).process(result.css, { from: undefined });
+        return postCssResult.css;
+    };
+    
     config.addExtension("sass", {
         outputFileExtension: "css",
         compile: async function(inputContent, inputPath) {
-            if (path.basename(inputPath).startsWith("_")) {
-                return;
+            // Always compile non-partial files
+            if (!path.basename(inputPath).startsWith("_")) {
+                return async () => await compileSass(inputPath, inputContent);
             }
             
-            let result = sass.compileString(inputContent, {
-                loadPaths: [
-                    path.dirname(inputPath),
-                    "node_modules"
-                ],
-                style: "compressed"
-            });
-            
-            // Process with PostCSS
-            const postCssResult = await postcss([cssnano]).process(result.css, { from: undefined });
-            
-            return async () => postCssResult.css;
+            // For partials, invalidate any files that depend on this partial
+            for (const [mainFile, deps] of sassDependencies.entries()) {
+                if (deps.includes(inputPath)) {
+                    // Force 11ty to recompile the main file
+                    config.addDependency(mainFile, inputPath);
+                }
+            }
         }
     });
 
     config.addExtension("scss", {
         outputFileExtension: "css",
         compile: async function(inputContent, inputPath) {
-            if (path.basename(inputPath).startsWith("_")) {
-                return;
+            // Always compile non-partial files
+            if (!path.basename(inputPath).startsWith("_")) {
+                return async () => await compileSass(inputPath, inputContent);
             }
             
-            let result = sass.compileString(inputContent, {
-                loadPaths: [
-                    path.dirname(inputPath),
-                    "node_modules"
-                ],
-                style: "compressed"
-            });
-            
-            // Process with PostCSS
-            const postCssResult = await postcss([cssnano]).process(result.css, { from: undefined });
-            
-            return async () => postCssResult.css;
+            // For partials, invalidate any files that depend on this partial
+            for (const [mainFile, deps] of sassDependencies.entries()) {
+                if (deps.includes(inputPath)) {
+                    // Force 11ty to recompile the main file
+                    config.addDependency(mainFile, inputPath);
+                }
+            }
         }
     });
 
@@ -59,7 +71,9 @@ module.exports = function (config) {
     });
 
     // Asset Watch Targets
-    config.addWatchTarget('./src/sass');
+    config.addWatchTarget('./src/sass/');
+    config.addWatchTarget('./src/sass/**/*.sass');
+    config.addWatchTarget('./src/sass/**/*.scss');
 
     // Layouts
     config.addLayoutAlias('base', 'base.njk');

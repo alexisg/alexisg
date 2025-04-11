@@ -19,7 +19,7 @@
         border-radius: 50%;
 
         &.is-active {
-            box-shadow: 0 0 2px 2px var(--color-theme-glow);
+            filter: drop-shadow(0 0 2px var(--color-theme-glow));
         }
     }
 
