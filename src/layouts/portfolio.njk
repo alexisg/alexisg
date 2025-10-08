@@ -35,7 +35,7 @@ layout: base
   <hr>
   {% for item in gallery %}
     {% if '.mp4' in item %}
-      <div class="js-media-hold aspect bd-rad shadow my-2" data-video="{{ item }}" data-img="{{ item | replace('.mp4', '.png') }}" data-title="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}" data-id="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}"></div>
+      <div class="js-media-hold my-2" data-video="{{ item }}" data-img="{{ item | replace('.mp4', '.png') }}" data-title="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}" data-id="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}"></div>
     {% else %}
       <div class="bd-rad shadow shadow--lg my-2">
         <img src="{{ item }}">

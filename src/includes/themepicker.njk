@@ -1,13 +1,8 @@
-<div class="themepicker js-themepicker" data-nosnippet>
+<div class="themepicker" data-nosnippet>
 
-  <ul class="themepicker__list flex flex--column" id="theme-menu">
-  {% for theme in themes %}
-    <li class="themepicker__item">
-      <button class="themepicker__btn js-themepicker-themeselect" data-theme="{{ theme.id }}" aria-label="select color theme '{{ theme.name }}'">
-        <svg class="icon icon--xs"><use xlink:href="#icon-{{ theme.id }}"></use></svg>
-      </button>
-    </li>
-  {% endfor %}
-  </ul>
+  <label class="themepicker__switch">
+    <input type="checkbox" class="js-theme-toggle" aria-label="Toggle dark mode">
+    <span class="themepicker__slider"></span>
+  </label>
 
 </div>
