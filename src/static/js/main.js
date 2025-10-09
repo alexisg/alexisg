@@ -23,7 +23,7 @@ var videoLoad = function() {
   $('.js-media-hold').each(function() {
     var url_video = $(this).attr("data-video");
     if (Modernizr.video.h264 && url_video) {
-      $(this).append("<label for='" + $(this).attr("data-id") + "' class='hide'>Video of " + $(this).attr("data-title") + "</label><video id='" + $(this).attr("data-id") + "' playsinline muted autoplay loop class='bd-rad shadow'><source src='" + $(this).attr("data-video") + " 'type='video/mp4'></video>");
+      $(this).append("<label for='" + $(this).attr("data-id") + "' class='hide'>Video of " + $(this).attr("data-title") + "</label><video id='" + $(this).attr("data-id") + "' playsinline muted autoplay loop class='bd-rad'><source src='" + $(this).attr("data-video") + " 'type='video/mp4'></video>");
     } else {
       $(this).append("<img class='aspect__fill' src='" + $(this).attr("data-img") + " ' alt='" + $(this).attr("data-title") + " ' />");
     }
