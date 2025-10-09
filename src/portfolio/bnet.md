@@ -4,12 +4,12 @@ deck: Art Director 2010-2011, Sr. Designer 2006-2010
 date: 2020-01-04
 website: https://www.bnet.com
 video:
-image: /static/media/bnet-feature-2007.png
+image: /static/media/bnet-article-2010.png
 gallery:
-  - /static/media/bnet-article-2010.png
-  - /static/media/bnet-company-page-2010.png
-  - /static/media/bnet-feature-2010.png
   - /static/media/bnet-home-2010.png
+  - /static/media/bnet-company-page-2010.png
+  - /static/media/vid-bnet-1920-1080.mp4 
+  - /static/media/bnet-feature-2010.png
   - /static/media/bnet-home-2007.png
   - /static/media/bnet-how-to-2007.png
 ---

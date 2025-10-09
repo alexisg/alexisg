@@ -1,33 +1,55 @@
 .themepicker {
     position: absolute;
     right: 2rem;
-    top: 0rem;
+    top: 2rem;
     z-index: 1000;
-
-    &__btn {
-        background:  var(--color-body);
-        border: 1px solid var(--color-sub-hdr);
-        stroke: var(--color-text);
-        border-radius: 50%;
-        padding: .5rem;
-        transition: transform .2s ease-in;
-    }
-
-    &__item {
-        margin: .5rem 0;
-        padding: 0;
-        border-radius: 50%;
-
-        &.is-active {
-            filter: drop-shadow(0 0 2px var(--color-theme-glow));
-        }
-    }
-
-    &__item:not(.is-active) {
-        & .themepicker__btn:hover {
-        cursor: pointer;
-        transform: scale(1.1);
-        }
-    }
-
 }
+
+.themepicker__switch {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 16px;
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+}
+  
+  .themepicker__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    transition: 0.4s;
+    border-radius: 18px;
+  }
+  
+  .themepicker__slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 1px;
+    top: 1px;
+    margin: auto 0;
+    transition: 0.4s;
+    background: white;
+    border-radius: 50%;
+  }
+  
+  input:checked + .themepicker__slider {
+    background: white;
+  }
+    
+  input:checked + .themepicker__slider:before {
+    transform: translateX(16px);
+    background: black;
+  }
+  
+  
