@@ -29,16 +29,15 @@
                     {% if item.data.title == 'Twitch.tv' %}
                     style="background: black"
                     {% endif %}
-                  >
-                  </div>
-                </div>
-              {% endif %}
+                  ></div>
+              </div>
+            {% endif %}
 
-              <h2 class="nav-portfolio__hdr nav-portfolio__hide">{{item.data.title}}</h2>
-              <p class="nav-portfolio__deck nav-portfolio__hide">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
-            </a>
-          </li>
-        {% endif %}
-      {% endfor %}
+            <h2 class="nav-portfolio__hdr nav-portfolio__hide">{{item.data.title}}</h2>
+            <p class="nav-portfolio__deck nav-portfolio__hide">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
   </ul>
 </nav>
