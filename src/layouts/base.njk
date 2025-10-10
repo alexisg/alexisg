@@ -32,14 +32,6 @@
               .documentElement
               .setAttribute('data-theme', theme);
           }
-          // Flag Safari to tone down view transitions
-          var ua = navigator.userAgent;
-          if (/Safari\//.test(ua) && !/Chrome\//.test(ua)) {
-            document
-              .documentElement
-              .classList
-              .add('is-safari');
-          }
         } catch (e) {
           if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document

@@ -1,7 +1,6 @@
 // Video loader - MP4 is supported in all modern browsers
 function loadVideos() {
-  const isSafari = document.documentElement.classList.contains('is-safari');
-  const baseDelay = isSafari ? 400 : 200;
+  const baseDelay = 200;
   const mediaContainers = document.querySelectorAll('.js-media-hold');
   
   mediaContainers.forEach(container => {
