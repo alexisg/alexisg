@@ -43,7 +43,6 @@
     </script>
     <link rel="stylesheet" href="/static/css/theme.css"/>
     <link rel="stylesheet" href="/sass/alexis.css"/>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     {% block head_extra %}{% endblock %}
   </head>
 
@@ -62,7 +61,7 @@
 
         {% include "nav.njk" %}
 
-        <article class="transition transition--fadein">
+        <article>
           {{ content | safe }}
         </article>
 
@@ -71,10 +70,9 @@
       </div>
     </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="/static/js/jquery.smoothState.js"></script>
     <script src="/static/js/tornis.es5.js"></script>
     <script src="/static/js/main.js"></script>
+    <script src="/static/js/viewTransitions.js"></script>
     <script src="/static/js/themePicker.js"></script>
 
     {% block js_extra %}{% endblock %}

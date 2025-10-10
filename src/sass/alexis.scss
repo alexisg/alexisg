@@ -1,7 +1,6 @@
 /* Native Imports */
 // Math
 @use "modules/_mixin";
-@use "modules/_fontface";
 @use "modules/_variables";
 
 // Layout
@@ -13,7 +12,7 @@
 
 // Pretty
 @use "modules/_baseline";
-@use "modules/_transitions";
+@use "modules/_view-transitions";
 @use "modules/_helpers";
 
 // Components
@@ -70,7 +69,6 @@ h1 {
 
 h2 {
   color: var(--color-hdr);
-  font-family: 'AvenirPro', system-ui, system, sans-serif;
   font-weight: 600;
 }
 
@@ -122,4 +120,15 @@ a {
 ul {
   list-style: none;
   text-align: left;
+}
+
+
+.media-hold {
+  overflow: hidden;
+  // delayed media fade-in to reduce flicker (apply to container so shadows fade too)
+  opacity: 0;
+  transition: opacity .5s ease;
+  &.is-visible {
+    opacity: 1;
+  }
 }

@@ -1,106 +1,94 @@
-// We commonly need to grab the url where we are or came from for our animation scenes
-// By default this will return a string enter- + the url path without domain
-var getEnterExitString = function(e) {
-  var url = e + '-' + $(location).attr('pathname').replace(/\//g, '');
-  console.log(url)
-  return url;
-}
+// Video loader - MP4 is supported in all modern browsers
+function loadVideos() {
+  const baseDelay = 200;
+  const mediaContainers = document.querySelectorAll('.js-media-hold');
+  
+  mediaContainers.forEach(container => {
+    // Skip if already hydrated
+    if (container.querySelector('video, img')) return;
+    
+    const videoUrl = container.getAttribute('data-video');
+    const imageUrl = container.getAttribute('data-img');
+    const title = container.getAttribute('data-title');
+    const id = container.getAttribute('data-id');
 
-// Smoothstate needs typicall document onready functions to be fired again once a new page loads. So we move typical actions like this into their own functions and call them with the smooothState OnAfter function.
-
-// Force collapes of the navbar on anchor links and scroll top function
-var anchorSetup = function (e) {
-  $( "a" ).click(function() {
-    $('body').removeClass('is-navbar-active');
-  });
-  $( ".js-scroll-top" ).click(function() {
-    $('body').animate({ scrollTop: 0 }, 600);
-  });
-}
-
-// Video loader if you are on not on a touch device
-var videoLoad = function() {
-  $('.js-media-hold').each(function() {
-    var url_video = $(this).attr("data-video");
-    if (Modernizr.video.h264 && url_video) {
-      $(this).append("<label for='" + $(this).attr("data-id") + "' class='hide'>Video of " + $(this).attr("data-title") + "</label><video id='" + $(this).attr("data-id") + "' playsinline muted autoplay loop class='bd-rad'><source src='" + $(this).attr("data-video") + " 'type='video/mp4'></video>");
-    } else {
-      $(this).append("<img class='aspect__fill class='bd-rad shadow' src='" + $(this).attr("data-img") + " ' alt='" + $(this).attr("data-title") + " ' />");
+    if (!videoUrl && imageUrl) {
+      // No video URL, just use image; reveal container immediately
+      const img = document.createElement('img');
+      img.alt = title;
+      // Mark visible so container fades (shadows too)
+      container.classList.add('is-visible');
+      img.src = imageUrl;
+      container.appendChild(img);
+      return;
     }
-  })
+
+    if (!videoUrl) return;
+
+    const injectVideo = () => {
+      const label = document.createElement('label');
+      label.setAttribute('for', id);
+      label.className = 'hide';
+      label.textContent = `Video of ${title}`;
+
+      const videoElement = document.createElement('video');
+      videoElement.id = id;
+      videoElement.muted = true;
+      videoElement.autoplay = true;
+      videoElement.loop = true;
+      videoElement.playsInline = true;
+      if (imageUrl) videoElement.poster = imageUrl;
+
+      const source = document.createElement('source');
+      source.src = videoUrl;
+      source.type = 'video/mp4';
+
+      videoElement.appendChild(source);
+      container.appendChild(label);
+      container.appendChild(videoElement);
+
+      // Fade in when data available (next frame to ensure transition applies)
+      const reveal = () => requestAnimationFrame(() => container.classList.add('is-visible'));
+      videoElement.addEventListener('loadeddata', reveal, { once: true });
+      setTimeout(() => { try { videoElement.play(); } catch(e){} }, 0);
+
+      // On error, reveal container so poster displays
+      videoElement.addEventListener('error', () => {
+        container.classList.add('is-visible');
+      });
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => setTimeout(injectVideo, baseDelay), { timeout: baseDelay + 300 });
+    } else {
+      setTimeout(injectVideo, baseDelay);
+    }
+  });
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadVideos);
+} else {
+  loadVideos();
+}
+
+// Andre high-five animation (tracks mouse movement)
+const trackValues = ({ mouse }) => {
+  if (mouse.changed) {
+    const mouseVelocity = mouse.velocity.y;
+    const andreIcon = document.getElementById('js-andre');
+    
+    if (andreIcon) {
+      if (mouseVelocity < 0) {
+        andreIcon.classList.remove('down');
+        andreIcon.classList.add('up');
+      } else if (mouseVelocity > 0) {
+        andreIcon.classList.remove('up');
+        andreIcon.classList.add('down');
+      }
+    }
+  }
 };
 
-// On Document Ready
-$(function() {
-
-  'use strict';
-  var $body = $('html, body'),
-
-  smoothState = $('#js-main').smoothState({
-
-    //smoothState options
-    prefetch: true,
-    pageCacheSize: 8,
-    blacklist: ".no-smoothstate, [target], [data-type='image'] a",
-    scroll: false,
-
-    onStart: {
-      duration: 600,
-      render: function($container) {
-        $('#js-main').attr('data-exit', getEnterExitString('exit'));
-        // Scroll page back up
-        $body.animate({ scrollTop: 0 }, 600);
-        // Set classes for animation fading
-        $('#js-main')
-          .removeClass('transition-start')
-          .addClass('transition-end');
-      }
-    },
-
-    // OnBefore
-    onBefore: function($currentTarget, $content) {
-    },
-
-    onAfter: function($container, $newContent) {
-      // Add the transition start class for transitions duh
-      $('#js-main')
-        .removeClass('transition-end')
-        .addClass('transition-start')
-        .attr('data-enter', getEnterExitString('enter'));
-      videoLoad();
-      anchorSetup();
-    }
-  }).data('smoothState');
-
-  // On ready functions that need to be fired before smoothState is ready
-
-  // Kick off video load function
-  videoLoad();
-  anchorSetup();
-
-  // Kick off the animation class on first load since smoothstate is not yet available
-  $('#js-main')
-    .attr('data-enter', getEnterExitString('enter'))
-    .addClass('transition-start')
-    .smoothState();
-
-});
-
-
-// Andre high fives
-const trackValues = ({ mouse, size, scroll, position, orientation }) => {
-  if (mouse.changed) {
-
-    mouseVelocity = mouse.velocity.y;
-    // console.log(mouseVelocity);
-    if (mouseVelocity < 0) {
-      document.getElementById('js-andre').classList.replace("down", "up");
-      // console.log('up');
-    } else if (mouseVelocity > 0) {
-      document.getElementById('js-andre').classList.replace("up", "down");
-      // console.log('down');
-    }
-
-  }
-}
 __TORNIS.watchViewport(trackValues);

@@ -2,6 +2,9 @@
 // Main portfolio nav with grid
 // ---------------------------
 
+.nav-portfolio-hold
+  // Reserve space to prevent layout shift on subpages
+
 .nav-portfolio
   margin-top: 0
   margin-bottom: 0
@@ -9,7 +12,7 @@
 
   .nav-portfolio__item
     padding-top: 0
-    margin-bottom: 1rem
+    margin-bottom: 0rem
 
 .nav-portfolio:not(.nav-portfolio--row)
   .nav-portfolio__item
@@ -20,46 +23,22 @@
 .nav-portfolio__media
   border-radius: 4px
   overflow: hidden
+  // delayed media fade-in to reduce flicker (apply to container so shadows fade too)
+  opacity: 0
+  transition: opacity 5s ease
+  &.is-visible
+    opacity: 1
 
 .nav-portfolio__link--active
   color: var(--color-link-hover)
   position: relative
   .nav-portfolio__hdr
     color: var(--color-link)
-  &:after
-    content: ''
-    background: var(--color-link)
-    position: absolute
-    left: 0
-    right: 0
-    top: 100%
-    height: 1px
-    animation: spread .2s 1 .2s
-    transition: all .2s
-    .transition-end &
-      transform: scaleX(0)
-
-@keyframes spread
-  0%
-    transform: scaleX(0)
-  100%
-    transform: scaleX(1)
-
-.nav-portfolio__hide
-  margin-left: auto
-  margin-right: auto
-  max-width: 100%
-  overflow: hidden
-  transition: width .3s cubic-bezier(0.465, 0.183, 0.153, 0.946), opacity .3s cubic-bezier(0.465, 0.183, 0.153, 0.946)
-  .transition-end[data-exit='exit-'] &
-    max-width: 0
-    opacity: 0
-    white-space: nowrap
 
 .nav-portfolio__hdr
   color: var(--color-hdr)
   white-space: nowrap
-
+  padding: 0
   a:hover &
     color: var(--color-link-hover)
   .nav-portfolio--row &
@@ -67,6 +46,3 @@
 
 .nav-portfolio__deck
   color: var(--color-sub-hdr)
-  display: none
-  [data-enter='enter-'] &
-    display: block

@@ -1,25 +1,25 @@
 {% if notHome %}{% endif %}
 <header class="header">
 
-  <div>
-    {% if notHome %}
-      <a href="/">
-      {% endif %}
-      <h1 class="header__logo transition">
-        <span style="font-feature-settings: 'ss10','ss15' ">H</span>i, I’m <span style="font-feature-settings: 'ss12', 'ss14' ">A</span>lexis!
+    <div>
+        {% if notHome %}
+            <a href="/">
+            {% endif %}
+            <h1 class="header__logo">
+                <span style="font-feature-settings: 'ss10','ss15' ">H</span>i, I’m <span style="font-feature-settings: 'ss12', 'ss14' ">A</span>lexis!
       </h1>
-      {% if notHome %}
-      </a>
-    {% endif %}
-    <p class="transition">
+            {% if notHome %}
+            </a>
+        {% endif %}
+        <p class="mb-0">
       Director of Design Systems at Adobe and Frame.io. I’m passionate about building inclusive, 
       empowering design systems that thrive on collaboration. Previously, I was the 
       Senior Design Director at Twitch.tv and the Creative Technical Director for CBS Interactive Games.
     </p>
 
-  </div>
-  <div class="portrait transition  mb-2">
-    <div class="portrait__img"><img src="/static/images/pic-cassian.png" alt="Portrait image"></div>
-    <span id="js-andre" class="portrait__icon icon icon--andre down"></span>
-  </div>
+    </div>
+    <div class="portrait">
+        <div class="portrait__img"><img src="/static/images/pic-cassian.png" alt="Portrait image"></div>
+        <span id="js-andre" class="portrait__icon icon icon--andre down"></span>
+    </div>
 </header>

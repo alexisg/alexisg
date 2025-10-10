@@ -1,0 +1,57 @@
+/**
+ * View Transitions API Animations
+ * Scoped to supporting browsers; toned down to reduce flashing.
+ */
+
+@supports (view-transition-name: root) {
+  // Keep header and theme picker stable during transitions (no flash)
+  .header {
+    view-transition-name: header;
+  }
+
+  .themepicker {
+    view-transition-name: themepicker;
+  }
+
+  ::view-transition-old(header),
+  ::view-transition-new(header),
+  ::view-transition-old(themepicker),
+  ::view-transition-new(themepicker) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  // Reduce duration to minimize perceived flash
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 200ms;
+    animation-timing-function: ease-in-out;
+  }
+
+  ::view-transition-old(root) { animation-name: fade-out; }
+  ::view-transition-new(root) { animation-name: fade-in; }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  // Honor reduced motion
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root),
+    ::view-transition-old(header),
+    ::view-transition-new(header),
+    ::view-transition-old(themepicker),
+    ::view-transition-new(themepicker) {
+      animation: none !important;
+    }
+  }
+
+}
+
