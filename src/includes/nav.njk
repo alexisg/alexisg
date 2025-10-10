@@ -12,12 +12,12 @@
   ">
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
-        {% if item.title != 'Home' %}
-          <li class="nav-portfolio__item">
-            <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
-              {% if isHome %}
-                <div class="transition transition--fall transition--fadein">
-                  <div class="js-media-hold nav-portfolio__media bd-rad shadow aspect 
+      {% if item.title != 'Home' %}
+        <li class="nav-portfolio__item">
+          <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
+            {% if isHome %}
+              <div class="transition transition--fall transition--fadein">
+                <div class="js-media-hold nav-portfolio__media bd-rad shadow aspect 
                   {% if item.data.title != 'Frame.io' %}
                   aspect--square
                   {% endif %}
@@ -33,8 +33,10 @@
               </div>
             {% endif %}
 
-            <h2 class="nav-portfolio__hdr nav-portfolio__hide">{{item.data.title}}</h2>
-            <p class="nav-portfolio__deck nav-portfolio__hide">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
+            <h2 class="nav-portfolio__hdr ">{{item.data.title}}</h2>
+            {% if isHome %}
+              <p class="nav-portfolio__deck ">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
+            {% endif %}
           </a>
         </li>
       {% endif %}
