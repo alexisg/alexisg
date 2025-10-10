@@ -1,5 +1,3 @@
-@use "measure" as measure
-
 html
   text-size-adjust: 100%
 
@@ -28,14 +26,11 @@ p
   line-height: 2rem
   margin-bottom: 1rem
 
-// Horizontal Rule
-// ––––––––––––––––––––––––––––––––––––––––––––––––––
-// Use a transparent box with an after element as to not throw off the baseline
 hr
   clear: both
   border: 0
   position: relative
-  height: measure.guv(3)
+  height: 3rem
   &:after
     content: ''
     position: absolute
@@ -45,24 +40,12 @@ hr
     height: 1px
     background: rgba(black,.15)
 
-// Lists
-//––––––––––––––––––––––––––––––––––––––––––––––––––
-
 ul
   list-style: disc inside
 
 ol
   list-style: decimal inside
 
-dl,ul,ol
-  padding: 0
-  margin: measure.guv(1) 0
-
-li,dd,dt
-  margin-bottom: measure.guv(1)
-
-// Table styles
-//––––––––––––––––––––––––––––––––––––––––––––––––––
 table
   width: 100%
 

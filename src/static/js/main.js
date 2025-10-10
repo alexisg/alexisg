@@ -1,6 +1,6 @@
 // Video loader - MP4 is supported in all modern browsers
 function loadVideos() {
-  const baseDelay = 200;
+  const baseDelay = 300;
   const mediaContainers = document.querySelectorAll('.js-media-hold');
   
   mediaContainers.forEach(container => {

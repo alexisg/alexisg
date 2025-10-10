@@ -1,46 +1,7 @@
 @use "variables"
 
-// Grid
-//
-// Mobile first 12 column fluid grid system based on flexbox FTW.
-// Sizing of cells are set at the child level when used inside the parent .row class or set globally at the parent level when using the parent .grid with .grid--viewportsize-colsize class
-//
-// Markup:
-// <strong>Using the .row class child elements can have different widths set by viewport</strong>
-// <div class="row show-grid">
-//   <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-//   <div class="col-xs-12 col-md-4">.col-xs-6 .col-md-4</div>
-// </div>
-// <div class="row show-grid">
-//   <div class="col-xs-12 col-sm-6 col-md-3">.col-xs-12 .col-sm-6 .col-md-3 .col-lg-2</div>
-//   <div class="col-xs-12 col-sm-6 col-md-3">.col-xs-12 .col-sm-6 .col-md-3 .col-lg-2</div>
-//   <div class="col-xs-12 col-sm-6 col-md-3">.col-xs-12 .col-sm-6 .col-md-3 .col-lg-2</div>
-//   <div class="col-xs-12 col-sm-6 col-md-3">.col-xs-12 .col-sm-6 .col-md-3 .col-lg-2</div>
-// </div>
-// <strong>Using the .grid class all child elements will be the same width but viewport sizes can be changed. .grid--md-1-3 = thirds grid at medium viewport The inner div inside the div is just for show in this demo. </strong>
-// <div class="grid grid--xs-1-1 grid--sm-1-2 grid--md-1-3 grid--lg-1-4 grid--xl-1-5 show-grid">
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-//   <div><div></div></div>
-// </div>
-//
-//
-//
-// Styleguide 3
+// Grid - Modern CSS Grid implementation
 
-/* Desktop Container */
 .container
   display: flex
   flex-direction: column
@@ -50,138 +11,7 @@
   max-width: variables.$grid-max-width
   width: 100%
 
-.container--fluid
-  max-width: 100%
-
-.container--sm
-  max-width: variables.$break-sm
-
-.container--md
-  max-width: variables.$break-md
-
-.container--lg
-  max-width: variables.$break-lg
-
-.container--xl
-  max-width: variables.$break-xl
-
-/* Create base grid */
-.grid
-  display: flex
-  flex-wrap: wrap
-  list-style: none
-  min-width: 100%
-  // Set base flex and padding on child elements of .grid
-  > *
-    flex: 0 0 auto
-    padding: 0 variables.$grid-gutter-width
-
-// When nesting rows and grids lets margin them back in
-.grid
-  margin-left: variables.$grid-gutter-width * -1
-  margin-right: variables.$grid-gutter-width * -1
-
-.grid--gutter-xs
-  margin-left: variables.$grid-gutter-width-xs * -1
-  margin-right: variables.$grid-gutter-width-xs * -1
-
-.grid--gutter-sm
-  margin-left: variables.$grid-gutter-width-sm * -1
-  margin-right: variables.$grid-gutter-width-sm * -1
-
-.grid--gutter-lg
-  margin-left: variables.$grid-gutter-width-lg * -1
-  margin-right: variables.$grid-gutter-width-lg * -1
-
-.grid--gutter-none
-  margin-left: 0
-  margin-right: 0
-
-// Force all grid children to be 180px. Use the flex 1 1 auto to let them shrink and grow as needed to make a grid that takes up the entire page.
-// Use max-width on desktop size for now since at smaller sizes this column actually needs to become 100% width
-// .grid--120
-//   > *
-//     flex: 1 0 auto
-//     max-width: 50%
-//     width: 120px
-
-// .grid--180
-//   > *
-//     flex: 1 0 auto
-//     max-width: 50%
-//     width: 180px
-
-// .grid--240
-//   > *
-//     flex: 1 0 auto
-//     max-width: 50%
-//     width: 240px
-
-// .grid--300
-//   > *
-//     flex: 1 0 auto
-//     max-width: 50%
-//     width: 300px
-
-/* grid Modifiers */
-// Set child elements of grid to be spaced at half our standard gutter width
-.grid--gutter-xs
-  > *
-    padding: 0 variables.$grid-gutter-width-xs
-// Set child elements of grid to be spaced at 3/4 our standard gutter width
-.grid--gutter-sm
-  > *
-    padding: 0 variables.$grid-gutter-width-sm
-// Set child elements of grid to be spaced at 3/4 our standard gutter width
-.grid--gutter-lg
-  > *
-    padding: 0 variables.$grid-gutter-width-lg
-// Use .grid--nopad as a depreciation for creative
-.grid--gutter-none
-  > *
-    padding: 0
-
-// When used properly grid grids assume they are part of a larger system of
-// grids and use padding properly. But if you need to drop grid into a
-// non-grid enviroment use the --bleed modifier to force the neg margin
-.grid--bleed
-  margin-left: variables.$grid-gutter-width * -1
-  margin-right: variables.$grid-gutter-width * -1
-  &.grid--gutter-xs
-    margin-left: variables.$grid-gutter-width-xs * -1
-    margin-right: variables.$grid-gutter-width-xs * -1
-  &.grid--gutter-sm
-    margin-left: variables.$grid-gutter-width-sm * -1
-    margin-right: variables.$grid-gutter-width-sm * -1
-  &.grid--gutter-lg
-    margin-left: variables.$grid-gutter-width-lg * -1
-    margin-right: variables.$grid-gutter-width-lg * -1
-
-// Force child elements of grid to not wrap and show in a single line
-.grid--nowrap
-  flex-wrap: nowrap
-
-// Reforce the grid to not allow grows on one off places where we wanted the fixed sizes to --180 --240 to not auto size
-.grid--nogrow > *
-  flex-grow: 0
-
-/* Create the .col-columns base sizes */
-@for $i from 1 through variables.$grid-columns
-  // .col-xs-#{$i}
-  //   width: percentage($i/$grid-columns)
-  .grid--xs-1-#{$i} > *
-    width: calc(1 / $i * 100%)
-
-/* Now the create the breakpoints override sizes at different screen sizes */
-@each $slug, $size in variables.$breakpoints
-  @media (min-width: #{$size})
-    @for $i from 1 through variables.$grid-columns
-      // .col-#{$slug}-#{$i}
-      //   width: percentage($i/$grid-columns)
-      .grid--#{$slug}-1-#{$i} > *
-        width: calc(1 / $i * 100%)
-
-// Media queries
+// Responsive container widths
 @media (min-width: variables.$break-sm)
   .container
     max-width: variables.$break-sm
@@ -190,10 +20,20 @@
   .container
     max-width: variables.$break-md
 
-// @media (min-width: variables.$break-lg)
-//   .container
-//     max-width: variables.$break-lg
+// Modern CSS Grid for navigation
+.grid
+  display: grid
+  grid-template-columns: 1fr
+  gap: 2rem
+  list-style: none
+  width: 100%
 
-// @media (min-width: variables.$break-xl)
-//   .container
-//     max-width: variables.$break-xl
+// Auto-fit columns (as many as needed to fit, sized to content)
+.grid--col
+  grid-template-columns: repeat(auto-fit, minmax(min-content, max-content))
+
+@media (min-width: variables.$break-sm)
+  .grid
+    grid-template-columns: repeat(2, 1fr)
+    > *:first-child
+      grid-column: 1 / -1

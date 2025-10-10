@@ -5,9 +5,9 @@
   >
   <ul class="
     {% if isHome %}
-       grid grid--xs-1-1 grid--sm-1-2 grid--gutter-sm mg-t-2 nav-portfolio
+       grid nav-portfolio
     {% else %}
-       flex flex--horizontal-center nav-portfolio nav-portfolio--row grid--gutter-sm
+       flex flex--horizontal-center nav-portfolio nav-portfolio--row
     {% endif %}
   ">
     {%- for item in collections.portfolio -%}

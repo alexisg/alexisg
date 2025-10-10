@@ -1,57 +1,7 @@
-@use "mixin"
-@use "measure" as measure
-@use "responsive"
-
 /* HELPER CLASSES
  Common one off class names or
  helpers loaded at the end of the
  stylesheet to help overwrite styles */
-
-// Text ellipsis
-.ellipsis
-  text-overflow: ellipsis
-  overflow: hidden
-  white-space: nowrap
-
-// Floats
-.float-right
-  float: right
-
-.float-left
-  float: left
-
-.clearfix
-  +mixin.clearfix
-
-// Display
-.inline
-  display: inline
-
-.inline-block
-  display: inline-block
-
-.block
-  display: block
-
-.hide
-  display: none !important
-
-.hide-mobile
-  +responsive.mq-mobile
-    display: none !important
-
-// Text align
-.align-left
-  text-align: left
-
-.align-center
-  text-align: center
-
-.align-right
-  text-align: right
-
-.no-wrap
-  white-space: nowrap
 
 // Shadows
 .shadow
@@ -66,37 +16,37 @@
   border-radius: 6px
   overflow: hidden
 
-// Margins and Padding Helpers
-@for $i from 0 through 6
+// Margins and Padding Helpers (0, 1rem, 2rem)
+@for $i from 0 through 2
   .m-#{$i}
-    margin: measure.guv($i) !important
+    margin: #{$i}rem !important
   .mt-#{$i}
-    margin-top: measure.guv($i) !important
+    margin-top: #{$i}rem !important
   .mb-#{$i}
-    margin-bottom: measure.guv($i) !important
+    margin-bottom: #{$i}rem !important
   .ml-#{$i}
-    margin-left: measure.guv($i) !important
+    margin-left: #{$i}rem !important
   .mr-#{$i}
-    margin-right: measure.guv($i) !important
+    margin-right: #{$i}rem !important
   .mx-#{$i}
-    margin-right: measure.guv($i) !important
-    margin-left: measure.guv($i) !important
+    margin-right: #{$i}rem !important
+    margin-left: #{$i}rem !important
   .my-#{$i}
-    margin-top: measure.guv($i) !important
-    margin-bottom: measure.guv($i) !important
+    margin-top: #{$i}rem !important
+    margin-bottom: #{$i}rem !important
   .p-#{$i}
-    padding: measure.guv($i) !important
+    padding: #{$i}rem !important
   .pl-#{$i}
-    padding-left: measure.guv($i) !important
+    padding-left: #{$i}rem !important
   .pr-#{$i}
-    padding-right: measure.guv($i) !important
+    padding-right: #{$i}rem !important
   .pt-#{$i}
-    padding-top: measure.guv($i) !important
+    padding-top: #{$i}rem !important
   .pb-#{$i}
-    padding-bottom: measure.guv($i) !important
+    padding-bottom: #{$i}rem !important
   .px-#{$i}
-    padding-right: measure.guv($i) !important
-    padding-left: measure.guv($i) !important
+    padding-right: #{$i}rem !important
+    padding-left: #{$i}rem !important
   .py-#{$i}
-    padding-top: measure.guv($i) !important
-    padding-bottom: measure.guv($i) !important
+    padding-top: #{$i}rem !important
+    padding-bottom: #{$i}rem !important
