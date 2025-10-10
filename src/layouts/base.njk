@@ -61,7 +61,7 @@
 
         {% include "nav.njk" %}
 
-        <article class="transition transition--fadein">
+        <article>
           {{ content | safe }}
         </article>
 
@@ -72,6 +72,7 @@
 
     <script src="/static/js/tornis.es5.js"></script>
     <script src="/static/js/main.js"></script>
+    <script src="/static/js/viewTransitions.js"></script>
     <script src="/static/js/themePicker.js"></script>
 
     {% block js_extra %}{% endblock %}

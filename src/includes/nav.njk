@@ -1,6 +1,6 @@
 <nav
   {% if notHome %}
-    class="nav-portfolio-hold transition"
+    class="nav-portfolio-hold"
   {% endif %}
   >
   <ul class="
@@ -16,7 +16,7 @@
         <li class="nav-portfolio__item">
           <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
             {% if isHome %}
-              <div class="transition transition--fall transition--fadein">
+              <div>
                 <div class="js-media-hold nav-portfolio__media bd-rad shadow aspect 
                   {% if item.data.title != 'Frame.io' %}
                   aspect--square
