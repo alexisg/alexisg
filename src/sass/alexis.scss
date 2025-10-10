@@ -123,3 +123,14 @@ ul {
   list-style: none;
   text-align: left;
 }
+
+
+.media-hold {
+  overflow: hidden;
+  // delayed media fade-in to reduce flicker (apply to container so shadows fade too)
+  opacity: 0;
+  transition: opacity .5s ease;
+  &.is-visible {
+    opacity: 1;
+  }
+}

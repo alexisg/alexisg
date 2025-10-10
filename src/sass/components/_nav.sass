@@ -2,6 +2,9 @@
 // Main portfolio nav with grid
 // ---------------------------
 
+.nav-portfolio-hold
+  // Reserve space to prevent layout shift on subpages
+
 .nav-portfolio
   margin-top: 0
   margin-bottom: 0
@@ -9,7 +12,7 @@
 
   .nav-portfolio__item
     padding-top: 0
-    margin-bottom: 1rem
+    margin-bottom: 0rem
 
 .nav-portfolio:not(.nav-portfolio--row)
   .nav-portfolio__item
@@ -20,6 +23,11 @@
 .nav-portfolio__media
   border-radius: 4px
   overflow: hidden
+  // delayed media fade-in to reduce flicker (apply to container so shadows fade too)
+  opacity: 0
+  transition: opacity 5s ease
+  &.is-visible
+    opacity: 1
 
 .nav-portfolio__link--active
   color: var(--color-link-hover)
@@ -30,6 +38,7 @@
 .nav-portfolio__hdr
   color: var(--color-hdr)
   white-space: nowrap
+  padding: 1rem 0
 
   a:hover &
     color: var(--color-link-hover)

@@ -1,15 +1,32 @@
 // Video loader - MP4 is supported in all modern browsers
 function loadVideos() {
+  const isSafari = document.documentElement.classList.contains('is-safari');
+  const baseDelay = isSafari ? 400 : 200;
   const mediaContainers = document.querySelectorAll('.js-media-hold');
   
   mediaContainers.forEach(container => {
+    // Skip if already hydrated
+    if (container.querySelector('video, img')) return;
+    
     const videoUrl = container.getAttribute('data-video');
     const imageUrl = container.getAttribute('data-img');
     const title = container.getAttribute('data-title');
     const id = container.getAttribute('data-id');
 
-    if (videoUrl) {
-      // Create video element
+    if (!videoUrl && imageUrl) {
+      // No video URL, just use image; reveal container immediately
+      const img = document.createElement('img');
+      img.alt = title;
+      // Mark visible so container fades (shadows too)
+      container.classList.add('is-visible');
+      img.src = imageUrl;
+      container.appendChild(img);
+      return;
+    }
+
+    if (!videoUrl) return;
+
+    const injectVideo = () => {
       const label = document.createElement('label');
       label.setAttribute('for', id);
       label.className = 'hide';
@@ -17,39 +34,35 @@ function loadVideos() {
 
       const videoElement = document.createElement('video');
       videoElement.id = id;
-      videoElement.className = 'bd-rad';
       videoElement.muted = true;
       videoElement.autoplay = true;
       videoElement.loop = true;
       videoElement.playsInline = true;
-      
+      if (imageUrl) videoElement.poster = imageUrl;
+
       const source = document.createElement('source');
       source.src = videoUrl;
       source.type = 'video/mp4';
-      
+
       videoElement.appendChild(source);
       container.appendChild(label);
       container.appendChild(videoElement);
-      
-      // Fallback to image if video fails to load
-      if (imageUrl) {
-        videoElement.addEventListener('error', () => {
-          videoElement.remove();
-          label.remove();
-          const img = document.createElement('img');
-          img.className = 'aspect__fill bd-rad shadow';
-          img.src = imageUrl;
-          img.alt = title;
-          container.appendChild(img);
-        });
-      }
-    } else if (imageUrl) {
-      // No video URL, just use image
-      const img = document.createElement('img');
-      img.className = 'aspect__fill bd-rad shadow';
-      img.src = imageUrl;
-      img.alt = title;
-      container.appendChild(img);
+
+      // Fade in when data available (next frame to ensure transition applies)
+      const reveal = () => requestAnimationFrame(() => container.classList.add('is-visible'));
+      videoElement.addEventListener('loadeddata', reveal, { once: true });
+      setTimeout(() => { try { videoElement.play(); } catch(e){} }, 0);
+
+      // On error, reveal container so poster displays
+      videoElement.addEventListener('error', () => {
+        container.classList.add('is-visible');
+      });
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => setTimeout(injectVideo, baseDelay), { timeout: baseDelay + 300 });
+    } else {
+      setTimeout(injectVideo, baseDelay);
     }
   });
 }

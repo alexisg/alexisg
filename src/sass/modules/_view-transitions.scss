@@ -1,90 +1,57 @@
 /**
  * View Transitions API Animations
- * Define how pages transition in/out
+ * Scoped to supporting browsers; toned down to reduce flashing.
  */
 
-// Keep header and theme picker stable during transitions (no flash)
-.header {
-  view-transition-name: header;
-}
-
-.themepicker {
-  view-transition-name: themepicker;
-}
-
-::view-transition-old(header),
-::view-transition-new(header),
-::view-transition-old(themepicker),
-::view-transition-new(themepicker) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-// Fade transition for the main content only
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-}
-
-// Fade out the old page
-::view-transition-old(root) {
-  animation-name: fade-out;
-}
-
-// Fade in the new page
-::view-transition-new(root) {
-  animation-name: fade-in;
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
+@supports (view-transition-name: root) {
+  // Keep header and theme picker stable during transitions (no flash)
+  .header {
+    view-transition-name: header;
   }
-  to {
-    opacity: 0;
-  }
-}
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
+  .themepicker {
+    view-transition-name: themepicker;
   }
-  to {
-    opacity: 1;
-  }
-}
 
-// Optional: Slide transition (uncomment to use instead of fade)
-/*
-::view-transition-old(root) {
-  animation-name: slide-out-left;
-}
+  ::view-transition-old(header),
+  ::view-transition-new(header),
+  ::view-transition-old(themepicker),
+  ::view-transition-new(themepicker) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
 
-::view-transition-new(root) {
-  animation-name: slide-in-right;
-}
+  // Reduce duration to minimize perceived flash
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 200ms;
+    animation-timing-function: ease-in-out;
+  }
 
-@keyframes slide-out-left {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-}
+  ::view-transition-old(root) { animation-name: fade-out; }
+  ::view-transition-new(root) { animation-name: fade-in; }
 
-@keyframes slide-in-right {
-  from {
-    transform: translateX(100px);
-    opacity: 0;
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
   }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
+
+  // Honor reduced motion
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root),
+    ::view-transition-old(header),
+    ::view-transition-new(header),
+    ::view-transition-old(themepicker),
+    ::view-transition-new(themepicker) {
+      animation: none !important;
+    }
+  }
+
 }
-*/
 
