@@ -3,26 +3,24 @@
         "id": "light",
         "name": "Light",
         "colors": {
-            "body": "hsl(48, 10%, 90%)",
-            "text": "hsl(48, 0%, 10%)",
-            "hdr": "hsl(48, 0%, 0%)",
-            "subHdr": "hsl(48, 0%, 30%)",
-            "link": "hsl(48, 60%, 50%)",
-            "linkHover": "hsl(48, 80%, 50%)",
-            "themeGlow": "hsla(51, 100%, 50%, .5)"
+            "body": "hsl(20, 10%, 90%)",
+            "text": "hsl(20, 0%, 10%)",
+            "hdr": "hsl(20, 0%, 0%)",
+            "subHdr": "hsl(20, 0%, 30%)",
+            "link": "hsl(20, 60%, 50%)",
+            "linkHover": "hsl(20, 80%, 50%)"
         }
     },
     {
         "id": "dark",
         "name": "Dark",
         "colors": {
-            "body": "hsl(206, 10%, 10%)",
-            "text": "hsl(206, 0%, 80%)",
-            "hdr": "hsl(206, 0%, 90%)",
-            "subHdr": "hsl(206, 0%, 70%)",
-            "link": "hsl(206, 60%, 50%)",
-            "linkHover": "hsl(206, 80%, 50%)",
-            "themeGlow": "hsla(210, 100%, 50%, .5)"
+            "body": "hsl(230, 10%, 10%)",
+            "text": "hsl(230, 0%, 80%)",
+            "hdr": "hsl(230, 0%, 90%)",
+            "subHdr": "hsl(230, 0%, 70%)",
+            "link": "hsl(230, 60%, 50%)",
+            "linkHover": "hsl(230, 80%, 50%)"
         }
     }
 ]

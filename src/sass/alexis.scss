@@ -1,16 +1,7 @@
 /* Native Imports */
-// Math
-@use "modules/_mixin";
-@use "modules/_variables";
 
-// Layout
+// Layout and pretty things
 @use "modules/_aspect";
-@use "modules/_flex";
-@use "modules/_grid";
-@use "modules/_responsive";
-@use "modules/_measure" as measure;
-
-// Pretty
 @use "modules/_baseline";
 @use "modules/_view-transitions";
 @use "modules/_helpers";
@@ -34,7 +25,7 @@ body {
   font-family: 'bookmania', sans-serif;
   font-weight: normal;
   font-style: normal;
-  padding: measure.guv(2);
+  padding: 2rem;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -74,22 +65,22 @@ h2 {
 
 h3 {
   color: var(--color-hdr);
-  font-weight: bold;
+  font-weight: 400;
 }
 
 h4 {
   color: var(--color-sub-hdr);
-  font-weight: normal;
+  font-weight: 300;
 }
 
 h5 {
   color: var(--color-sub-hdr);
-  font-weight: normal;
+  font-weight: 300;
 }
 
 h6 {
   color: var(--color-sub-hdr);
-  font-weight: normal;
+  font-weight: 300;
 }
 
 a {
@@ -106,15 +97,13 @@ a {
   &:hover {
     color: var(--color-link-hover);
     cursor: pointer;
-
+    
     svg {
       fill: var(--color-link-hover);
     }
   }
 
-  li & {
-    display: block;
-  }
+  
 }
 
 ul {
@@ -122,13 +111,25 @@ ul {
   text-align: left;
 }
 
+.hide {
+  display: none;
+}
 
 .media-hold {
   overflow: hidden;
-  // delayed media fade-in to reduce flicker (apply to container so shadows fade too)
+  border-radius: 8px;
   opacity: 0;
-  transition: opacity .5s ease;
+  transition: opacity .5s cubic-bezier(0.550, 0.055, 0.675, 0.190);
   &.is-visible {
     opacity: 1;
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column ;
+  gap: 32px;
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: 1024px;
 }
