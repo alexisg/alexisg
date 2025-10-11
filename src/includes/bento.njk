@@ -1,0 +1,28 @@
+<nav>
+  <ul class="nav-portfolio">
+    {%- for item in collections.portfolio -%}
+      {%- set itemUrl = (item.url == page.url) -%}
+      {% if item.title != 'Home' %}
+        <li class="nav-portfolio__item">
+          <a href="{{ item.url | url }}" class="nav-portfolio__link">
+            <div class="js-media-hold media-hold nav-portfolio__media shadow aspect mb-2
+              {% if item.data.title != 'Adobe Frame.io' %}
+              aspect--square
+              {% endif %}
+              "
+                data-video="{{item.data.videoSmall}}"
+                data-img="{{ item.data.image }}"
+                data-title="{{ item.data.title }}"
+                data-id="{{item.data.title|replace(' ', '-', 'g') }}"
+                {% if item.data.title == 'Twitch.tv' %}
+                style="background: black"
+                {% endif %}
+              ></div>
+            <h2 class="nav-portfolio__hdr ">{{item.data.title}}</h2>
+            <p class="nav-portfolio__deck ">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
