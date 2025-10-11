@@ -1,42 +1,11 @@
-<nav
-  {% if notHome %}
-    class="nav-portfolio-hold"
-  {% endif %}
-  >
-  <ul class="
-    {% if isHome %}
-       nav-portfolio
-    {% else %}
-       nav-portfolio nav-portfolio--row
-    {% endif %}
-  ">
+<nav>
+  <ul class="nav-portfolio nav-portfolio--row">
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
       {% if item.title != 'Home' %}
         <li class="nav-portfolio__item">
           <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
-            {% if isHome %}
-              <div>
-                <div class="js-media-hold media-hold nav-portfolio__media shadow aspect mb-2
-                  {% if item.data.title != 'Adobe Frame.io' %}
-                  aspect--square
-                  {% endif %}
-                  "
-                    data-video="{{item.data.videoSmall}}"
-                    data-img="{{ item.data.image }}"
-                    data-title="{{ item.data.title }}"
-                    data-id="{{item.data.title|replace(' ', '-', 'g') }}"
-                    {% if item.data.title == 'Twitch.tv' %}
-                    style="background: black"
-                    {% endif %}
-                  ></div>
-              </div>
-            {% endif %}
-
-            <h2 class="nav-portfolio__hdr ">{{item.data.title}}</h2>
-            {% if isHome %}
-              <p class="nav-portfolio__deck ">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
-            {% endif %}
+            {{item.data.title}}
           </a>
         </li>
       {% endif %}

@@ -53,10 +53,13 @@ if (!document.startViewTransition) {
       if (oldMain && newMain) {
         oldMain.replaceWith(newMain);
         
-        // Re-run video loading for new content
-        if (typeof loadVideos === 'function') {
-          loadVideos();
-        }
+        // Restart any autoplay videos that might have been paused during transition
+        const videos = newMain.querySelectorAll('video[autoplay]');
+        videos.forEach(video => {
+          video.play().catch(() => {
+            // Autoplay prevented, which is fine (muted videos should work)
+          });
+        });
       }
       
       // Update the browser history
@@ -91,9 +94,13 @@ if (!document.startViewTransition) {
       if (oldMain && newMain) {
         oldMain.replaceWith(newMain);
         
-        if (typeof loadVideos === 'function') {
-          loadVideos();
-        }
+        // Restart any autoplay videos that might have been paused during transition
+        const videos = newMain.querySelectorAll('video[autoplay]');
+        videos.forEach(video => {
+          video.play().catch(() => {
+            // Autoplay prevented, which is fine (muted videos should work)
+          });
+        });
       }
       
       window.scrollTo({ top: 0, behavior: 'instant' });

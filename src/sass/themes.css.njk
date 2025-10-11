@@ -3,6 +3,7 @@ permalink: '/static/css/theme.css'
 excludeFromSitemap: true
 ---
 {% macro colorscheme(colors) %}
+    --color-shadow: {{ colors.shadow }};
     --color-body: {{ colors.body }};
     --color-text: {{ colors.text }};
     --color-hdr: {{ colors.hdr }};

@@ -24,7 +24,7 @@
   // Reduce duration to minimize perceived flash
   ::view-transition-old(root),
   ::view-transition-new(root) {
-    animation-duration: 200ms;
+    animation-duration: 350ms;
     animation-timing-function: ease-in-out;
   }
 
