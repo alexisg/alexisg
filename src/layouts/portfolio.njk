@@ -1,18 +1,21 @@
 ---
 layout: base
 ---
-
-<div class="js-media-hold media-hold aspect
-  {% if title != 'Twitch.tv' and title != 'Adobe Frame.io' %}
+<div class="media-hold shadow mb-2
+    aspect 
+    {% if title != 'Adobe Frame.io' and title != 'Twitch.tv' %}
     aspect--square
-  {% endif %}
-  shadow shadow--lg mb-2"
-  data-video="{{ video }}"
-  data-img="{{ image }}"
-  data-title="{{ title }}"
-  data-id="{{ title|replace(' ', '-', 'g') }}"
-></div>
+    {% endif %}
+  ">
 
+  {%if video %}
+    <video id="{{title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline preload="auto" fetchpriority="high" {% if image %}poster="{{image}}"{% endif %}>
+      <source src="{{video}}" type="video/mp4">
+    </video>
+  {% else %}
+    <img src="{{image}}" alt="{{title}}">
+  {% endif %}
+</div>
 <h2>{{ title }}</h2>
 
 {% if deck %}
@@ -20,11 +23,11 @@ layout: base
 {% endif %}
 
 {% if website %}
-  <h4>
+  <p>
     <a href="{{website}}" class="no-smoothstate" target="_blank">
       {{website|replace('https://', '') }}
     </a>
-  </h4>
+  </p>
 {% endif %}
 
 {{ content | safe }}
@@ -32,12 +35,14 @@ layout: base
 {% if gallery %}
   <hr>
   {% for item in gallery %}
-    {% if '.mp4' in item %}
-      <div class="js-media-hold media-hold bd-rad shadow shadow--lg mb-2" data-video="{{ item }}" data-img="{{ item | replace('.mp4', '.png') }}" data-title="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}" data-id="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}"></div>
-    {% else %}
-      <div class="media-hold is-visible shadow shadow--lg mb-2">
-        <img src="{{ item }}">
-      </div>
-    {% endif %}
+    <div class="media-hold shadow mb-2">
+      {% if '.mp4' in item %}
+        <video muted autoplay loop playsinline preload="metadata">
+          <source src="{{item}}" type="video/mp4">
+        </video>
+      {% else %}
+        <img src="{{item}}" alt="{{title}}" loading="lazy">
+      {% endif %}
+    </div>
   {% endfor %}
 {% endif %}

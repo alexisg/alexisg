@@ -4,18 +4,21 @@
       {%- set itemUrl = (item.url == page.url) -%}
       <li class="nav-portfolio__item">
         <a href="{{ item.url | url }}" class="nav-portfolio__link">
-          <div class="
-              media-hold nav-portfolio__media shadow aspect mb-2
+          <div class="nav-portfolio__media media-hold shadow mb-2 aspect      
               {% if item.data.title != 'Adobe Frame.io' %}
               aspect--square
               {% endif %}
               "
               >
-            <video id="{{item.data.title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline>
-              <source src="{{item.data.videoSmall}}" type="video/mp4">
-            </video>
+            {%if item.data.videoSmall %}
+              <video id="{{item.data.title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline preload="auto" {% if item.data.image %}poster="{{item.data.image}}"{% endif %}>
+                <source src="{{item.data.videoSmall}}" type="video/mp4">
+              </video>
+            {% else %}
+              <img src="{{item.data.image}}" alt="{{item.data.title}}">
+            {% endif %}
           </div>
-          <h2 class="nav-portfolio__hdr ">{{item.data.title}}</h2>
+          <h3 class="nav-portfolio__hdr ">{{item.data.title}}</h2>
           <p class="nav-portfolio__deck ">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
         </a>
       </li>

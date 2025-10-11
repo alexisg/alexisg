@@ -57,7 +57,9 @@
 
         {% include "header.njk" %}
 
-        {% include "nav.njk" %}
+        {% block nav %}
+          {% include "nav.njk" %}
+        {% endblock %}
 
         {% block extra %}{% endblock %}
 

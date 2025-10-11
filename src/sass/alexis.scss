@@ -2,7 +2,6 @@
 
 // Layout and pretty things
 @use "modules/_aspect";
-@use "modules/_baseline";
 @use "modules/_view-transitions";
 @use "modules/_helpers";
 
@@ -13,10 +12,31 @@
 @use "components/_footer";
 @use "components/_themepicker";
 
+:root {
+  --shadow-color: var(--color-shadow);
+  --shadow-elevation-low:
+    0px 0.3px 0.4px hsl(var(--shadow-color) / 0.16),
+    0px 1.1px 1.4px -1.2px hsl(var(--shadow-color) / 0.31);
+  --shadow-elevation-medium:
+    0px 0.3px 0.4px hsl(var(--shadow-color) / 0.15),
+    0px 1.7px 2.2px -0.6px hsl(var(--shadow-color) / 0.24),
+    0px 5.4px 7.1px -1.2px hsl(var(--shadow-color) / 0.34);
+  --shadow-elevation-high:
+    0px 0.3px 0.4px hsl(var(--shadow-color) / 0.16),
+    0px 2.8px 3.7px -0.3px hsl(var(--shadow-color) / 0.23),
+    0px 5.7px 7.5px -0.6px hsl(var(--shadow-color) / 0.29),
+    0px 11px 14.4px -0.9px hsl(var(--shadow-color) / 0.36),
+    0.1px 20.5px 26.9px -1.2px hsl(var(--shadow-color) / 0.42);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  text-size-adjust: 100%;
 }
 
 body {
@@ -27,6 +47,81 @@ body {
   font-style: normal;
   padding: 2rem;
   transition: background 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  color: var(--color-hdr);
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 3rem;
+  padding-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: "bookmania", serif;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  color: var(--color-sub-hdr);
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
+
+hr {
+  clear: both;
+  border: 0;
+  position: relative;
+  height: 3rem;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    right: 0;
+    height: 1px;
+    background: rgba(black, .15);
+  }
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+}
+
+ol {
+  list-style: decimal inside;
+}
+
+table {
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid rgba(black, .1);
 }
 
 // Avoid img and video elements to grow outside our containters.
@@ -36,7 +131,14 @@ img, video {
   max-width: 100%;
 }
 
-// Reset our buttons. We need to be super careful about killing outline and make sure that we re-introduce it on any new buttons we create.
+video {
+  display: block;
+  // Optimize rendering performance for videos
+  contain: layout style paint;
+  will-change: auto;
+}
+
+// Reset our buttons.
 button {
   background: none;
   border: 0;
@@ -48,40 +150,9 @@ button {
   }
 }
 
-// ------------------------------------------------------------------
-// Base Typography addition on our baseline sizing from baseline.sass
-// ------------------------------------------------------------------
-
-h1 {
-  color: var(--color-hdr);
-  font-family: "bookmania", serif;
-  font-weight: 600;
-}
-
-h2 {
-  color: var(--color-hdr);
-  font-weight: 600;
-}
-
-h3 {
-  color: var(--color-hdr);
-  font-weight: 400;
-}
-
-h4 {
-  color: var(--color-sub-hdr);
-  font-weight: 300;
-}
-
-h5 {
-  color: var(--color-sub-hdr);
-  font-weight: 300;
-}
-
-h6 {
-  color: var(--color-sub-hdr);
-  font-weight: 300;
-}
+// -----
+// Links
+// -----
 
 a {
   color: var(--color-link);
@@ -106,9 +177,18 @@ a {
   
 }
 
-ul {
-  list-style: none;
-  text-align: left;
+// ------------
+// Misc Classes
+// ------------
+
+
+.container {
+  display: flex;
+  flex-direction: column ;
+  gap: 32px;
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: 1024px;
 }
 
 .hide {
@@ -118,19 +198,24 @@ ul {
 .media-hold {
   overflow: hidden;
   border-radius: 8px;
-  // opacity: 0;
   background: black;
-  transition: opacity .5s cubic-bezier(0.550, 0.055, 0.675, 0.190);
-  &.is-visible {
-    opacity: 1;
+  video,img{
+    display: block;
   }
 }
 
-.container {
-  display: flex;
-  flex-direction: column ;
-  gap: 32px;
-  margin: 0 auto;
-  padding: 0 16px;
-  max-width: 1024px;
+// Shadows
+.shadow{ 
+  box-shadow: var(--shadow-elevation-medium);
+  video,img {
+    display: block
+  }
+}
+
+.shadow--low{
+  box-shadow: var(--shadow-elevation-low);
+}
+
+.shadow--medium{
+  box-shadow: var(--shadow-elevation-medium);
 }

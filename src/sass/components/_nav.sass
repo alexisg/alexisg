@@ -19,11 +19,27 @@
   display: flex
   flex-wrap: wrap
   justify-content: center
-  gap: 1rem
+  gap: 2rem
+
+.nav-portfolio__item
+  font-size: 1.2rem
+
+.nav-portfolio__link
+  position: relative
+  &::after
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    height: 1px
+    // transition: all .3s
 
 .nav-portfolio__link--active
   color: var(--color-link-hover)
   position: relative
+  &::after
+    background: var(--color-link)
   .nav-portfolio__hdr
     color: var(--color-link)
 

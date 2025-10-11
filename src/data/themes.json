@@ -3,10 +3,11 @@
         "id": "light",
         "name": "Light",
         "colors": {
+            "shadow": "20deg 4% 68%",
             "body": "hsl(20, 10%, 90%)",
-            "text": "hsl(20, 0%, 10%)",
-            "hdr": "hsl(20, 0%, 0%)",
-            "subHdr": "hsl(20, 0%, 30%)",
+            "text": "hsl(20, 0%, 8%)",
+            "hdr": "hsl(20, 0%, 4%)",
+            "subHdr": "hsl(20, 0%, 12%)",
             "link": "hsl(20, 60%, 50%)",
             "linkHover": "hsl(20, 80%, 50%)"
         }
@@ -15,12 +16,13 @@
         "id": "dark",
         "name": "Dark",
         "colors": {
-            "body": "hsl(230, 10%, 10%)",
-            "text": "hsl(230, 0%, 80%)",
-            "hdr": "hsl(230, 0%, 90%)",
-            "subHdr": "hsl(230, 0%, 70%)",
-            "link": "hsl(230, 60%, 50%)",
-            "linkHover": "hsl(230, 80%, 50%)"
+            "shadow": "228deg 30% 5%",
+            "body": "hsl(228, 14%, 10%)",
+            "text": "hsl(228, 0%, 82%)",
+            "hdr": "hsl(228, 0%, 96%)",
+            "subHdr": "hsl(228, 0%, 80%)",
+            "link": "hsl(228, 60%, 80%)",
+            "linkHover": "hsl(228, 80%, 90%)"
         }
     }
 ]
