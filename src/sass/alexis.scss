@@ -29,6 +29,16 @@
     0.1px 20.5px 26.9px -1.2px hsl(var(--shadow-color) / 0.42);
 }
 
+@font-face {
+  font-family: 'Satoshi-Variable';
+  src: url('/static/webfonts/Satoshi-Variable.woff2') format('woff2'),
+       url('/static/webfonts/Satoshi-Variable.woff') format('woff'),
+       url('/static/webfonts/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -42,7 +52,7 @@ html {
 body {
   background: var(--color-body);
   color: var(--color-text);
-  font-family: "bookmania", serif;
+  font-family: "Satoshi-Variable", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
