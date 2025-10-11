@@ -118,7 +118,8 @@ ul {
 .media-hold {
   overflow: hidden;
   border-radius: 8px;
-  opacity: 0;
+  // opacity: 0;
+  background: black;
   transition: opacity .5s cubic-bezier(0.550, 0.055, 0.675, 0.190);
   &.is-visible {
     opacity: 1;
