@@ -1,5 +1,3 @@
-@use "../modules/responsive"
-
 // ---------------------------
 // Icons
 // ---------------------------
@@ -29,15 +27,13 @@
     fill: var(--color-link-hover)
 
 .icon--andre
-  background: url('/static/images/icon-andre.png') 0 0
+  background: url('/static/images/icon-andre@2x.png') 0 0
   background-size: 24px auto
   overflow: hidden
   width: 24px
   height: 46px
   &.up
     background-position: 0 -70px
-  +responsive.retina
-    background-image: url('/static/images/icon-andre@2x.png')
 
 .icon--doc
   background-image: url('/static/images/icon-door-32x32.png')

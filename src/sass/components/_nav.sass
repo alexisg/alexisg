@@ -2,10 +2,24 @@
 // Main portfolio nav with grid
 // ---------------------------
 .nav-portfolio
+  display: grid
+  grid-template-columns: 1fr
+  gap: 2rem
   text-align: center
+  list-style: none
+  width: 100%
+
+@media (min-width: 768px)
+  .nav-portfolio
+    grid-template-columns: repeat(2, 1fr)
+    > *:first-child
+      grid-column: 1 / -1
 
 .nav-portfolio--row
-  gap: 16px
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  gap: 1rem
 
 .nav-portfolio__link--active
   color: var(--color-link-hover)

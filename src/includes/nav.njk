@@ -5,9 +5,9 @@
   >
   <ul class="
     {% if isHome %}
-       grid nav-portfolio
+       nav-portfolio
     {% else %}
-       flex flex--horizontal-center nav-portfolio nav-portfolio--row
+       nav-portfolio nav-portfolio--row
     {% endif %}
   ">
     {%- for item in collections.portfolio -%}
@@ -17,7 +17,7 @@
           <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
             {% if isHome %}
               <div>
-                <div class="js-media-hold media-hold nav-portfolio__media bd-rad shadow aspect mb-2
+                <div class="js-media-hold media-hold nav-portfolio__media shadow aspect mb-2
                   {% if item.data.title != 'Adobe Frame.io' %}
                   aspect--square
                   {% endif %}

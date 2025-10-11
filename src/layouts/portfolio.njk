@@ -6,7 +6,7 @@ layout: base
   {% if title != 'Twitch.tv' and title != 'Adobe Frame.io' %}
     aspect--square
   {% endif %}
-  bd-rad shadow shadow--lg mb-2"
+  shadow shadow--lg mb-2"
   data-video="{{ video }}"
   data-img="{{ image }}"
   data-title="{{ title }}"
@@ -16,18 +16,16 @@ layout: base
 <h2>{{ title }}</h2>
 
 {% if deck %}
-  <h4>{{ deck|replace('<br>', ', ', 'g') }}</h4>
+  <h3>{{ deck|replace('<br>', ', ', 'g') }}</h3>
 {% endif %}
 
 {% if website %}
-  <h5>
+  <h4>
     <a href="{{website}}" class="no-smoothstate" target="_blank">
       {{website|replace('https://', '') }}
     </a>
-  </h5>
+  </h4>
 {% endif %}
-
-<hr>
 
 {{ content | safe }}
 
@@ -35,9 +33,9 @@ layout: base
   <hr>
   {% for item in gallery %}
     {% if '.mp4' in item %}
-      <div class="js-media-hold media-hold mb-2" data-video="{{ item }}" data-img="{{ item | replace('.mp4', '.png') }}" data-title="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}" data-id="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}"></div>
+      <div class="js-media-hold media-hold bd-rad shadow shadow--lg mb-2" data-video="{{ item }}" data-img="{{ item | replace('.mp4', '.png') }}" data-title="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}" data-id="{{ item | replace('/static/media/vid-', '') | replace('-1280x1280.mp4', '') }}"></div>
     {% else %}
-      <div class="bd-rad shadow shadow--lg mb-2">
+      <div class="media-hold is-visible shadow shadow--lg mb-2">
         <img src="{{ item }}">
       </div>
     {% endif %}
