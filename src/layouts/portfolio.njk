@@ -9,7 +9,7 @@ layout: base
   ">
 
   {%if video %}
-    <video id="{{title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline preload="auto" fetchpriority="high" {% if image %}poster="{{image}}"{% endif %}>
+    <video id="{{title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline preload="auto" fetchpriority="high">
       <source src="{{video}}" type="video/mp4">
     </video>
   {% else %}

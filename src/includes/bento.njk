@@ -11,7 +11,7 @@
               "
               >
             {%if item.data.videoSmall %}
-              <video id="{{item.data.title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline preload="auto" {% if item.data.image %}poster="{{item.data.image}}"{% endif %}>
+              <video id="{{item.data.title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline>
                 <source src="{{item.data.videoSmall}}" type="video/mp4">
               </video>
             {% else %}
