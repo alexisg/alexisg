@@ -42,13 +42,12 @@ html {
 body {
   background: var(--color-body);
   color: var(--color-text);
-  font-family: 'bookmania', sans-serif;
+  font-family: "bookmania", serif;
+  font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
   padding: 2rem;
   transition: background 0.3s ease, color 0.3s ease;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
@@ -67,24 +66,24 @@ h1 {
 h2 {
   font-size: 1.6rem;
   line-height: 2rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h4 {
-  font-size: 1.1rem;
+  font-size: 1.0rem;
   line-height: 2rem;
   color: var(--color-sub-hdr);
   font-weight: 600;
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 2rem;
   margin-bottom: 1rem;
 }
