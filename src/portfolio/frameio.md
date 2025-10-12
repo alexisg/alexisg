@@ -1,5 +1,5 @@
 ---
-title: Adobe Frame.io
+title: Frame.io
 date: 2019-01-01
 deck: Director of Design Systems
 website: https://www.frame.io

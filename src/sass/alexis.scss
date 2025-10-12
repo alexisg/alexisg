@@ -56,7 +56,7 @@ body {
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
-  padding: 2rem;
+  padding: 2rem 0;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -76,14 +76,16 @@ h1 {
 h2 {
   font-size: 1.6rem;
   line-height: 2rem;
-  font-weight: 400;
+  font-weight: 500;
+  color: var(--color-hdr);
+  
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   line-height: 1.5rem;
   color: var(--color-sub-hdr);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 h4 {
@@ -96,7 +98,7 @@ h4 {
 p {
   font-size: 1rem;
   line-height: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 hr {
@@ -166,7 +168,6 @@ button {
 
 a {
   color: var(--color-link);
-  cursor: pointer;
   text-decoration: none;
   transform-origin: 0 0;
   transition: .3s color;
@@ -177,7 +178,6 @@ a {
 
   &:hover {
     color: var(--color-link-hover);
-    cursor: pointer;
     
     svg {
       fill: var(--color-link-hover);
@@ -197,8 +197,8 @@ a {
   flex-direction: column ;
   gap: 32px;
   margin: 0 auto;
-  padding: 0 16px;
-  max-width: 732px;
+  padding: 0 2rem;
+  max-width: 768px;
 }
 
 .hide {
@@ -207,10 +207,11 @@ a {
 
 .media-hold {
   overflow: hidden;
-  border-radius: 8px;
-  background: black;
+  border-radius: .75rem;
+  background: var(--color-tabBg);
   video,img{
     display: block;
+    width: 100%;
   }
 }
 

@@ -2,11 +2,11 @@
   <ul class="nav-portfolio">
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
-      <li class="nav-portfolio__item">
-        <a href="{{ item.url | url }}" class="nav-portfolio__link">
-          <div class="nav-portfolio__media media-hold shadow mb-2 aspect      
-              {% if item.data.title != 'Adobe Frame.io' %}
-              aspect--square
+      <li>
+        <a href="{{ item.url | url }}">
+          <div class="nav-portfolio__media media-hold shadow mb-2       
+              {% if item.data.title != 'Frame.io' %}
+              aspect aspect--square
               {% endif %}
               "
               >

@@ -3,7 +3,7 @@
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
       {% if item.title != 'Home' %}
-        <li class="nav-portfolio__item">
+        <li>
           <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
             {{item.data.title}}
           </a>
