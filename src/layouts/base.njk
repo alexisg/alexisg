@@ -57,13 +57,12 @@
 
         {% include "header.njk" %}
 
-        {% block nav %}
-          {% include "nav.njk" %}
-        {% endblock %}
-
         {% block extra %}{% endblock %}
 
         <article>
+          {% block nav %}
+            {% include "nav.njk" %}
+          {% endblock %}
           {{ content | safe }}
         </article>
 

@@ -1,27 +1,25 @@
-<nav>
-  <ul class="nav-portfolio">
-    {%- for item in collections.portfolio -%}
-      {%- set itemUrl = (item.url == page.url) -%}
-      <li>
-        <a href="{{ item.url | url }}">
-          <div class="nav-portfolio__media media-hold shadow mb-1       
+<ul class="nav-portfolio">
+  {%- for item in collections.portfolio -%}
+    {%- set itemUrl = (item.url == page.url) -%}
+    <li>
+      <a href="{{ item.url | url }}">
+        <div class="nav-portfolio__media media-hold shadow mb-1       
               {% if item.data.title != 'Frame.io' %}
               aspect aspect--square
               {% endif %}
               "
               >
-            {%if item.data.videoSmall %}
-              <video id="{{item.data.title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline>
-                <source src="{{item.data.videoSmall}}" type="video/mp4">
-              </video>
-            {% else %}
-              <img src="{{item.data.image}}" alt="{{item.data.title}}">
-            {% endif %}
-          </div>
-          <h3 class="nav-portfolio__hdr ">{{item.data.title}}</h3>
-          <p class="nav-portfolio__deck ">{{item.data.deck |replace(', ', '<br/> ') | safe}}</p>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-</nav>
+          {%if item.data.videoSmall %}
+            <video id="{{item.data.title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline>
+              <source src="{{item.data.videoSmall}}" type="video/mp4">
+            </video>
+          {% else %}
+            <img src="{{item.data.image}}" alt="{{item.data.title}}">
+          {% endif %}
+        </div>
+        <h3 class="nav-portfolio__hdr ">{{item.data.title}}</h3>
+        <p class="nav-portfolio__deck ">{{item.data.deck | safe}}</p>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

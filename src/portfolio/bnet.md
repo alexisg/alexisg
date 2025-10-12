@@ -1,6 +1,6 @@
 ---
 title: BNET
-deck: Art Director 2010-2011, Sr. Designer 2006-2010
+deck: Art Director 2010-12, Sr. Designer 2006-10
 date: 2020-01-04
 website: https://www.bnet.com
 video:

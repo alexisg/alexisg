@@ -17,6 +17,9 @@
 
 nav
   display: flex
+  position: sticky
+  top: 1rem
+  z-index: 100
 
 .nav-portfolio--row
   display: inline-flex
@@ -28,7 +31,19 @@ nav
   box-shadow: var(--color-tabStroke) 0 0 0 1px, var(--shadow-elevation-low)
   border-radius: 1.5rem
   width: auto
-  margin: 0 auto
+  margin: 0 auto 1.5rem
+  &:before
+    content: ''
+    display: block
+    top: -1rem
+    left: -16rem
+    right: -16rem
+    height: 5rem
+    position: absolute
+    backdrop-filter: blur(1rem)
+    z-index: -1
+    mask-image: linear-gradient(180deg,rgba(0, 0, 0, 1) 1rem, rgba(0, 0, 0, 0) 100%)
+    transition: none
 
 .nav-portfolio__link
   font-size: .8rem
