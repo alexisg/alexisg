@@ -1,10 +1,13 @@
 ---
 layout: base
 ---
-<div class="media-hold shadow mt-1 mb-2">
+<div class="media-hold shadow mt-1 mb-2 aspect 
+  {% if title != 'Frame.io' and title != 'Twitch.tv' %}aspect--square{% endif %}
+  {% if video %}js-video{% endif %}"
+  >
 
   {%if video %}
-    <video id="{{title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline preload="auto" fetchpriority="high">
+    <video id="{{title|replace(' ', '-', 'g') }}" muted loop playsinline preload="auto" fetchpriority="high">
       <source src="{{video}}" type="video/mp4">
     </video>
   {% else %}
