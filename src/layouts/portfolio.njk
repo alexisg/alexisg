@@ -1,12 +1,7 @@
 ---
 layout: base
 ---
-<div class="media-hold shadow mb-2
-    aspect 
-    {% if title != 'Frame.io' and title != 'Twitch.tv' %}
-    aspect--square
-    {% endif %}
-  ">
+<div class="media-hold shadow mb-2">
 
   {%if video %}
     <video id="{{title|replace(' ', '-', 'g') }}" muted autoplay loop playsinline preload="auto" fetchpriority="high">
@@ -32,16 +27,18 @@ layout: base
 
 {{ content | safe }}
 
-{% if gallery %}
-  {% for item in gallery %}
-    <div class="media-hold shadow mb-2">
-      {% if '.mp4' in item %}
-        <video muted autoplay loop playsinline preload="metadata">
-          <source src="{{item}}" type="video/mp4">
-        </video>
-      {% else %}
-        <img src="{{item}}" alt="{{title}}" loading="lazy">
-      {% endif %}
-    </div>
-  {% endfor %}
-{% endif %}
+<div class="pt-1">
+  {% if gallery %}
+    {% for item in gallery %}
+      <div class="media-hold shadow mb-2">
+        {% if '.mp4' in item %}
+          <video muted autoplay loop playsinline preload="metadata">
+            <source src="{{item}}" type="video/mp4">
+          </video>
+        {% else %}
+          <img src="{{item}}" alt="{{title}}" loading="lazy">
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
