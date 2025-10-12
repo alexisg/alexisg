@@ -3,32 +3,32 @@
         "id": "light",
         "name": "Light",
         "colors": {
-            "body": "hsl(20, 10%, 90%)",
-            "text": "hsl(20, 0%, 8%)",
-            "hdr": "hsl(20, 0%, 4%)",
-            "subHdr": "hsl(20, 0%, 12%)",
-            "link": "hsl(20, 60%, 50%)",
-            "linkHover": "hsl(20, 80%, 50%)",
-            "shadow": "20deg 0% 68%",
-            "tabsBg":    "hsl(24, 20%, 87%)",
-            "tabBg":     "hsl(24, 20%, 92%)",
-            "tabStroke": "hsla(20deg, 0%, 0%, 0.08)"
+            "body":      "oklch(0.9 0.0044 52)",
+            "text":      "oklch(0.3 0.0044 52)",
+            "hdr":       "oklch(0.1 0.0044 52)",
+            "subHdr":    "oklch(0.4 0.0044 52)",
+            "link":      "oklch(0.6 0.1760 52)",
+            "linkHover": "oklch(0.7 0.1760 52)",
+            "shadow":    "15deg 3% 56%",
+            "tabsBg":    "oklch(0.92 0.0044 52 / 0.94)",
+            "tabBg":     "oklch(0.96 0.0044 52 / 0.80)",
+            "tabStroke": "oklch(0.50 0.0044 52 / 0.15)"
         }
     },
     {
         "id": "dark",
         "name": "Dark",
         "colors": {
-            "body": "hsl(228, 14%, 14%)",
-            "text": "hsl(228, 0%, 82%)",
-            "hdr": "hsl(228, 0%, 96%)",
-            "subHdr": "hsl(228, 0%, 80%)",
-            "link": "hsl(228, 80%, 80%)",
-            "linkHover": "hsl(228, 80%, 90%)",
-            "shadow": "228deg 30% 5%",
-            "tabsBg":   "hsl(231, 14%, 12%)",
-            "tabBg":    "hsl(231, 14%, 8%)",
-            "tabStroke":"hsla(228deg, 14%, 68%, 0.08)"
+            "body":      "oklch(0.26 0.0270 274)",
+            "text":      "oklch(0.86 0.0270 274)",
+            "hdr":       "oklch(0.96 0.0270 274)",
+            "subHdr":    "oklch(0.80 0.0270 274)",
+            "link":      "oklch(0.80 0.0952 274)",
+            "linkHover": "oklch(0.90 0.0952 274)",
+            "shadow":    "228deg 30% 5%",
+            "tabsBg":    "oklch(0.18 0.0270 274 / 0.94)",
+            "tabBg":     "oklch(0.26 0.0270 274 / 0.80)",
+            "tabStroke": "oklch(0.72 0.0270 274 / 0.12)"
         }
     }
 ]

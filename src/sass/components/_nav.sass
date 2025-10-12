@@ -25,40 +25,46 @@ nav
   display: inline-flex
   flex-wrap: wrap
   justify-content: center
-  gap: 4px
-  padding: 5px
+  gap: 0px
+  padding: 6px
   background: var(--color-tabsBg)
-  box-shadow: var(--color-tabStroke) 0 0 0 1px, var(--shadow-elevation-low)
+  box-shadow: var(--color-tabStroke) 0 0 0 1px
   border-radius: 1.5rem
   width: auto
   margin: 0 auto 1.5rem
-  &:before
+  font-size: clamp(0.625rem, 0rem + 1.5625vw, 1rem)
+  position: relative
+  @media (max-width: 640px)
+    justify-content: space-around
+    width: 100%
+  &:after
     content: ''
     display: block
     top: -1rem
     left: -16rem
     right: -16rem
-    height: 5rem
+    height: 6rem
     position: absolute
-    backdrop-filter: blur(1rem)
+    backdrop-filter: blur(4px)
     z-index: -1
     mask-image: linear-gradient(180deg,rgba(0, 0, 0, 1) 1rem, rgba(0, 0, 0, 0) 100%)
     max-width: calc(100vw - 14rem)
+    pointer-events: none
 
 .nav-portfolio__link
-  font-size: .8rem
-  line-height: 1rem
   border-radius: 3rem
-  padding: 8px 16px
+  padding: .5rem 2rem
   display: block
   color: var(--color-text)
-  transition: all 300ms ease-in
+  transition: color 300ms ease-in, background 300ms ease-in
   text-wrap: nowrap
   &:hover
     color: var(--color-link)
+  @media (max-width: 640px)
+    padding: .4rem .9rem
   .nav-portfolio--row &.nav-portfolio__link--active
     background: var(--color-tabBg)
-    box-shadow: var(--color-tabStroke) 0 0 0 1px
+    box-shadow: var(--shadow-elevation-low)
     color: var(--color-link)
 
 .nav-portfolio__hdr

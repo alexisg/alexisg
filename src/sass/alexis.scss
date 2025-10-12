@@ -15,18 +15,22 @@
 :root {
   --shadow-color: var(--color-shadow);
   --shadow-elevation-low:
-    0px 0.3px 0.4px hsl(var(--shadow-color) / 0.16),
-    0px 1.1px 1.4px -1.2px hsl(var(--shadow-color) / 0.31);
+    0px 0.6px 0.8px hsl(var(--shadow-color) / 0.23),
+    0px 1.1px 1.4px -0.8px hsl(var(--shadow-color) / 0.3),
+    0px 2.6px 3.3px -1.6px hsl(var(--shadow-color) / 0.38);
   --shadow-elevation-medium:
-    0px 0.3px 0.4px hsl(var(--shadow-color) / 0.15),
-    0px 1.7px 2.2px -0.6px hsl(var(--shadow-color) / 0.24),
-    0px 5.4px 7.1px -1.2px hsl(var(--shadow-color) / 0.34);
+    0px 0.6px 0.8px hsl(var(--shadow-color) / 0.24),
+    0px 2.5px 3.1px -0.5px hsl(var(--shadow-color) / 0.3),
+    0px 5.6px 7px -1.1px hsl(var(--shadow-color) / 0.36),
+    0.1px 12.8px 16px -1.6px hsl(var(--shadow-color) / 0.42);
   --shadow-elevation-high:
-    0px 0.3px 0.4px hsl(var(--shadow-color) / 0.16),
-    0px 2.8px 3.7px -0.3px hsl(var(--shadow-color) / 0.23),
-    0px 5.7px 7.5px -0.6px hsl(var(--shadow-color) / 0.29),
-    0px 11px 14.4px -0.9px hsl(var(--shadow-color) / 0.36),
-    0.1px 20.5px 26.9px -1.2px hsl(var(--shadow-color) / 0.42);
+    0px 0.6px 0.8px hsl(var(--shadow-color) / 0.25),
+    0px 5.4px 6.8px -0.3px hsl(var(--shadow-color) / 0.29),
+    0.1px 10.1px 12.7px -0.5px hsl(var(--shadow-color) / 0.33),
+    0.1px 16.6px 20.8px -0.8px hsl(var(--shadow-color) / 0.36),
+    0.1px 26.6px 33.3px -1.1px hsl(var(--shadow-color) / 0.4),
+    0.2px 41.9px 52.5px -1.4px hsl(var(--shadow-color) / 0.44),
+    0.4px 64.2px 80.4px -1.6px hsl(var(--shadow-color) / 0.48);
 }
 
 @font-face {
@@ -46,6 +50,7 @@
 }
 
 html {
+  font-size: clamp(1rem, 0.8958rem + 0.3472vw, 1.3125rem);
   text-size-adjust: 100%;
 }
 
@@ -199,7 +204,7 @@ a {
   gap: 32px;
   margin: 0 auto;
   padding: 0 2rem;
-  max-width: 768px;
+  max-width: 1024px;
 }
 
 .hide {
@@ -209,7 +214,7 @@ a {
 .media-hold {
   overflow: hidden;
   border-radius: .75rem;
-  background: hsl(263, 90%, 10%);
+  background: oklch(0.1 0.0270 274);
   video,img{
     display: block;
     width: 100%;
