@@ -2,7 +2,8 @@
 
 // Layout and pretty things
 @use "modules/_aspect";
-@use "modules/_view-transitions";
+// @use "modules/_view-transitions";
+@use "modules/_swup";
 @use "modules/_helpers";
 
 // Components
@@ -214,7 +215,7 @@ a {
 .media-hold {
   overflow: hidden;
   border-radius: .75rem;
-  background: oklch(0.1 0.0270 274);
+  background: black;
   video,img{
     display: block;
     width: 100%;

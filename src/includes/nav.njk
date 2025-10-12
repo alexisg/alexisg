@@ -1,10 +1,10 @@
-<nav>
+<nav data-swup-persist="main-nav">
   <ul class="nav-portfolio nav-portfolio--row">
     {%- for item in collections.portfolio -%}
       {%- set itemUrl = (item.url == page.url) -%}
       {% if item.title != 'Home' %}
         <li>
-          <a href="{{ item.url | url }}" class="nav-portfolio__link {% if itemUrl %}nav-portfolio__link--active{% endif %}">
+          <a href="{{ item.url | url }}" class="nav-portfolio__link" data-nav-url="{{ item.url | url }}">
             {{item.data.title}}
           </a>
         </li>

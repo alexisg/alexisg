@@ -57,14 +57,15 @@
 
         {% include "header.njk" %}
 
-        {% block extra %}{% endblock %}
-
-        <article>
+        <main id="swup">
           {% block nav %}
             {% include "nav.njk" %}
           {% endblock %}
-          {{ content | safe }}
-        </article>
+          {% block extra %}{% endblock %}
+          <article class="transition-fade">
+            {{ content | safe }}
+          </article>
+        </main>
 
         {% include "footer.njk" %}
 
@@ -72,8 +73,9 @@
     </div>
 
     <script src="/static/js/tornis.es5.js"></script>
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/preload-plugin@3"></script>
     <script src="/static/js/main.js"></script>
-    <script src="/static/js/viewTransitions.js"></script>
     <script src="/static/js/themePicker.js"></script>
 
     {% block js_extra %}{% endblock %}
