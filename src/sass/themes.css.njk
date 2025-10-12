@@ -3,13 +3,16 @@ permalink: '/static/css/theme.css'
 excludeFromSitemap: true
 ---
 {% macro colorscheme(colors) %}
-    --color-shadow: {{ colors.shadow }};
     --color-body: {{ colors.body }};
     --color-text: {{ colors.text }};
     --color-hdr: {{ colors.hdr }};
     --color-sub-hdr: {{ colors.subHdr }};
     --color-link: {{ colors.link }};
     --color-link-hover: {{ colors.linkHover }};
+    --color-tabsBg: {{ colors.tabsBg }};
+    --color-tabBg: {{ colors.tabBg }};
+    --color-tabStroke: {{ colors.tabStroke }};
+    --color-shadow: {{ colors.shadow }};
 {% endmacro %}
 
 {%- set light = themes|getTheme('light') -%}

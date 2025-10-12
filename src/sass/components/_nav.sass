@@ -15,32 +15,35 @@
     > *:first-child
       grid-column: 1 / -1
 
-.nav-portfolio--row
+nav
   display: flex
+
+.nav-portfolio--row
+  display: inline-flex
   flex-wrap: wrap
   justify-content: center
-  gap: 2rem
-
-.nav-portfolio__item
-  font-size: 1.2rem
+  gap: 4px
+  padding: 5px
+  background: var(--color-tabsBg)
+  box-shadow: var(--color-tabStroke) 0 0 0 1px, var(--shadow-elevation-low)
+  border-radius: 1.5rem
+  width: auto
+  margin: 0 auto
 
 .nav-portfolio__link
-  position: relative
-  &::after
-    content: ''
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    height: 1px
-    // transition: all .3s
-
-.nav-portfolio__link--active
-  color: var(--color-link-hover)
-  position: relative
-  &::after
-    background: var(--color-link)
-  .nav-portfolio__hdr
+  font-size: .8rem
+  line-height: 1rem
+  border-radius: 3rem
+  padding: 8px 16px
+  display: block
+  color: var(--color-text)
+  transition: all 300ms ease-in
+  text-wrap: nowrap
+  &:hover
+    color: var(--color-link)
+  .nav-portfolio--row &.nav-portfolio__link--active
+    background: var(--color-tabBg)
+    box-shadow: var(--color-tabStroke) 0 0 0 1px
     color: var(--color-link)
 
 .nav-portfolio__hdr
