@@ -53,13 +53,10 @@ if (!document.startViewTransition) {
       if (oldMain && newMain) {
         oldMain.replaceWith(newMain);
         
-        // Restart any autoplay videos that might have been paused during transition
-        const videos = newMain.querySelectorAll('video[autoplay]');
-        videos.forEach(video => {
-          video.play().catch(() => {
-            // Autoplay prevented, which is fine (muted videos should work)
-          });
-        });
+        // Initialize videos with delayed autoplay and fade-in
+        if (typeof loadVideos === 'function') {
+          loadVideos();
+        }
       }
       
       // Update the browser history
@@ -70,10 +67,8 @@ if (!document.startViewTransition) {
     });
     
     // Handle transition errors gracefully
-    transition.catch((error) => {
+    transition.finished.catch((error) => {
       console.error('View transition failed:', error);
-      // Fall back to regular navigation
-      window.location.href = url;
     });
   });
 
@@ -94,13 +89,10 @@ if (!document.startViewTransition) {
       if (oldMain && newMain) {
         oldMain.replaceWith(newMain);
         
-        // Restart any autoplay videos that might have been paused during transition
-        const videos = newMain.querySelectorAll('video[autoplay]');
-        videos.forEach(video => {
-          video.play().catch(() => {
-            // Autoplay prevented, which is fine (muted videos should work)
-          });
-        });
+        // Initialize videos with delayed autoplay and fade-in
+        if (typeof loadVideos === 'function') {
+          loadVideos();
+        }
       }
       
       window.scrollTo({ top: 0, behavior: 'instant' });

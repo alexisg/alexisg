@@ -7,7 +7,7 @@ video: /static/media/vid-frame-sizzle.mp4
 videoSmall: /static/media/vid-frame-sizzle.mp4
 image: /static/media/frame-workspace.png
 gallery:
-    - /static/media/vid-frame-dsweb.mp4
+    - /static/media/vid-frame-dsweb-1920-1080.mp4
     - /static/media/frame-workspace.png
     - /static/media/frame-asset-grid.png
     - /static/media/frame-meta.png

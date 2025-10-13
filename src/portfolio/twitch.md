@@ -11,7 +11,7 @@ gallery:
     - /static/media/twitch-2020-media-cards.gif
     - /static/media/twitch-2020-mobile-2550.png
     - /static/media/twitch-2020-theme-swipe.gif
-    - /static/media/vid-twitchcon-1920-1080.mp4
+    - /static/media/vid-twitchcon-1280x1280.mp4
     - /static/media/vid-twitch-retrospective-1280x1280.mp4
 ---
 

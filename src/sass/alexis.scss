@@ -156,6 +156,16 @@ video {
   will-change: auto;
 }
 
+// Delayed autoplay video with fade-in
+.js-video {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+  
+  &.is-playing {
+    opacity: 1;
+  }
+}
+
 // Reset our buttons.
 button {
   background: none;

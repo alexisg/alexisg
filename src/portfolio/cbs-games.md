@@ -7,7 +7,7 @@ video: /static/media/vid-gamespot-review-1280x1280.mp4
 videoSmall: /static/media/vid-gamespot-review-640x640.mp4
 image: /static/media/GameSpot-Review-TombRaider.jpg
 gallery:
-  - /static/media/vid-giantbomb-1280x1280.mp4
+  - /static/media/vid-giantbomb-1080x1080.mp4
   - /static/media/gamespot.png
   - /static/media/gamespot-goty.png
   - /static/media/gamespot-home-og.jpg
