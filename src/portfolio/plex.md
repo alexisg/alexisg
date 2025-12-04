@@ -4,9 +4,9 @@ deck: Identity & Product Design 2008-2012
 date: 2020-01-06
 website: https://www.plex.tv
 video: 
-image: /static/media/plex-icons.jpg
+image: /static/media/plex-icons.avif
 gallery:
-  - /static/media/plex-home.jpg
+  - /static/media/plex-home.avif
 ---
 
 Launch branding, logo, applications icons and built the first website for Plex. Wow, this was 2008. OMG the flairs. 

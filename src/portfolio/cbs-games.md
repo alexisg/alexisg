@@ -5,17 +5,17 @@ deck: Creative Technical Director 2012-2014
 website: https://www.gamespot.com
 video: /static/media/vid-gamespot-review-1280x1280.mp4
 videoSmall: /static/media/vid-gamespot-review-640x640.mp4
-image: /static/media/GameSpot-Review-TombRaider.jpg
+image: /static/media/GameSpot-Review-TombRaider.avif
 gallery:
   - /static/media/vid-giantbomb-1080x1080.mp4
-  - /static/media/gamespot.png
-  - /static/media/gamespot-goty.png
-  - /static/media/gamespot-home-og.jpg
-  - /static/media/gamespot-article.jpg
-  - /static/media/gamespot-nextbiggame.jpg
-  - /static/media/giantbomb-home-2012.png
-  - /static/media/giantbomb-review-crop.jpg
-  - /static/media/giantbomb-home-2011.jpg
+  - /static/media/gamespot.avif
+  - /static/media/gamespot-goty.avif
+  - /static/media/gamespot-home-og.avif
+  - /static/media/gamespot-article.avif
+  - /static/media/gamespot-nextbiggame.avif
+  - /static/media/giantbomb-home-2012.avif
+  - /static/media/giantbomb-review-crop.avif
+  - /static/media/giantbomb-home-2011.avif
 ---
 
 In 2012 I led a full redesign and front-end rebuild of GameSpot.com and GiantBomb.com. The design system that was created was specifically built to support dozens of unique page templates and allowed us to safely make radical changes to the site during large events such as E3 and Game of the Year. Managed the day to day operations of a five-person front-end team and helped set direction and product planning for a fifteen-person engineering group. Was directly involved in all major decisions made to the site including design, engineering, business and editorial direction.
