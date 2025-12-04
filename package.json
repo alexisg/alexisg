@@ -7,9 +7,9 @@
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "color": "^5.0.2",
+    "color": "^5.0.3",
     "cssesc": "^3.0.0",
-    "cssnano": "^7.1.1",
+    "cssnano": "^7.1.2",
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
     "markdown-it": "^14.1.0",
@@ -17,9 +17,13 @@
     "sanitize-html": "^2.17.0",
     "tornis": "^0.3.6"
   },
-  "packageManager": "yarn@4.10.3",
+  "packageManager": "yarn@4.12.0+sha512.f45ab632439a67f8bc759bf32ead036a1f413287b9042726b7cc4818b7b49e14e9423ba49b18f9e06ea4941c1ad062385b1d8760a8d5091a1a31e5f6219afca8",
+  "scripts": {
+    "dev": "yarn dlx @11ty/eleventy --serve",
+    "postinstall": "node -e \"try { require('child_process').execSync('corepack enable', {stdio: 'ignore'}); } catch(e) {}\""
+  },
   "devDependencies": {
     "postcss": "^8.5.6",
-    "sass": "^1.93.2"
+    "sass": "^1.94.2"
   }
 }
