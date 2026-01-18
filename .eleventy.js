@@ -86,6 +86,7 @@ module.exports = function (config) {
     config.addPassthroughCopy('src/static/css');
     config.addPassthroughCopy('src/static/js');
     config.addPassthroughCopy('src/static/api');
+    config.addPassthroughCopy('src/Alexis-Gallisa-resume-2026.pdf');
     
     // Ignore README files in static directories
     config.ignores.add('src/static/js/README.md');
