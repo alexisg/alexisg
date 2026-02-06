@@ -88,6 +88,9 @@ module.exports = function (config) {
     config.addPassthroughCopy('src/static/api');
     config.addPassthroughCopy('src/Alexis-Gallisa-resume-2026.pdf');
     
+    // Copy raw markdown files so they're accessible at /portfolio/filename.md
+    config.addPassthroughCopy({ 'src/portfolio/*.md': 'portfolio' });
+    
     // Ignore README files in static directories
     config.ignores.add('src/static/js/README.md');
 
