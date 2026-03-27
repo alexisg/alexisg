@@ -7,13 +7,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>
-      {% block title %}Alexis Gallis&aacute;{% endblock %}
+        Alexis Gallisá{% if notHome %} - {{title}}{% endif %}
     </title>
-    <meta name="description" content="{% block description %}Design/front-end lead specializing in web/mobile design, CSS/SASS frameworks, responsive layouts, JS interactions, large site templating and content management system implementations.{% endblock %}">
-    <meta name="viewport" content="width=device-width">
-
-    <link rel="icon" href="/static/images/favicon.png"/>
-    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png"/>
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:url" content="https://www.alexisgallisa.com"/>
+    <meta property="og:title" content="Alexis Gallisá{% if notHome %} -{% endif %}{{title}}"/>
+    <meta name="og:description" content="{% block description %}I shape and guide design teams that thrive on collaboration and high craft. I’m most at home in complex product spaces, refining pixel-level UI details and the milliseconds that create fluid interactions, energized by the limitless potential of AI-driven design workflows.{% endblock %}" />
+    <meta property="og:site_name" content="SwiftKey"/>
+    <meta property="og:image" content="https://www.alexisgallisa.com/static/images/preview.png"/>
+    <link rel="icon" href="https://www.alexisgallisa.com/static/images/favicon.png"/>
+    <link rel="apple-touch-icon" href="https://www.alexisgallisa.com/static/images/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://use.typekit.net/bal5xca.css">
     <script>
       (function () {
