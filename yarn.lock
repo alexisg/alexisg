@@ -1713,14 +1713,14 @@ __metadata:
   linkType: hard
 
 "liquidjs@npm:^10.21.1":
-  version: 10.22.0
-  resolution: "liquidjs@npm:10.22.0"
+  version: 10.25.5
+  resolution: "liquidjs@npm:10.25.5"
   dependencies:
     commander: "npm:^10.0.0"
   bin:
     liquid: bin/liquid.js
     liquidjs: bin/liquid.js
-  checksum: 10c0/9f6d1ee79371b29798b59e3288beb1a413cb7c85dc6cb6e2937cf591b91af1a49f27ac95c4231c14e20c7e70c6d72f0a2b3c1ebda8cc0077d56cb70c0a5e5dbc
+  checksum: 10c0/31544432b199aab9a2034ce95d811177f6596f0b7447e78008748b1a13a06ec2c36c1fd423accdcf04aed4f67b5023ba7236fcf9d9eb4ddee09fcdcd61e50392
   languageName: node
   linkType: hard
 
