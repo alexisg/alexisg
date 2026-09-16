@@ -91,12 +91,15 @@ module.exports = function (config) {
     // Copy raw markdown files so they're accessible at /portfolio/filename.md
     config.addPassthroughCopy({ 'src/portfolio/*.md': 'portfolio' });
 
-    // Standalone watch-list app — copied verbatim to /lists (self-contained
-    // HTML + data/shows.json + assets; not processed as a template).
-    config.addPassthroughCopy('src/lists');
+    // Standalone watch-list app → /lists (runtime files copied verbatim; the
+    // dev-only scripts/ and README.md under src/lists are intentionally excluded).
+    config.addPassthroughCopy('src/lists/index.html');
+    config.addPassthroughCopy('src/lists/data');
+    config.addPassthroughCopy('src/lists/assets');
     
     // Ignore README files in static directories
     config.ignores.add('src/static/js/README.md');
+    config.ignores.add('src/lists/README.md');
 
     // Base Config
     return {
