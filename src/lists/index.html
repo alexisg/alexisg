@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Watch List</title>
+<style>
+  /* Dark by default; honor prefers-color-scheme: light. */
+  :root {
+    color-scheme: dark;
+
+    /* Palette seeds — one neutral hue + one vivid chroma keep the whole set consistent. */
+    --n-hue: 270;      /* every neutral shares this hue */
+    --c-vivid: .15;    /* every accent/rating shares this chroma */
+
+    /* Neutral surface ramp — derived from a single bg seed via relative color syntax. */
+    --bg: oklch(17% .01 var(--n-hue));
+    --panel:         oklch(from var(--bg) 20% c h);
+    --panel-2:       oklch(from var(--bg) 24% c h);
+    --panel-3:       oklch(from var(--bg) 28% c h);
+    --border:        oklch(from var(--bg) 31% c h);
+    --border-strong: oklch(from var(--bg) 38% c h);
+
+    /* Neutral text — same hue, low chroma. */
+    --text:  oklch(93% .01 var(--n-hue));
+    --muted: oklch(71% .02 var(--n-hue));
+    --faint: oklch(55% .02 var(--n-hue));
+
+    /* Accent + rating hues — shared chroma, distinct rounded hues. */
+    --accent: oklch(72% var(--c-vivid) 265);
+    --accent-ink: oklch(from var(--accent) 17% .04 h); /* dark ink in the accent hue */
+    --sex:  oklch(68% var(--c-vivid) 350);
+    --viol: oklch(67% var(--c-vivid) 30);
+    --hum:  oklch(80% var(--c-vivid) 90);
+    --good: oklch(75% var(--c-vivid) 155);
+    --warn: var(--hum);
+    --danger: var(--viol);
+
+    --shadow: 0 8px 30px oklch(0% 0 0 / .45);
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+
+      /* Same seeds; surfaces ramp the other direction from an off-white bg. */
+      --bg: oklch(97% .004 var(--n-hue));
+      --panel: oklch(100% 0 0);                    /* white cards sit above bg */
+      --panel-2:       oklch(from var(--bg) 95% c h);
+      --panel-3:       oklch(from var(--bg) 92% c h);
+      --border:        oklch(from var(--bg) 90% c h);
+      --border-strong: oklch(from var(--bg) 84% c h);
+
+      --text:  oklch(22% .02 var(--n-hue));
+      --muted: oklch(50% .02 var(--n-hue));
+      --faint: oklch(66% .03 var(--n-hue));
+
+      --accent: oklch(52% .18 265);
+      --accent-ink: oklch(100% 0 0);
+      /* --sex/--viol/--hum/--good inherit the shared vivid set from :root */
+
+      --shadow: 0 8px 30px oklch(24% .06 265 / .12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 32px 32px 84px; /* room for unsaved bar */
+  }
+  a { color: var(--accent); }
+  button, input, select { font: inherit; color: inherit; }
+  button {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 4px 12px;
+    cursor: pointer;
+  }
+  button:hover { border-color: var(--border-strong); }
+  button.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+
+  header.app {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    padding: 12px 18px;
+  }
+  .titlebar { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .titlebar h1 { font-size: 32px; margin: 0; letter-spacing: .2px; }
+  .titlebar .count { color: var(--muted); font-size: 13px; }
+  .spacer { flex: 1; }
+
+  .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+  .seg { display: inline-flex; gap: 2px; border: 1px solid var(--border); border-radius: 16px; padding: 2px; overflow: hidden; }
+  .seg button { border: 0; border-radius: 12px; }
+
+  .filters {
+    display: flex; gap: 14px; align-items: flex-end; flex-wrap: wrap;
+    margin-top: 12px; padding: 12px; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+  }
+  .filters.hidden { display: none; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field > label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  input[type="text"], select {
+    background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 7px 9px; min-width: 180px;
+  }
+  input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+  /* dual range slider */
+  .range { width: 190px; }
+  .range .track { position: relative; height: 30px; }
+  .range input[type="range"] {
+    -webkit-appearance: none; appearance: none; position: absolute; left: 0; right: 0;top: 50%; transform: translateY(-50%);
+    width: 100%; height: 4px; background: transparent; margin: 0; pointer-events: none;
+  }
+  .range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; pointer-events: auto; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); border: 4px solid var(--text); cursor: pointer;
+  }
+  .range input[type="range"]::-moz-range-thumb {
+    pointer-events: auto; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); cursor: pointer;
+  }
+  .range .rail { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); height: 4px; border-radius: 4px; background: var(--panel-3); }
+  .range .fill { position: absolute; top: 50%; transform: translateY(-50%); height: 4px; border-radius: 4px; background: var(--accent); }
+  .range .val { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12px; }
+
+  /* sort chips */
+  .sortchips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; min-height: 4px; align-items: center; }
+  .sortchips .lbl { color: var(--muted); font-size: 12px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px; background: var(--panel-3);
+    border: 1px solid var(--border-strong); border-radius: 999px; padding: 4px 6px 4px 10px; font-size: 12px;
+  }
+  .chip .x { cursor: pointer; border: 0; background: transparent; padding: 0 4px; color: var(--muted); font-size: 14px; line-height: 1; }
+  .chip .x:hover { color: var(--text); }
+
+  main { padding: 0 18px 40px; }
+
+  /* table */
+  .tablewrap { margin-top: 14px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  table { border-collapse: collapse; width: 100%; }
+  thead th {
+    position: sticky; top: 0; background: var(--panel-2); text-align: left; padding: 10px 12px;
+    font-size: 12px; letter-spacing: .03em; color: var(--muted); border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  th.sortable { cursor: pointer; user-select: none; }
+  th.sortable:hover { color: var(--text); }
+  th .dir { color: var(--accent); font-weight: 700; }
+  th .ord { font-size: 10px; color: var(--faint); vertical-align: super; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr.clickable { cursor: pointer; }
+  tbody tr.clickable:hover { background: var(--panel); }
+  .thumb {
+    width: 40px; height: 58px; border-radius: 6px; object-fit: cover; background: linear-gradient(135deg,var(--panel-3),var(--panel-2));
+    display: block; flex: none;
+  }
+  .thumb.broken { display: grid; }
+  .cell-title { display: flex; align-items: center; gap: 12px; min-width: 220px; }
+  .cell-title .t { font-weight: 600; }
+  .cell-title .yr { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 6px; }
+  .desc { color: var(--muted); font-size: 12.5px; max-width: 380px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .num { font-variant-numeric: tabular-nums; text-align: right; }
+  .rank-badge { display: inline-block; min-width: 26px; text-align: center; font-variant-numeric: tabular-nums; font-weight: 700; }
+  .ext { font-variant-numeric: tabular-nums; }
+  .ext .star { color: var(--warn); }
+  .status-pill { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border-strong); text-transform: capitalize; white-space: nowrap; }
+  .status-watched { color: var(--good); border-color: color-mix(in srgb, var(--good) 45%, var(--border)); }
+  .status-watching { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+  .status-queued { color: var(--muted); }
+  .status-dropped { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 45%, var(--border)); }
+
+  /* rating bars */
+  .bars { display: flex; flex-direction: column; gap: 4px; min-width: 132px; }
+  .bar { display: grid; grid-template-columns: 44px 1fr 18px; align-items: center; gap: 8px; }
+  .bar .k { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .bar .meter { height: 6px; background: var(--panel-3); border-radius: 4px; overflow: hidden; }
+  .bar .meter > i { display: block; height: 100%; border-radius: 4px; }
+  .bar .v { font-size: 11px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .m-sex > i { background: var(--sex); }
+  .m-viol > i { background: var(--viol); }
+  .m-hum > i { background: var(--hum); }
+
+  /* grid */
+  .grid { margin-top: 10px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  .grid-section-h { display: flex; align-items: baseline; gap: 8px; margin: 24px 2px 0; padding-bottom: 6px; border-bottom: 1px solid var(--border); font-size: 12px; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; color: var(--muted); }
+  .grid-section-h:first-child { margin-top: 14px; }
+  .grid-section-h .cnt { font-weight: 400; color: var(--faint); }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; display: flex; flex-direction: column; }
+  .card:hover { border-color: var(--border-strong); }
+  .card .poster { aspect-ratio: 2/3; width: 100%; object-fit: cover; background: linear-gradient(135deg,var(--panel-3),var(--panel-2)); }
+  .card .body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .card .head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+  .card .head .t { font-weight: 600; line-height: 1.25; }
+  .card .head .yr { color: var(--muted); font-size: 12px; }
+  .card .rankext { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); }
+  .card .rankext .ext-label { margin-left: 4px; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); }
+  .card .desc { -webkit-line-clamp: 3; max-width: none; }
+
+  /* custom mode */
+  .custom-hint { margin-top: 12px; padding: 10px 12px; background: color-mix(in srgb, var(--accent) 12%, var(--panel)); border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border)); border-radius: var(--radius); font-size: 13px; }
+  tr.drag-row td { cursor: grab; }
+  tr.drag-row.dragging { opacity: .4; }
+  tr.drag-row.drop-before td { box-shadow: inset 0 2px 0 0 var(--accent); }
+  tr.drag-row.drop-after td { box-shadow: inset 0 -2px 0 0 var(--accent); }
+  .handle { color: var(--faint); cursor: grab; font-size: 16px; line-height: 1; }
+  .rate-edit { display: flex; align-items: center; gap: 6px 14px; flex-wrap: wrap; }
+  .rate-edit .item { display: inline-flex; align-items: center; gap: 5px; cursor: default; }
+  .rate-edit .k { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .rate-edit input[type="number"] { width: 46px; min-width: 0; padding: 2px 5px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 6px; }
+  td.edited { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  /* compact rows in custom sort: row height driven by the poster, nothing taller */
+  .custom-table tbody td { padding: 4px 12px; }
+  .custom-table .thumb { width: 34px; height: 50px; }
+  .custom-table .cell-title .yr { display: block; margin-left: 0; }
+
+  /* unsaved bar */
+  .unsaved {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    display: none; align-items: center; gap: 12px;
+    padding: 12px 18px; background: var(--panel-2); border-top: 1px solid var(--border-strong); box-shadow: var(--shadow);
+  }
+  .unsaved.show { display: flex; }
+  .unsaved .n { font-weight: 700; }
+  .unsaved .muted { color: var(--muted); font-size: 12px; }
+
+  /* dialogs */
+  dialog { border: 1px solid var(--border-strong); background: var(--panel); color: var(--text); border-radius: 14px; padding: 0; max-width: 860px; width: calc(100vw - 32px); box-shadow: var(--shadow); }
+  dialog::backdrop { background: rgba(0,0,0,.6); backdrop-filter: blur(2px); }
+  .detail { display: grid; grid-template-columns: 220px 1fr; gap: 0; }
+  .detail .left { padding: 18px; border-right: 1px solid var(--border); }
+  .detail .left img { width: 100%; border-radius: 10px; aspect-ratio: 2/3; object-fit: cover; background: var(--panel-3); }
+  .detail .right { padding: 18px 20px; overflow: auto; max-height: 82vh; }
+  .detail h2 { margin: 0 0 2px; font-size: 20px; }
+  .detail .sub { color: var(--muted); margin-bottom: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .detail .section { margin: 14px 0; }
+  .detail .section h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 6px; }
+  .detail p { margin: 0; }
+  .detail .notes { white-space: pre-wrap; }
+  .detail .droprsn { color: var(--danger); }
+  .detail .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .detail .tags span { font-size: 11px; background: var(--panel-3); border: 1px solid var(--border); border-radius: 999px; padding: 2px 8px; color: var(--muted); }
+  .detail .links a { margin-right: 12px; font-size: 13px; }
+  .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .shots img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; cursor: zoom-in; background: var(--panel-3); }
+  .detail-bars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .dialog-close { position: absolute; top: 10px; right: 12px; z-index: 2; }
+  .detail-wrap { position: relative; }
+  @media (max-width: 640px) { .detail { grid-template-columns: 1fr; } .detail .left { border-right: 0; border-bottom: 1px solid var(--border); } }
+
+  #lightbox { background: transparent; border: 0; box-shadow: none; max-width: 96vw; width: auto; }
+  #lightbox::backdrop { background: rgba(0,0,0,.85); }
+  #lightbox img { max-width: 96vw; max-height: 92vh; border-radius: 10px; display: block; }
+  #lightbox .lb-nav { position: fixed; top: 50%; transform: translateY(-50%); font-size: 28px; padding: 8px 14px; background: rgba(0,0,0,.5); border: 0; color: #fff; }
+  #lightbox .prev { left: 16px; } #lightbox .next { right: 16px; }
+  #lightbox .lb-count { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); color: #fff; background: rgba(0,0,0,.5); padding: 4px 12px; border-radius: 999px; font-size: 13px; }
+
+  .empty { padding: 48px; text-align: center; color: var(--muted); }
+  .toast { position: fixed; bottom: 92px; left: 50%; transform: translateX(-50%); background: var(--good); color: #04110a; padding: 8px 16px; border-radius: 999px; font-weight: 600; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 60; }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<header class="app">
+  <div class="titlebar">
+    <h1>Watch List</h1>
+    <span class="count" id="count"></span>
+    <span class="spacer"></span>
+    <div class="toolbar" style="margin-top:0">
+      <div class="seg" id="viewSeg">
+        <button data-view="table">Table</button>
+        <button data-view="grid">Grid</button>
+      </div>
+      <button id="customBtn">Custom sort</button>
+      <label class="field" style="flex-direction:row;align-items:center;gap:6px">
+        <span style="font-size:12px;color:var(--muted)">Add sort</span>
+        <select id="addSort">
+          <option value="">…</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="sortchips" id="sortchips"></div>
+
+  <div class="filters" id="filters">
+    <div class="field">
+      <label>Sexual content <span class="val" id="sexVal"></span></label>
+      <div class="range" data-key="sexualContent"></div>
+    </div>
+    <div class="field">
+      <label>Violence <span class="val" id="violVal"></span></label>
+      <div class="range" data-key="violence"></div>
+    </div>
+    <div class="field">
+      <label>Humor <span class="val" id="humVal"></span></label>
+      <div class="range" data-key="humor"></div>
+    </div>
+    <div class="field" style="margin-left:auto">
+      <label>&nbsp;</label>
+      <button id="resetFilters">Reset filters</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="custom-hint" id="customHint" style="display:none">
+    <strong>Custom sort mode.</strong> Drag rows to reorder — dropping rewrites <code>personalRank</code> densely from 1.
+    Edit the three rating values inline. All shows are shown (filters paused). Changes are held in the URL and the unsaved bar below.
+  </div>
+  <div id="listRoot"></div>
+</main>
+
+<div class="unsaved" id="unsaved">
+  <span class="n" id="unsavedN">0 unsaved changes</span>
+  <span class="muted">held in URL — nothing written to disk until you download</span>
+  <span class="spacer" style="flex:1"></span>
+  <button id="copyPatch">Copy JSON patch</button>
+  <button id="downloadJson" class="btn-primary">Download shows.json</button>
+  <button id="discardEdits">Discard</button>
+</div>
+
+<dialog id="detail"><div class="detail-wrap"><button class="dialog-close" id="detailClose">✕ Close</button><div id="detailBody"></div></div></dialog>
+<dialog id="lightbox"></dialog>
+<div class="toast" id="toast"></div>
+
+<script type="module">
+const RATING_KEYS = ["sexualContent", "violence", "humor"];
+const RATING_META = {
+  sexualContent: { label: "Sex", cls: "m-sex", short: "sex" },
+  violence: { label: "Violence", cls: "m-viol", short: "viol" },
+  humor: { label: "Humor", cls: "m-hum", short: "hum" },
+};
+const SHORT_TO_KEY = Object.fromEntries(RATING_KEYS.map(k => [RATING_META[k].short, k]));
+const SORT_KEYS = ["title", "personalRank", "externalRating", "sexualContent", "violence", "humor"];
+const SORT_LABEL = {
+  title: "Title", personalRank: "Rank", externalRating: "TMDB",
+  sexualContent: "Sex", violence: "Violence", humor: "Humor",
+};
+
+const state = {
+  raw: null,
+  shows: [],
+  byId: {},
+  edits: {},                 // { id: { personalRank?, ratings?: {key:val} } }
+  view: "table",
+  sort: [],                  // [{ key, dir }]
+  ranges: { sexualContent: [0, 10], violence: [0, 10], humor: [0, 10] },
+  custom: false,
+  detailId: null,
+};
+
+const $ = (s, r = document) => r.querySelector(s);
+const el = (tag, props = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (k === "class") n.className = v;
+    else if (k === "html") n.innerHTML = v;
+    else if (k.startsWith("on") && typeof v === "function") n.addEventListener(k.slice(2), v);
+    else if (v !== null && v !== undefined) n.setAttribute(k, v);
+  }
+  for (const kid of kids.flat()) if (kid != null) n.append(kid.nodeType ? kid : document.createTextNode(kid));
+  return n;
+};
+
+/* ---------- effective values / edits ---------- */
+const effRank = s => state.edits[s.id]?.personalRank ?? s.personalRank;
+const effRating = (s, k) => state.edits[s.id]?.ratings?.[k] ?? s.ratings[k];
+
+function ensureEdit(id) { return state.edits[id] || (state.edits[id] = {}); }
+function pruneEdit(id) {
+  const e = state.edits[id]; if (!e) return;
+  const s = state.byId[id];
+  if (e.personalRank === s.personalRank) delete e.personalRank;
+  if (e.ratings) {
+    for (const k of RATING_KEYS) if (e.ratings[k] === s.ratings[k]) delete e.ratings[k];
+    if (!Object.keys(e.ratings).length) delete e.ratings;
+  }
+  if (!Object.keys(e).length) delete state.edits[id];
+}
+function isEdited(id) { return !!state.edits[id]; }
+function changedRecords() {
+  return state.shows.filter(s => state.edits[s.id]).map(s => {
+    const e = state.edits[s.id]; const rec = { id: s.id };
+    if (e.personalRank != null) rec.personalRank = e.personalRank;
+    if (e.ratings && Object.keys(e.ratings).length) rec.ratings = { ...e.ratings };
+    return rec;
+  });
+}
+
+/* ---------- URL state ---------- */
+function serializeURL() {
+  const p = new URLSearchParams();
+  if (state.sort.length) p.set("sort", state.sort.map(s => `${s.key}:${s.dir}`).join(","));
+  if (state.view !== "table") p.set("view", state.view);
+  if (state.custom) p.set("custom", "1");
+  for (const k of RATING_KEYS) {
+    const [mn, mx] = state.ranges[k];
+    if (mn !== 0 || mx !== 10) p.set(RATING_META[k].short, `${mn}-${mx}`);
+  }
+  const recs = changedRecords();
+  if (recs.length) {
+    const map = {};
+    for (const r of recs) { map[r.id] = {}; if (r.personalRank != null) map[r.id].personalRank = r.personalRank; if (r.ratings) map[r.id].ratings = r.ratings; }
+    p.set("edits", b64encode(JSON.stringify(map)));
+  }
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? `?${qs}` : location.pathname);
+}
+function parseURL() {
+  const p = new URLSearchParams(location.search);
+  if (p.get("sort")) {
+    state.sort = p.get("sort").split(",").map(t => {
+      const [key, dir] = t.split(":");
+      return SORT_KEYS.includes(key) ? { key, dir: dir === "desc" ? "desc" : "asc" } : null;
+    }).filter(Boolean);
+  }
+  if (p.get("view") === "grid") state.view = "grid";
+  if (p.get("custom") === "1") state.custom = true;
+  for (const k of RATING_KEYS) {
+    const raw = p.get(RATING_META[k].short);
+    if (raw && /^\d+-\d+$/.test(raw)) {
+      let [mn, mx] = raw.split("-").map(Number);
+      mn = clamp(mn, 0, 10); mx = clamp(mx, 0, 10); if (mn > mx) [mn, mx] = [mx, mn];
+      state.ranges[k] = [mn, mx];
+    }
+  }
+  if (p.get("edits")) {
+    try {
+      const map = JSON.parse(b64decode(p.get("edits")));
+      for (const [id, e] of Object.entries(map)) {
+        if (!state.byId[id]) continue;
+        const t = ensureEdit(id);
+        if (Number.isInteger(e.personalRank)) t.personalRank = e.personalRank;
+        if (e.ratings) { t.ratings = t.ratings || {}; for (const k of RATING_KEYS) if (Number.isInteger(e.ratings[k])) t.ratings[k] = clamp(e.ratings[k], 0, 10); }
+        pruneEdit(id);
+      }
+    } catch (err) { console.warn("bad edits param", err); }
+  }
+}
+const b64encode = s => btoa(unescape(encodeURIComponent(s)));
+const b64decode = s => decodeURIComponent(escape(atob(s)));
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+/* ---------- filtering + sorting ---------- */
+function visibleShows() {
+  if (state.custom) return [...state.shows].sort((a, b) => effRank(a) - effRank(b));
+  let list = state.shows.filter(s => {
+    for (const k of RATING_KEYS) {
+      const [mn, mx] = state.ranges[k]; const v = effRating(s, k);
+      if (v < mn || v > mx) return false;
+    }
+    return true;
+  });
+  const chain = state.sort;
+  list.sort((a, b) => {
+    // Dropped shows always sink to the bottom, regardless of the active sort.
+    const da = a.status === "dropped" ? 1 : 0, db = b.status === "dropped" ? 1 : 0;
+    if (da !== db) return da - db;
+    for (const { key, dir } of chain) {
+      let av, bv;
+      if (key === "title") { av = a.title.toLowerCase(); bv = b.title.toLowerCase(); }
+      else if (key === "personalRank") { av = effRank(a); bv = effRank(b); }
+      else if (key === "externalRating") { av = a.externalRating ?? -1; bv = b.externalRating ?? -1; }
+      else { av = effRating(a, key); bv = effRating(b, key); }
+      let r = av < bv ? -1 : av > bv ? 1 : 0;
+      if (r) return dir === "asc" ? r : -r;
+    }
+    return effRank(a) - effRank(b);
+  });
+  return list;
+}
+
+/* ---------- sort controls ---------- */
+function cycleSort(key, additive) {
+  const chain = state.sort;
+  const idx = chain.findIndex(s => s.key === key);
+  if (additive) {
+    if (idx < 0) chain.push({ key, dir: "asc" });
+    else if (chain[idx].dir === "asc") chain[idx].dir = "desc";
+    else chain.splice(idx, 1);
+  } else {
+    if (chain.length === 1 && idx === 0) {
+      if (chain[0].dir === "asc") chain[0].dir = "desc";
+      else state.sort = [];
+    } else {
+      state.sort = [{ key, dir: "asc" }];
+    }
+  }
+  update();
+}
+function removeSort(key) { state.sort = state.sort.filter(s => s.key !== key); update(); }
+
+function renderSortChips() {
+  const box = $("#sortchips");
+  box.replaceChildren();
+  if (state.custom) return;
+  if (state.sort.length) box.append(el("span", { class: "lbl" }, "Sort:"));
+  state.sort.forEach((s, i) => {
+    box.append(el("span", { class: "chip" },
+      el("span", { class: "ord" }, state.sort.length > 1 ? String(i + 1) : ""),
+      `${SORT_LABEL[s.key]} ${s.dir === "asc" ? "↑" : "↓"}`,
+      el("button", { class: "x", title: "remove", onclick: () => removeSort(s.key) }, "✕"),
+    ));
+  });
+}
+
+/* ---------- rating widgets ---------- */
+function barsNode(show) {
+  const wrap = el("div", { class: "bars" });
+  for (const k of RATING_KEYS) {
+    const v = effRating(show, k), m = RATING_META[k];
+    wrap.append(el("div", { class: "bar" },
+      el("span", { class: "k" }, m.label),
+      el("span", { class: `meter ${m.cls}` }, el("i", { style: `width:${v * 10}%` })),
+      el("span", { class: "v" }, String(v)),
+    ));
+  }
+  return wrap;
+}
+function ratingEditNode(show) {
+  const wrap = el("div", { class: "rate-edit" });
+  for (const k of RATING_KEYS) {
+    const m = RATING_META[k];
+    const input = el("input", { type: "number", min: "0", max: "10", step: "1", value: String(effRating(show, k)) });
+    input.addEventListener("change", () => {
+      let v = clamp(Math.round(Number(input.value) || 0), 0, 10);
+      input.value = String(v);
+      const e = ensureEdit(show.id); e.ratings = e.ratings || {}; e.ratings[k] = v;
+      pruneEdit(show.id);
+      update();
+    });
+    wrap.append(el("label", { class: "item" }, el("span", { class: "k" }, m.label), input));
+  }
+  return wrap;
+}
+
+function thumb(show, cls = "thumb") {
+  const img = el("img", { class: cls, loading: "lazy", alt: "" });
+  if (show.poster) img.src = show.poster; else img.classList.add("broken");
+  img.addEventListener("error", () => img.classList.add("broken"));
+  return img;
+}
+function statusPill(s) { return el("span", { class: `status-pill status-${s}` }, s); }
+function extNode(show) {
+  if (show.externalRating == null) return el("span", { class: "ext", style: "color:var(--faint)" }, "—");
+  return el("span", { class: "ext" }, el("span", { class: "star" }, "★ "), show.externalRating.toFixed(1));
+}
+
+/* ---------- table view ---------- */
+function renderTable(list) {
+  const headers = [
+    { key: "title", label: "Title", sortable: true },
+    { key: "status", label: "Status" },
+    { key: "personalRank", label: "Rank", sortable: true, num: true },
+    { key: "externalRating", label: "TMDB", sortable: true, num: true },
+    { key: "ratings", label: "Ratings" },
+    { key: "desc", label: "Description" },
+  ];
+  const thead = el("thead", {}, el("tr", {}, ...headers.map(h => {
+    const si = state.sort.findIndex(s => s.key === h.key);
+    const arrow = si >= 0 ? el("span", { class: "dir" }, " " + (state.sort[si].dir === "asc" ? "↑" : "↓")) : "";
+    const ord = si >= 0 && state.sort.length > 1 ? el("span", { class: "ord" }, String(si + 1)) : "";
+    const th = el("th", h.sortable ? { class: "sortable" } : {}, h.label, arrow, ord);
+    if (h.sortable) th.addEventListener("click", e => cycleSort(h.key, e.shiftKey));
+    return th;
+  })));
+  const tbody = el("tbody");
+  for (const s of list) {
+    const tr = el("tr", { class: "clickable" });
+    tr.append(el("td", {}, el("div", { class: "cell-title" }, thumb(s),
+      el("div", {}, el("span", { class: "t" }, s.title), el("span", { class: "yr" }, "(" + s.year + ")")))));
+    tr.append(el("td", {}, statusPill(s.status)));
+    tr.append(el("td", { class: "num" }, el("span", { class: "rank-badge" }, String(effRank(s)))));
+    tr.append(el("td", { class: "num" }, extNode(s)));
+    tr.append(el("td", {}, barsNode(s)));
+    tr.append(el("td", {}, el("div", { class: "desc" }, s.description)));
+    tr.addEventListener("click", () => openDetail(s.id));
+    tbody.append(tr);
+  }
+  return el("div", { class: "tablewrap" }, el("table", {}, thead, tbody));
+}
+
+/* ---------- custom (drag) table ---------- */
+let dragId = null;
+function renderCustomTable(list) {
+  const thead = el("thead", {}, el("tr", {},
+    el("th", {}, ""), el("th", {}, "Rank"), el("th", {}, "Title"),
+    el("th", {}, "Status"), el("th", {}, "Ratings (editable)")));
+  const tbody = el("tbody");
+  for (const s of list) {
+    const edited = isEdited(s.id);
+    const tr = el("tr", { class: "drag-row", draggable: "true", "data-id": s.id });
+    tr.append(el("td", { class: edited ? "edited" : "" }, el("span", { class: "handle" }, "⋮⋮")));
+    tr.append(el("td", { class: "num" + (edited ? " edited" : "") }, el("span", { class: "rank-badge" }, String(effRank(s)))));
+    tr.append(el("td", {}, el("div", { class: "cell-title" }, thumb(s),
+      el("div", {}, el("span", { class: "t" }, s.title), el("span", { class: "yr" }, "(" + s.year + ")")))));
+    tr.append(el("td", {}, statusPill(s.status)));
+    tr.append(el("td", {}, ratingEditNode(s)));
+    wireDrag(tr);
+    tbody.append(tr);
+  }
+  return el("div", { class: "tablewrap custom-table" }, el("table", {}, thead, tbody));
+}
+function wireDrag(tr) {
+  tr.addEventListener("dragstart", e => { dragId = tr.dataset.id; tr.classList.add("dragging"); e.dataTransfer.effectAllowed = "move"; });
+  tr.addEventListener("dragend", () => { tr.classList.remove("dragging"); clearDropMarks(); });
+  tr.addEventListener("dragover", e => {
+    e.preventDefault();
+    if (tr.dataset.id === dragId) return;
+    const rect = tr.getBoundingClientRect();
+    const after = e.clientY > rect.top + rect.height / 2;
+    clearDropMarks();
+    tr.classList.add(after ? "drop-after" : "drop-before");
+  });
+  tr.addEventListener("drop", e => {
+    e.preventDefault();
+    const targetId = tr.dataset.id;
+    if (!dragId || dragId === targetId) return;
+    const rect = tr.getBoundingClientRect();
+    const after = e.clientY > rect.top + rect.height / 2;
+    reorder(dragId, targetId, after);
+    clearDropMarks();
+  });
+}
+function clearDropMarks() { document.querySelectorAll(".drop-before,.drop-after").forEach(n => n.classList.remove("drop-before", "drop-after")); }
+function reorder(fromId, toId, after) {
+  const order = [...state.shows].sort((a, b) => effRank(a) - effRank(b)).map(s => s.id);
+  const fromIdx = order.indexOf(fromId);
+  order.splice(fromIdx, 1);
+  let toIdx = order.indexOf(toId);
+  if (after) toIdx += 1;
+  order.splice(toIdx, 0, fromId);
+  // dense rewrite 1..N
+  order.forEach((id, i) => {
+    const rank = i + 1;
+    if (state.byId[id].personalRank === rank) { if (state.edits[id]) { delete state.edits[id].personalRank; pruneEdit(id); } }
+    else { ensureEdit(id).personalRank = rank; }
+  });
+  update();
+}
+
+/* ---------- grid view ---------- */
+const GRID_SECTIONS = [
+  { title: "Watched & Watching", match: s => s.status === "watched" || s.status === "watching" },
+  { title: "Queued", match: s => s.status === "queued" },
+  { title: "Dropped", match: s => s.status === "dropped" },
+];
+function gridCard(s) {
+  const card = el("div", { class: "card" });
+  card.append(thumb(s, "poster"));
+  const rankext = el("div", { class: "rankext" },
+    el("span", {}, el("span", { class: "rank-badge" }, "#" + effRank(s))),
+    el("span", { class: "ext-label" }, "TMDB"), extNode(s));
+  card.append(el("div", { class: "body" },
+    el("div", { class: "head" },
+      el("div", {}, el("div", { class: "t" }, s.title), el("div", { class: "yr" }, s.year)),
+      statusPill(s.status)),
+    rankext, barsNode(s),
+    el("div", { class: "desc" }, s.description)));
+  card.addEventListener("click", () => openDetail(s.id));
+  return card;
+}
+function renderGrid(list) {
+  const wrap = el("div");
+  for (const sec of GRID_SECTIONS) {
+    const items = list.filter(sec.match);
+    if (!items.length) continue;
+    wrap.append(el("div", { class: "grid-section-h" }, sec.title, el("span", { class: "cnt" }, String(items.length))));
+    const grid = el("div", { class: "grid" });
+    for (const s of items) grid.append(gridCard(s));
+    wrap.append(grid);
+  }
+  return wrap;
+}
+
+/* ---------- detail + lightbox ---------- */
+let lbShots = [], lbIdx = 0;
+function openDetail(id) {
+  const s = state.byId[id];
+  state.detailId = id;
+  const body = $("#detailBody");
+  const links = el("div", { class: "links" });
+  if (s.tmdbId) links.append(el("a", { href: `https://www.themoviedb.org/tv/${s.tmdbId}`, target: "_blank", rel: "noopener" }, "TMDB ↗"));
+  if (s.imdbId) links.append(el("a", { href: `https://www.imdb.com/title/${s.imdbId}`, target: "_blank", rel: "noopener" }, "IMDb ↗"));
+
+  const detailBars = el("div", { class: "detail-bars" });
+  for (const k of RATING_KEYS) {
+    const v = effRating(s, k), m = RATING_META[k];
+    detailBars.append(el("div", { class: "bar" },
+      el("span", { class: "k" }, m.label),
+      el("span", { class: `meter ${m.cls}` }, el("i", { style: `width:${v * 10}%` })),
+      el("span", { class: "v" }, String(v))));
+  }
+
+  const shots = el("div", { class: "shots" });
+  (s.screenshots || []).forEach((src, i) => {
+    const im = el("img", { src, loading: "lazy", alt: "" });
+    im.addEventListener("click", () => openLightbox(s.screenshots, i));
+    shots.append(im);
+  });
+
+  body.replaceChildren(el("div", { class: "detail" },
+    el("div", { class: "left" }, thumb(s, ""), el("div", { style: "margin-top:12px" },
+      el("div", { class: "detail-bars", style: "grid-template-columns:1fr" }, detailBars))),
+    el("div", { class: "right" },
+      el("h2", {}, s.title),
+      el("div", { class: "sub" }, `${s.year} · ${s.type}`, statusPill(s.status),
+        el("span", {}, el("span", { class: "rank-badge" }, "#" + effRank(s)), " personal"), extNode(s), links),
+      s.dropReason ? el("div", { class: "section" }, el("h3", {}, "Dropped because"), el("p", { class: "droprsn" }, s.dropReason)) : null,
+      el("div", { class: "section" }, el("h3", {}, "Description"), el("p", {}, s.description)),
+      s.notes ? el("div", { class: "section" }, el("h3", {}, "Notes"), el("p", { class: "notes" }, s.notes)) : null,
+      (s.tags && s.tags.length) ? el("div", { class: "section" }, el("h3", {}, "Tags"), el("div", { class: "tags" }, ...s.tags.map(t => el("span", {}, t)))) : null,
+      (s.screenshots && s.screenshots.length) ? el("div", { class: "section" }, el("h3", {}, "Screenshots"), shots) : null,
+    )));
+  $("#detail").showModal();
+}
+function openLightbox(shots, idx) {
+  lbShots = shots; lbIdx = idx;
+  const lb = $("#lightbox");
+  lb.replaceChildren(
+    el("button", { class: "lb-nav prev", onclick: () => stepLightbox(-1) }, "‹"),
+    el("img", { src: shots[idx], alt: "" }),
+    el("button", { class: "lb-nav next", onclick: () => stepLightbox(1) }, "›"),
+    el("span", { class: "lb-count" }, `${idx + 1} / ${shots.length}`),
+  );
+  if (!lb.open) lb.showModal();
+}
+function stepLightbox(d) { lbIdx = (lbIdx + d + lbShots.length) % lbShots.length; openLightbox(lbShots, lbIdx); }
+$("#lightbox").addEventListener("click", e => { if (e.target.tagName === "IMG") return; if (e.target.id === "lightbox") $("#lightbox").close(); });
+document.addEventListener("keydown", e => {
+  if ($("#lightbox").open) { if (e.key === "ArrowLeft") stepLightbox(-1); if (e.key === "ArrowRight") stepLightbox(1); }
+});
+$("#detailClose").addEventListener("click", () => $("#detail").close());
+
+/* ---------- unsaved bar ---------- */
+function updateUnsaved() {
+  const recs = changedRecords();
+  const bar = $("#unsaved");
+  bar.classList.toggle("show", recs.length > 0);
+  $("#unsavedN").textContent = `${recs.length} unsaved change${recs.length === 1 ? "" : "s"}`;
+}
+function buildPatch() { return JSON.stringify(changedRecords(), null, 2); }
+function buildMergedDb() {
+  const db = JSON.parse(JSON.stringify(state.raw));
+  for (const s of db.shows) {
+    const e = state.edits[s.id]; if (!e) continue;
+    if (e.personalRank != null) s.personalRank = e.personalRank;
+    if (e.ratings) for (const k of RATING_KEYS) if (e.ratings[k] != null) s.ratings[k] = e.ratings[k];
+  }
+  db.updated = new Date().toISOString().slice(0, 10);
+  return JSON.stringify(db, null, 2) + "\n";
+}
+async function copyToClipboard(text, msg) {
+  try { await navigator.clipboard.writeText(text); toast(msg); }
+  catch { const ta = el("textarea", { style: "position:fixed;opacity:0" }); ta.value = text; document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove(); toast(msg); }
+}
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 1600); }
+
+$("#copyPatch").addEventListener("click", () => copyToClipboard(buildPatch(), "Patch copied"));
+function downloadBlob(text) {
+  const blob = new Blob([text], { type: "application/json" });
+  const a = el("a", { href: URL.createObjectURL(blob), download: "shows.json" });
+  document.body.append(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+}
+$("#downloadJson").addEventListener("click", async () => {
+  const text = buildMergedDb();
+
+  // Guard: never write empty/invalid content. If this trips, the bug is upstream.
+  try { JSON.parse(text); } catch { toast("Aborted: generated JSON was invalid"); return; }
+  if (!text || text.length < 2) { toast("Aborted: nothing to write"); return; }
+
+  // Native "Save As" picker where supported (Chromium, secure context incl. localhost).
+  // Some embedded/preview browsers implement the File System Access API incompletely
+  // and write a blank file, so we verify the write by reading it back; on any failure
+  // we fall back to a normal download so data is never lost.
+  if (window.showSaveFilePicker) {
+    let handle;
+    try {
+      handle = await window.showSaveFilePicker({
+        suggestedName: "shows.json",
+        types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
+      });
+    } catch (err) {
+      if (err.name === "AbortError") return; // user cancelled the dialog
+      console.error(err); // picker itself failed — fall through to download
+    }
+    if (handle) {
+      try {
+        const writable = await handle.createWritable();
+        await writable.write(text);
+        await writable.close();
+        // Verify: read the file back and confirm it isn't blank/truncated.
+        const written = await (await handle.getFile()).text();
+        if (written.length === text.length) { toast("shows.json saved"); return; }
+        console.warn(`Save verification failed: wrote ${text.length}, read back ${written.length}.`);
+      } catch (err) {
+        console.error("Save failed:", err);
+      }
+      // In-place save was unreliable — hand the user a good copy instead of leaving them stuck.
+      downloadBlob(text);
+      toast("Save picker misbehaved — downloaded a copy instead");
+      return;
+    }
+  }
+  // No picker available: normal browser download.
+  downloadBlob(text);
+  toast("shows.json downloaded");
+});
+$("#discardEdits").addEventListener("click", () => { if (confirm("Discard all unsaved changes?")) { state.edits = {}; update(); } });
+
+/* ---------- filter controls ---------- */
+function buildRange(container, key) {
+  const [mn, mx] = state.ranges[key];
+  const rail = el("div", { class: "rail" });
+  const fill = el("div", { class: "fill" });
+  const lo = el("input", { type: "range", min: "0", max: "10", step: "1", value: String(mn) });
+  const hi = el("input", { type: "range", min: "0", max: "10", step: "1", value: String(mx) });
+  const track = el("div", { class: "track" }, rail, fill, lo, hi);
+  container.replaceChildren(track);
+  const paint = () => {
+    let a = Number(lo.value), b = Number(hi.value);
+    if (a > b) { if (document.activeElement === lo) hi.value = lo.value; else lo.value = hi.value; a = Number(lo.value); b = Number(hi.value); }
+    fill.style.left = (a / 10 * 100) + "%";
+    fill.style.width = ((b - a) / 10 * 100) + "%";
+    $("#" + RATING_META[key].short + "Val").textContent = (a === 0 && b === 10) ? "" : `${a}–${b}`;
+  };
+  const commit = () => { state.ranges[key] = [Number(lo.value), Number(hi.value)]; update(); };
+  lo.addEventListener("input", paint); hi.addEventListener("input", paint);
+  lo.addEventListener("change", commit); hi.addEventListener("change", commit);
+  paint();
+}
+function syncFilterInputs() {
+  for (const k of RATING_KEYS) buildRange($(`.range[data-key="${k}"]`), k);
+}
+
+$("#resetFilters").addEventListener("click", () => {
+  state.ranges = { sexualContent: [0, 10], violence: [0, 10], humor: [0, 10] };
+  for (const k of RATING_KEYS) buildRange($(`.range[data-key="${k}"]`), k); update();
+});
+
+/* view + custom toggles */
+$("#viewSeg").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.view = b.dataset.view; update(); });
+$("#customBtn").addEventListener("click", () => { state.custom = !state.custom; update(); });
+
+const addSortSel = $("#addSort");
+for (const k of SORT_KEYS) addSortSel.append(el("option", { value: k }, SORT_LABEL[k]));
+addSortSel.addEventListener("change", () => { if (addSortSel.value) { cycleSort(addSortSel.value, true); addSortSel.value = ""; } });
+
+/* ---------- main render ---------- */
+function update(reserialize = true) {
+  // toolbars
+  [...$("#viewSeg").children].forEach(b => b.classList.toggle("active", b.dataset.view === state.view));
+  $("#customBtn").classList.toggle("active", state.custom);
+  $("#filters").classList.toggle("hidden", state.custom);
+  $("#customHint").style.display = state.custom ? "" : "none";
+  $("#addSort").disabled = state.custom;
+  renderSortChips();
+
+  const list = visibleShows();
+  $("#count").textContent = state.custom
+    ? `${state.shows.length} shows`
+    : `${list.length} of ${state.shows.length} shown`;
+
+  const root = $("#listRoot");
+  if (!list.length) { root.replaceChildren(el("div", { class: "empty" }, "No shows match these filters.")); }
+  else if (state.custom) root.replaceChildren(renderCustomTable(list));
+  else if (state.view === "grid") root.replaceChildren(renderGrid(list));
+  else root.replaceChildren(renderTable(list));
+
+  updateUnsaved();
+  if (reserialize) serializeURL();
+}
+
+/* ---------- boot ---------- */
+async function boot() {
+  let db;
+  try {
+    const res = await fetch("data/shows.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(res.status + " " + res.statusText);
+    db = await res.json();
+  } catch (err) {
+    $("#listRoot").replaceChildren(el("div", { class: "empty" },
+      "Couldn't load data/shows.json (" + err.message + "). Serve this folder over a static file server — e.g. ",
+      el("code", {}, "python3 -m http.server"), " — then open the printed URL."));
+    return;
+  }
+  state.raw = db;
+  state.shows = db.shows;
+  state.byId = Object.fromEntries(db.shows.map(s => [s.id, s]));
+  parseURL();
+  syncFilterInputs();
+  update(false); // don't rewrite URL on first paint (preserve pasted URL as-is)
+}
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,1417 @@
+{
+  "version": 1,
+  "updated": "2026-09-16",
+  "shows": [
+    {
+      "id": "jujutsu-kaisen",
+      "title": "Jujutsu Kaisen",
+      "year": 2020,
+      "type": "anime",
+      "status": "watched",
+      "description": "Cursed-energy sorcerers fight the manifestations of human negativity, and a good-natured kid swallows a rotting finger to host the king of curses. The fight choreography is the whole point.",
+      "poster": "assets/posters/jujutsu-kaisen.jpg",
+      "screenshots": [
+        "assets/screens/jujutsu-kaisen-1.jpg",
+        "assets/screens/jujutsu-kaisen-2.jpg",
+        "assets/screens/jujutsu-kaisen-3.jpg",
+        "assets/screens/jujutsu-kaisen-4.jpg"
+      ],
+      "personalRank": 8,
+      "externalRating": 8.6,
+      "externalSource": "tmdb",
+      "tmdbId": 95479,
+      "imdbId": "tt12343534",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 9,
+        "humor": 6
+      },
+      "notes": "Top of the list on sheer combat animation and Gojo. The tone whiplash between goofy and horrifying works for me.",
+      "tags": [
+        "fantasy",
+        "action",
+        "shonen",
+        "modern-animation",
+        "curses"
+      ]
+    },
+    {
+      "id": "mob-psycho-100",
+      "title": "Mob Psycho 100",
+      "year": 2016,
+      "type": "anime",
+      "status": "watched",
+      "description": "An overpowered psychic middle-schooler just wants to be liked, mentored by a con-man exorcist who has no powers at all. It's secretly a show about being a decent person.",
+      "poster": "assets/posters/mob-psycho-100.jpg",
+      "screenshots": [
+        "assets/screens/mob-psycho-100-1.jpg",
+        "assets/screens/mob-psycho-100-2.jpg",
+        "assets/screens/mob-psycho-100-3.jpg",
+        "assets/screens/mob-psycho-100-4.jpg"
+      ],
+      "personalRank": 5,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 67075,
+      "imdbId": "tt5897304",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 6,
+        "humor": 8
+      },
+      "notes": "The animation goes completely feral in the climaxes and the emotional core is real. Reigen is one of the best characters in anything.",
+      "tags": [
+        "supernatural",
+        "coming-of-age",
+        "comedy",
+        "modern-animation",
+        "psychic"
+      ]
+    },
+    {
+      "id": "cyberpunk-edgerunners",
+      "title": "Cyberpunk: Edgerunners",
+      "year": 2022,
+      "type": "anime",
+      "status": "watched",
+      "description": "A street kid in Night City chases the dream of being a legendary mercenary, one chrome upgrade at a time. Trigger makes the doom feel like a rush right up until it doesn't.",
+      "poster": "assets/posters/cyberpunk-edgerunners.jpg",
+      "screenshots": [
+        "assets/screens/cyberpunk-edgerunners-1.jpg",
+        "assets/screens/cyberpunk-edgerunners-2.jpg",
+        "assets/screens/cyberpunk-edgerunners-3.jpg",
+        "assets/screens/cyberpunk-edgerunners-4.jpg"
+      ],
+      "personalRank": 9,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 105248,
+      "imdbId": "tt12590266",
+      "ratings": {
+        "sexualContent": 6,
+        "violence": 10,
+        "humor": 3
+      },
+      "notes": "Ten episodes with zero fat. The ending wrecked me. Style and grief in equal measure.",
+      "tags": [
+        "sci-fi",
+        "cyberpunk",
+        "tragedy",
+        "modern-animation",
+        "trigger"
+      ]
+    },
+    {
+      "id": "sakamoto-days",
+      "title": "Sakamoto Days",
+      "year": 2025,
+      "type": "anime",
+      "status": "watched",
+      "description": "A legendary hitman retired, got fat and happy running a corner store, and now has to protect his family without killing anyone. Deadpan action comedy.",
+      "poster": "assets/posters/sakamoto-days.jpg",
+      "screenshots": [
+        "assets/screens/sakamoto-days-1.jpg",
+        "assets/screens/sakamoto-days-2.jpg",
+        "assets/screens/sakamoto-days-3.jpg",
+        "assets/screens/sakamoto-days-4.jpg"
+      ],
+      "personalRank": 4,
+      "externalRating": 8.1,
+      "externalSource": "tmdb",
+      "tmdbId": 207332,
+      "imdbId": "tt17069148",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 7,
+        "humor": 8
+      },
+      "notes": "The no-kill constraint makes every fight a puzzle. Sakamoto's silent competence is very funny.",
+      "tags": [
+        "action",
+        "comedy",
+        "assassins",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "frieren",
+      "title": "Frieren: Beyond Journey's End",
+      "year": 2023,
+      "type": "anime",
+      "status": "watched",
+      "description": "An elf mage who outlives her whole adventuring party retraces their old road, finally trying to understand the humans she barely paid attention to. A show about grief measured in centuries.",
+      "poster": "assets/posters/frieren.jpg",
+      "screenshots": [
+        "assets/screens/frieren-1.jpg",
+        "assets/screens/frieren-2.jpg",
+        "assets/screens/frieren-3.jpg",
+        "assets/screens/frieren-4.jpg"
+      ],
+      "personalRank": 1,
+      "externalRating": 8.8,
+      "externalSource": "tmdb",
+      "tmdbId": 209867,
+      "imdbId": "tt22248376",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 4,
+        "humor": 5
+      },
+      "notes": "Quiet, patient, gorgeous. The 'what is a lifetime worth' question lands hard.",
+      "tags": [
+        "fantasy",
+        "drama",
+        "slice-of-life",
+        "modern-animation",
+        "melancholy"
+      ]
+    },
+    {
+      "id": "dandadan",
+      "title": "Dandadan",
+      "year": 2024,
+      "type": "anime",
+      "status": "watched",
+      "description": "A girl who believes in ghosts and a boy who believes in aliens both turn out to be right, then get powers and start falling for each other. Pure kinetic chaos.",
+      "poster": "assets/posters/dandadan.jpg",
+      "screenshots": [
+        "assets/screens/dandadan-1.jpg",
+        "assets/screens/dandadan-2.jpg",
+        "assets/screens/dandadan-3.jpg",
+        "assets/screens/dandadan-4.jpg"
+      ],
+      "personalRank": 10,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 240411,
+      "imdbId": "tt30217403",
+      "ratings": {
+        "sexualContent": 5,
+        "violence": 7,
+        "humor": 8
+      },
+      "notes": "Insane visual energy and a genuinely sweet romance underneath the weirdness. Science SARU showing off.",
+      "tags": [
+        "supernatural",
+        "romance",
+        "comedy",
+        "aliens",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "ranking-of-kings",
+      "title": "Ranking of Kings",
+      "year": 2021,
+      "type": "anime",
+      "status": "watched",
+      "description": "A deaf, tiny, physically weak prince nobody believes in sets out to become the greatest king. Storybook art hiding a surprisingly sharp story.",
+      "poster": "assets/posters/ranking-of-kings.jpg",
+      "screenshots": [
+        "assets/screens/ranking-of-kings-1.jpg",
+        "assets/screens/ranking-of-kings-2.jpg",
+        "assets/screens/ranking-of-kings-3.jpg",
+        "assets/screens/ranking-of-kings-4.jpg"
+      ],
+      "personalRank": 14,
+      "externalRating": 8.1,
+      "externalSource": "tmdb",
+      "tmdbId": 112613,
+      "imdbId": "tt13409432",
+      "ratings": {
+        "sexualContent": 0,
+        "violence": 5,
+        "humor": 6
+      },
+      "notes": "Bojji is impossible not to root for. The fairytale look is deceptively deep.",
+      "tags": [
+        "fantasy",
+        "adventure",
+        "drama",
+        "underdog",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "chainsaw-man",
+      "title": "Chainsaw Man",
+      "year": 2022,
+      "type": "anime",
+      "status": "watched",
+      "description": "A dirt-poor kid fused with his chainsaw devil-dog becomes a government devil hunter whose ambitions are basically food and touching a girl. Grimy and horny and sad.",
+      "poster": "assets/posters/chainsaw-man.jpg",
+      "screenshots": [
+        "assets/screens/chainsaw-man-1.jpg",
+        "assets/screens/chainsaw-man-2.jpg",
+        "assets/screens/chainsaw-man-3.jpg",
+        "assets/screens/chainsaw-man-4.jpg"
+      ],
+      "personalRank": 12,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 114410,
+      "imdbId": "tt13616990",
+      "ratings": {
+        "sexualContent": 6,
+        "violence": 10,
+        "humor": 6
+      },
+      "notes": "MAPPA went cinematic with it. Denji's total lack of loftier goals is the joke and the tragedy.",
+      "tags": [
+        "action",
+        "horror",
+        "devils",
+        "modern-animation",
+        "mappa"
+      ]
+    },
+    {
+      "id": "dorohedoro",
+      "title": "Dorohedoro",
+      "year": 2020,
+      "type": "anime",
+      "status": "watched",
+      "description": "A man with a reptile head and no memory hunts the sorcerer who did it to him, in a filthy world where magic-users treat the poor as test subjects. Gore with a huge heart.",
+      "poster": "assets/posters/dorohedoro.jpg",
+      "screenshots": [
+        "assets/screens/dorohedoro-1.jpg",
+        "assets/screens/dorohedoro-2.jpg",
+        "assets/screens/dorohedoro-3.jpg",
+        "assets/screens/dorohedoro-4.jpg"
+      ],
+      "personalRank": 13,
+      "externalRating": 8.4,
+      "externalSource": "tmdb",
+      "tmdbId": 94404,
+      "imdbId": "tt11147852",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 9,
+        "humor": 7
+      },
+      "notes": "The world-building is unmatched and it's weirdly cozy despite the viscera. Nikaido rules.",
+      "tags": [
+        "dark-fantasy",
+        "horror-comedy",
+        "gore",
+        "cg",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "the-apothecary-diaries",
+      "title": "The Apothecary Diaries",
+      "year": 2023,
+      "type": "anime",
+      "status": "watched",
+      "description": "A sardonic apprentice pharmacist gets pulled into the imperial court and can't help solving poisonings and mysteries no one asked her to. Historical detective comfort food.",
+      "poster": "assets/posters/the-apothecary-diaries.jpg",
+      "screenshots": [
+        "assets/screens/the-apothecary-diaries-1.jpg",
+        "assets/screens/the-apothecary-diaries-2.jpg",
+        "assets/screens/the-apothecary-diaries-3.jpg",
+        "assets/screens/the-apothecary-diaries-4.jpg"
+      ],
+      "personalRank": 20,
+      "externalRating": 8.6,
+      "externalSource": "tmdb",
+      "tmdbId": 220542,
+      "imdbId": "tt26743760",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 3,
+        "humor": 6
+      },
+      "notes": "Maomao's poison obsession is a delight. Low-stakes mysteries with a smart lead.",
+      "tags": [
+        "mystery",
+        "historical",
+        "drama",
+        "court-intrigue",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "delicious-in-dungeon",
+      "title": "Delicious in Dungeon",
+      "year": 2024,
+      "type": "anime",
+      "status": "watched",
+      "description": "A party that lost a member to a dragon decides to descend the dungeon on a budget by eating the monsters they kill. A cooking show wearing a fantasy adventure.",
+      "poster": "assets/posters/delicious-in-dungeon.jpg",
+      "screenshots": [
+        "assets/screens/delicious-in-dungeon-1.jpg",
+        "assets/screens/delicious-in-dungeon-2.jpg",
+        "assets/screens/delicious-in-dungeon-3.jpg",
+        "assets/screens/delicious-in-dungeon-4.jpg"
+      ],
+      "personalRank": 2,
+      "externalRating": 8.4,
+      "externalSource": "tmdb",
+      "tmdbId": 207784,
+      "imdbId": "tt21621494",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 5,
+        "humor": 7
+      },
+      "notes": "The 'what does this monster taste like' premise is deeper than it sounds. Trigger having fun.",
+      "tags": [
+        "fantasy",
+        "adventure",
+        "comedy",
+        "food",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "one-piece",
+      "title": "One Piece",
+      "year": 1999,
+      "type": "anime",
+      "status": "watched",
+      "description": "A rubber-limbed idiot with a straw hat gathers the most loyal crew in fiction and sails toward being king of the pirates. The longest-running commitment on this list.",
+      "poster": "assets/posters/one-piece.jpg",
+      "screenshots": [
+        "assets/screens/one-piece-1.jpg",
+        "assets/screens/one-piece-2.jpg",
+        "assets/screens/one-piece-3.jpg",
+        "assets/screens/one-piece-4.jpg"
+      ],
+      "personalRank": 21,
+      "externalRating": 8.7,
+      "externalSource": "tmdb",
+      "tmdbId": 37854,
+      "imdbId": "tt0388629",
+      "ratings": {
+        "sexualContent": 5,
+        "violence": 6,
+        "humor": 8
+      },
+      "notes": "Ranked lower only because of the pacing tax. When it hits, nothing else makes me cry like it.",
+      "tags": [
+        "adventure",
+        "shonen",
+        "pirates",
+        "long-running",
+        "found-family"
+      ]
+    },
+    {
+      "id": "invincible",
+      "title": "Invincible",
+      "year": 2021,
+      "type": "western",
+      "status": "watched",
+      "description": "A teenage superhero's dad is Earth's Superman-equivalent, and that turns out to be the worst possible news. Kirkman deconstructing the genre with a lot of blood.",
+      "poster": "assets/posters/invincible.jpg",
+      "screenshots": [
+        "assets/screens/invincible-1.jpg",
+        "assets/screens/invincible-2.jpg",
+        "assets/screens/invincible-3.jpg",
+        "assets/screens/invincible-4.jpg"
+      ],
+      "personalRank": 11,
+      "externalRating": 8.6,
+      "externalSource": "tmdb",
+      "tmdbId": 95557,
+      "imdbId": "tt6741278",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 10,
+        "humor": 4
+      },
+      "notes": "The pilot's final twist is one of the best gut-punches on TV. Escalates hard.",
+      "tags": [
+        "superhero",
+        "drama",
+        "gore",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "the-legend-of-vox-machina",
+      "title": "The Legend of Vox Machina",
+      "year": 2022,
+      "type": "western",
+      "status": "watched",
+      "description": "A band of foul-mouthed mercenaries stumble into saving the realm, adapted from a Critical Role campaign. Raunchy D&D energy with real emotional payoffs.",
+      "poster": "assets/posters/the-legend-of-vox-machina.jpg",
+      "screenshots": [
+        "assets/screens/the-legend-of-vox-machina-1.jpg",
+        "assets/screens/the-legend-of-vox-machina-2.jpg",
+        "assets/screens/the-legend-of-vox-machina-3.jpg",
+        "assets/screens/the-legend-of-vox-machina-4.jpg"
+      ],
+      "personalRank": 19,
+      "externalRating": 8.2,
+      "externalSource": "tmdb",
+      "tmdbId": 135934,
+      "imdbId": "tt11247158",
+      "ratings": {
+        "sexualContent": 6,
+        "violence": 8,
+        "humor": 8
+      },
+      "notes": "Funnier and more heartfelt than a crowdfunded cartoon had any right to be.",
+      "tags": [
+        "fantasy",
+        "comedy",
+        "adventure",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "harley-quinn",
+      "title": "Harley Quinn",
+      "year": 2019,
+      "type": "western",
+      "status": "watched",
+      "description": "Harley dumps the Joker and builds her own crew of C-list villains while falling for Poison Ivy. The best DC has been in years, animated or not.",
+      "poster": "assets/posters/harley-quinn.jpg",
+      "screenshots": [
+        "assets/screens/harley-quinn-1.jpg",
+        "assets/screens/harley-quinn-2.jpg",
+        "assets/screens/harley-quinn-3.jpg",
+        "assets/screens/harley-quinn-4.jpg"
+      ],
+      "personalRank": 18,
+      "externalRating": 8.3,
+      "externalSource": "tmdb",
+      "tmdbId": 74440,
+      "imdbId": "tt7658402",
+      "ratings": {
+        "sexualContent": 6,
+        "violence": 8,
+        "humor": 9
+      },
+      "notes": "Genuinely one of the funniest shows anywhere, and the HarlIvy relationship is the real spine.",
+      "tags": [
+        "superhero",
+        "comedy",
+        "romance",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "creature-commandos",
+      "title": "Creature Commandos",
+      "year": 2024,
+      "type": "western",
+      "status": "watched",
+      "description": "A black-ops squad of monsters does the dirty work the government can't be seen doing, kicking off Gunn's new DC animated universe. Mean, funny, surprisingly sad.",
+      "poster": "assets/posters/creature-commandos.jpg",
+      "screenshots": [
+        "assets/screens/creature-commandos-1.jpg",
+        "assets/screens/creature-commandos-2.jpg",
+        "assets/screens/creature-commandos-3.jpg",
+        "assets/screens/creature-commandos-4.jpg"
+      ],
+      "personalRank": 17,
+      "externalRating": 7.8,
+      "externalSource": "tmdb",
+      "tmdbId": 219543,
+      "imdbId": "tt26545355",
+      "ratings": {
+        "sexualContent": 5,
+        "violence": 9,
+        "humor": 6
+      },
+      "notes": "The Bride and Doctor Phosphorus backstories hit harder than expected. Gunn does misfits well.",
+      "tags": [
+        "superhero",
+        "action",
+        "dark-comedy",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "star-trek-lower-decks",
+      "title": "Star Trek: Lower Decks",
+      "year": 2020,
+      "type": "western",
+      "status": "watched",
+      "description": "The ensigns who mop the corridors while the bridge crew has adventures finally get the spotlight. A love letter to Trek that's also relentlessly funny.",
+      "poster": "assets/posters/star-trek-lower-decks.jpg",
+      "screenshots": [
+        "assets/screens/star-trek-lower-decks-1.jpg",
+        "assets/screens/star-trek-lower-decks-2.jpg",
+        "assets/screens/star-trek-lower-decks-3.jpg",
+        "assets/screens/star-trek-lower-decks-4.jpg"
+      ],
+      "personalRank": 6,
+      "externalRating": 7.6,
+      "externalSource": "tmdb",
+      "tmdbId": 85948,
+      "imdbId": "tt9184820",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 4,
+        "humor": 9
+      },
+      "notes": "Deep-cut references but the character growth is sincere. Boimler and Mariner carry it.",
+      "tags": [
+        "sci-fi",
+        "comedy",
+        "star-trek",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "final-space",
+      "title": "Final Space",
+      "year": 2018,
+      "type": "western",
+      "status": "watched",
+      "description": "A dim, lonely convict in space bonds with a planet-destroying green blob, and the goofy comedy slowly turns into cosmic tragedy. Got cancelled on a cliffhanger.",
+      "poster": "assets/posters/final-space.jpg",
+      "screenshots": [
+        "assets/screens/final-space-1.jpg",
+        "assets/screens/final-space-2.jpg",
+        "assets/screens/final-space-3.jpg",
+        "assets/screens/final-space-4.jpg"
+      ],
+      "personalRank": 3,
+      "externalRating": 8.4,
+      "externalSource": "tmdb",
+      "tmdbId": 74387,
+      "imdbId": "tt6317068",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 6,
+        "humor": 8
+      },
+      "notes": "The tonal shift from silly to devastating is the whole appeal. Mooncake. That's it, that's the note.",
+      "tags": [
+        "sci-fi",
+        "comedy",
+        "tragedy",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "blue-eye-samurai",
+      "title": "Blue Eye Samurai",
+      "year": 2023,
+      "type": "western",
+      "status": "watched",
+      "description": "A mixed-race sword master in Edo Japan hides her face and hunts the four white men who could be her father. A revenge epic with staggering craft.",
+      "poster": "assets/posters/blue-eye-samurai.jpg",
+      "screenshots": [
+        "assets/screens/blue-eye-samurai-1.jpg",
+        "assets/screens/blue-eye-samurai-2.jpg",
+        "assets/screens/blue-eye-samurai-3.jpg",
+        "assets/screens/blue-eye-samurai-4.jpg"
+      ],
+      "personalRank": 16,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 225180,
+      "imdbId": "tt13309742",
+      "ratings": {
+        "sexualContent": 6,
+        "violence": 9,
+        "humor": 3
+      },
+      "notes": "The action set-pieces are films unto themselves. Mizu is a phenomenal protagonist.",
+      "tags": [
+        "historical",
+        "action",
+        "revenge",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "castlevania",
+      "title": "Castlevania",
+      "year": 2017,
+      "type": "western",
+      "status": "watched",
+      "description": "Dracula, grieving his murdered wife, unleashes hell on Wallachia, and a drunk monster-hunter, a scholar-mage, and Dracula's own son try to stop him. The game adaptation that proved they could be great.",
+      "poster": "assets/posters/castlevania.jpg",
+      "screenshots": [
+        "assets/screens/castlevania-1.jpg",
+        "assets/screens/castlevania-2.jpg",
+        "assets/screens/castlevania-3.jpg",
+        "assets/screens/castlevania-4.jpg"
+      ],
+      "personalRank": 15,
+      "externalRating": 8.3,
+      "externalSource": "tmdb",
+      "tmdbId": 71024,
+      "imdbId": "tt6517102",
+      "ratings": {
+        "sexualContent": 5,
+        "violence": 9,
+        "humor": 3
+      },
+      "notes": "Powerhouse Studio Mir animation and a Dracula you actually mourn. Dialogue-heavy in the best way.",
+      "tags": [
+        "dark-fantasy",
+        "action",
+        "vampires",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "the-dragon-prince",
+      "title": "The Dragon Prince",
+      "year": 2018,
+      "type": "western",
+      "status": "watched",
+      "description": "Two human princes and a young elf assassin protect the egg of the dragon king to end a cycle of war. From Avatar veterans, aimed younger but earnest.",
+      "poster": "assets/posters/the-dragon-prince.jpg",
+      "screenshots": [
+        "assets/screens/the-dragon-prince-1.jpg",
+        "assets/screens/the-dragon-prince-2.jpg",
+        "assets/screens/the-dragon-prince-3.jpg",
+        "assets/screens/the-dragon-prince-4.jpg"
+      ],
+      "personalRank": 24,
+      "externalRating": 8.2,
+      "externalSource": "tmdb",
+      "tmdbId": 81046,
+      "imdbId": "tt8688814",
+      "ratings": {
+        "sexualContent": 0,
+        "violence": 4,
+        "humor": 5
+      },
+      "notes": "Slow start and the early CG animation is rough, but the world and politics grew on me.",
+      "tags": [
+        "fantasy",
+        "adventure",
+        "family",
+        "western"
+      ]
+    },
+    {
+      "id": "arcane",
+      "title": "Arcane",
+      "year": 2021,
+      "type": "western",
+      "status": "watched",
+      "description": "Two sisters end up on opposite sides of a class war between a gleaming city and the undercity beneath it. The League of Legends show that turned out to be a masterpiece.",
+      "poster": "assets/posters/arcane.jpg",
+      "screenshots": [
+        "assets/screens/arcane-1.jpg",
+        "assets/screens/arcane-2.jpg",
+        "assets/screens/arcane-3.jpg",
+        "assets/screens/arcane-4.jpg"
+      ],
+      "personalRank": 22,
+      "externalRating": 8.7,
+      "externalSource": "tmdb",
+      "tmdbId": 94605,
+      "imdbId": "tt11126994",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 8,
+        "humor": 3
+      },
+      "notes": "Fortiche's painterly animation is best-in-class. Ranked here only because season 2 lost me a bit.",
+      "tags": [
+        "fantasy",
+        "sci-fi",
+        "drama",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "star-wars-visions",
+      "title": "Star Wars: Visions",
+      "year": 2021,
+      "type": "anime",
+      "status": "watched",
+      "description": "An anthology handing Star Wars to top Japanese (and later global) animation studios to do whatever they want. Wildly uneven, but the highs are transcendent.",
+      "poster": "assets/posters/star-wars-visions.jpg",
+      "screenshots": [
+        "assets/screens/star-wars-visions-1.jpg",
+        "assets/screens/star-wars-visions-2.jpg",
+        "assets/screens/star-wars-visions-3.jpg",
+        "assets/screens/star-wars-visions-4.jpg"
+      ],
+      "personalRank": 23,
+      "externalRating": 7.1,
+      "externalSource": "tmdb",
+      "tmdbId": 114478,
+      "imdbId": "tt13622982",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 6,
+        "humor": 4
+      },
+      "notes": "'The Duel' and 'The Ninth Jedi' alone justify it. Anthology means it's a grab bag.",
+      "tags": [
+        "sci-fi",
+        "anthology",
+        "star-wars",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "what-if",
+      "title": "What If...?",
+      "year": 2021,
+      "type": "western",
+      "status": "watched",
+      "description": "The Watcher narrates alternate-timeline Marvel stories, from zombie Avengers to Star-Lord T'Challa. Anthology quality, but the best episodes are great.",
+      "poster": "assets/posters/what-if.jpg",
+      "screenshots": [
+        "assets/screens/what-if-1.jpg",
+        "assets/screens/what-if-2.jpg",
+        "assets/screens/what-if-3.jpg",
+        "assets/screens/what-if-4.jpg"
+      ],
+      "personalRank": 25,
+      "externalRating": 8,
+      "externalSource": "tmdb",
+      "tmdbId": 91363,
+      "imdbId": "tt10168312",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 6,
+        "humor": 4
+      },
+      "notes": "Uneven across seasons but a fun what-if machine. T'Challa Star-Lord is the standout.",
+      "tags": [
+        "superhero",
+        "anthology",
+        "sci-fi",
+        "marvel",
+        "western"
+      ]
+    },
+    {
+      "id": "kaguya-sama-love-is-war",
+      "title": "Kaguya-sama: Love is War",
+      "year": 2019,
+      "type": "anime",
+      "status": "watching",
+      "description": "Two brilliant, prideful student-council members are in love but each refuses to confess first, so they wage elaborate psychological warfare to make the other cave. Romance as a battle anime.",
+      "poster": "assets/posters/kaguya-sama-love-is-war.jpg",
+      "screenshots": [
+        "assets/screens/kaguya-sama-love-is-war-1.jpg",
+        "assets/screens/kaguya-sama-love-is-war-2.jpg",
+        "assets/screens/kaguya-sama-love-is-war-3.jpg",
+        "assets/screens/kaguya-sama-love-is-war-4.jpg"
+      ],
+      "personalRank": 7,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 83121,
+      "imdbId": "tt9522300",
+      "ratings": {
+        "sexualContent": 3,
+        "violence": 1,
+        "humor": 9
+      },
+      "notes": "Currently watching. The narrator and Chika's chaos energy are carrying huge laughs.",
+      "tags": [
+        "romance",
+        "comedy",
+        "school",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "vinland-saga",
+      "title": "Vinland Saga",
+      "year": 2019,
+      "type": "anime",
+      "status": "dropped",
+      "dropReason": "brutality went past what I want from heartbreak",
+      "description": "A boy raised among Vikings hunts the mercenary who killed his father, in a bleak historical epic about the cost of vengeance. Beautifully made, relentlessly grim.",
+      "poster": "assets/posters/vinland-saga.jpg",
+      "screenshots": [
+        "assets/screens/vinland-saga-1.jpg",
+        "assets/screens/vinland-saga-2.jpg",
+        "assets/screens/vinland-saga-3.jpg",
+        "assets/screens/vinland-saga-4.jpg"
+      ],
+      "personalRank": 26,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 88803,
+      "imdbId": "tt10233448",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 10,
+        "humor": 2
+      },
+      "notes": "Objectively excellent, I just couldn't keep sitting in the cruelty. Dropped, not disliked.",
+      "tags": [
+        "historical",
+        "drama",
+        "vikings",
+        "revenge",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "fullmetal-alchemist-brotherhood",
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "year": 2009,
+      "type": "anime",
+      "status": "dropped",
+      "dropReason": "dub performances and dated animation, couldn't get past the lead",
+      "description": "Two brothers who broke the laws of alchemy trying to resurrect their mother chase the Philosopher's Stone to restore their bodies. The perennial 'greatest anime' pick.",
+      "poster": "assets/posters/fullmetal-alchemist-brotherhood.jpg",
+      "screenshots": [
+        "assets/screens/fullmetal-alchemist-brotherhood-1.jpg",
+        "assets/screens/fullmetal-alchemist-brotherhood-2.jpg",
+        "assets/screens/fullmetal-alchemist-brotherhood-3.jpg",
+        "assets/screens/fullmetal-alchemist-brotherhood-4.jpg"
+      ],
+      "personalRank": 27,
+      "externalRating": 8.7,
+      "externalSource": "tmdb",
+      "tmdbId": 31911,
+      "imdbId": "tt1355642",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 7,
+        "humor": 6
+      },
+      "notes": "I know, I know. The dub and the 2009 look kept bouncing me off Ed. Might retry subbed.",
+      "tags": [
+        "fantasy",
+        "adventure",
+        "alchemy",
+        "shonen"
+      ]
+    },
+    {
+      "id": "that-time-i-got-reincarnated-as-a-slime",
+      "title": "That Time I Got Reincarnated as a Slime",
+      "year": 2018,
+      "type": "anime",
+      "status": "dropped",
+      "dropReason": "character design fan service",
+      "description": "A stabbed office worker is reborn as a slime with god-tier abilities and builds a monster nation. Cozy power fantasy isekai.",
+      "poster": "assets/posters/that-time-i-got-reincarnated-as-a-slime.jpg",
+      "screenshots": [
+        "assets/screens/that-time-i-got-reincarnated-as-a-slime-1.jpg",
+        "assets/screens/that-time-i-got-reincarnated-as-a-slime-2.jpg",
+        "assets/screens/that-time-i-got-reincarnated-as-a-slime-3.jpg",
+        "assets/screens/that-time-i-got-reincarnated-as-a-slime-4.jpg"
+      ],
+      "personalRank": 28,
+      "externalRating": 8.4,
+      "externalSource": "tmdb",
+      "tmdbId": 82684,
+      "imdbId": "tt9054364",
+      "ratings": {
+        "sexualContent": 5,
+        "violence": 5,
+        "humor": 6
+      },
+      "notes": "Comfy nation-building premise, but the design choices for some characters wore me down.",
+      "tags": [
+        "isekai",
+        "fantasy",
+        "adventure",
+        "power-fantasy"
+      ]
+    },
+    {
+      "id": "pluto",
+      "title": "Pluto",
+      "year": 2023,
+      "type": "anime",
+      "status": "queued",
+      "description": "A robot detective investigates the murders of the world's most advanced robots (and humans), in Urasawa's retelling of an Astro Boy arc. Prestige sci-fi noir.",
+      "poster": "assets/posters/pluto.jpg",
+      "screenshots": [
+        "assets/screens/pluto-1.jpg",
+        "assets/screens/pluto-2.jpg",
+        "assets/screens/pluto-3.jpg",
+        "assets/screens/pluto-4.jpg"
+      ],
+      "personalRank": 29,
+      "externalRating": 7.9,
+      "externalSource": "tmdb",
+      "tmdbId": 91997,
+      "imdbId": "tt26737616",
+      "ratings": {
+        "sexualContent": 0,
+        "violence": 5,
+        "humor": 1
+      },
+      "notes": "Highest-priority queue item. Everyone I trust says it's a masterpiece.",
+      "tags": [
+        "sci-fi",
+        "mystery",
+        "drama",
+        "robots",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "mushishi",
+      "title": "Mushishi",
+      "year": 2005,
+      "type": "anime",
+      "status": "queued",
+      "description": "A wandering expert on 'mushi' — primordial life-forms between spirit and organism — helps people afflicted by them, one quiet standalone tale at a time. Meditative folk horror.",
+      "poster": "assets/posters/mushishi.jpg",
+      "screenshots": [
+        "assets/screens/mushishi-1.jpg",
+        "assets/screens/mushishi-2.jpg",
+        "assets/screens/mushishi-3.jpg",
+        "assets/screens/mushishi-4.jpg"
+      ],
+      "personalRank": 30,
+      "externalRating": 8.1,
+      "externalSource": "tmdb",
+      "tmdbId": 26867,
+      "imdbId": "tt0807832",
+      "ratings": {
+        "sexualContent": 0,
+        "violence": 2,
+        "humor": 1
+      },
+      "notes": "Saving it for when I want something calm and atmospheric.",
+      "tags": [
+        "supernatural",
+        "slice-of-life",
+        "folklore",
+        "anthology"
+      ]
+    },
+    {
+      "id": "trigun-stampede",
+      "title": "Trigun Stampede",
+      "year": 2023,
+      "type": "anime",
+      "status": "queued",
+      "description": "A pacifist gunman with a huge bounty on his head wanders a desert planet, trailed by disaster he never intends. A CG reboot of the classic.",
+      "poster": "assets/posters/trigun-stampede.jpg",
+      "screenshots": [
+        "assets/screens/trigun-stampede-1.jpg",
+        "assets/screens/trigun-stampede-2.jpg",
+        "assets/screens/trigun-stampede-3.jpg",
+        "assets/screens/trigun-stampede-4.jpg"
+      ],
+      "personalRank": 31,
+      "externalRating": 7.5,
+      "externalSource": "tmdb",
+      "tmdbId": 204266,
+      "imdbId": "tt21216104",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 7,
+        "humor": 5
+      },
+      "notes": "Curious how the Orange CG holds up. Loved the original's vibe.",
+      "tags": [
+        "sci-fi",
+        "western-frontier",
+        "action",
+        "cg",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "blue-lock",
+      "title": "Blue Lock",
+      "year": 2022,
+      "type": "anime",
+      "status": "queued",
+      "description": "Japan locks its best young strikers in a facility to forge one ultimate egoist forward who can win the World Cup. Sports anime as a battle royale of ego.",
+      "poster": "assets/posters/blue-lock.jpg",
+      "screenshots": [
+        "assets/screens/blue-lock-1.jpg",
+        "assets/screens/blue-lock-2.jpg",
+        "assets/screens/blue-lock-3.jpg",
+        "assets/screens/blue-lock-4.jpg"
+      ],
+      "personalRank": 32,
+      "externalRating": 8.3,
+      "externalSource": "tmdb",
+      "tmdbId": 131041,
+      "imdbId": "tt15222080",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 3,
+        "humor": 5
+      },
+      "notes": "Heard the premise is bonkers in a good way. Queued for hype fuel.",
+      "tags": [
+        "sports",
+        "shonen",
+        "competition",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "scavengers-reign",
+      "title": "Scavengers Reign",
+      "year": 2023,
+      "type": "western",
+      "status": "queued",
+      "description": "Survivors of a wrecked freighter try to stay alive on a beautiful, ruthlessly alien planet. Hard sci-fi ecology as body horror.",
+      "poster": "assets/posters/scavengers-reign.jpg",
+      "screenshots": [
+        "assets/screens/scavengers-reign-1.jpg",
+        "assets/screens/scavengers-reign-2.jpg",
+        "assets/screens/scavengers-reign-3.jpg",
+        "assets/screens/scavengers-reign-4.jpg"
+      ],
+      "personalRank": 33,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 204154,
+      "imdbId": "tt21056886",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 7,
+        "humor": 1
+      },
+      "notes": "The alien-biology reputation is exactly my thing. High queue priority.",
+      "tags": [
+        "sci-fi",
+        "survival",
+        "alien-world",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "pantheon",
+      "title": "Pantheon",
+      "year": 2022,
+      "type": "western",
+      "status": "queued",
+      "description": "A grieving girl starts getting messages from her dead father, whose mind was uploaded to the cloud. Hard sci-fi about digital consciousness that reportedly goes enormous.",
+      "poster": "assets/posters/pantheon.jpg",
+      "screenshots": [
+        "assets/screens/pantheon-1.jpg",
+        "assets/screens/pantheon-2.jpg",
+        "assets/screens/pantheon-3.jpg",
+        "assets/screens/pantheon-4.jpg"
+      ],
+      "personalRank": 34,
+      "externalRating": 8.2,
+      "externalSource": "tmdb",
+      "tmdbId": 195339,
+      "imdbId": "tt11680642",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 6,
+        "humor": 2
+      },
+      "notes": "Slept-on per everyone. The uploaded-intelligence premise sounds ambitious.",
+      "tags": [
+        "sci-fi",
+        "drama",
+        "transhumanism",
+        "adult-animation",
+        "western"
+      ]
+    },
+    {
+      "id": "bocchi-the-rock",
+      "title": "Bocchi the Rock!",
+      "year": 2022,
+      "type": "anime",
+      "status": "queued",
+      "description": "A cripplingly shy bedroom guitarist gets dragged into a band and has to survive actual human contact. Music-club comedy famous for its unhinged animation.",
+      "poster": "assets/posters/bocchi-the-rock.jpg",
+      "screenshots": [
+        "assets/screens/bocchi-the-rock-1.jpg",
+        "assets/screens/bocchi-the-rock-2.jpg",
+        "assets/screens/bocchi-the-rock-3.jpg",
+        "assets/screens/bocchi-the-rock-4.jpg"
+      ],
+      "personalRank": 35,
+      "externalRating": 8.4,
+      "externalSource": "tmdb",
+      "tmdbId": 119100,
+      "imdbId": "tt17158756",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 0,
+        "humor": 9
+      },
+      "notes": "The social-anxiety gags reportedly get abstract and wild. Comfort-comedy queue.",
+      "tags": [
+        "comedy",
+        "music",
+        "slice-of-life",
+        "cgdct",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "spy-x-family",
+      "title": "Spy x Family",
+      "year": 2022,
+      "type": "anime",
+      "status": "queued",
+      "description": "A spy fakes a family for a mission, not knowing his adopted daughter is a telepath and his wife is an assassin. Wholesome-chaos family sitcom with espionage.",
+      "poster": "assets/posters/spy-x-family.jpg",
+      "screenshots": [
+        "assets/screens/spy-x-family-1.jpg",
+        "assets/screens/spy-x-family-2.jpg",
+        "assets/screens/spy-x-family-3.jpg",
+        "assets/screens/spy-x-family-4.jpg"
+      ],
+      "personalRank": 36,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 120089,
+      "imdbId": "tt13706018",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 4,
+        "humor": 8
+      },
+      "notes": "Anya memes finally have to be earned. Queued for the feel-good.",
+      "tags": [
+        "comedy",
+        "action",
+        "found-family",
+        "spy",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "daemons-of-the-shadow-realm",
+      "title": "Daemons of the Shadow Realm",
+      "year": 2026,
+      "type": "anime",
+      "status": "queued",
+      "description": "Arakawa's dark fantasy about twins, shikigami-like daemons, and a village of secrets. Queued off the manga; the anime may not exist yet, so metadata could be thin.",
+      "poster": "assets/posters/daemons-of-the-shadow-realm.jpg",
+      "screenshots": [
+        "assets/screens/daemons-of-the-shadow-realm-1.jpg",
+        "assets/screens/daemons-of-the-shadow-realm-2.jpg",
+        "assets/screens/daemons-of-the-shadow-realm-3.jpg",
+        "assets/screens/daemons-of-the-shadow-realm-4.jpg"
+      ],
+      "personalRank": 37,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 260463,
+      "imdbId": "tt37532356",
+      "ratings": {
+        "sexualContent": 1,
+        "violence": 5,
+        "humor": 3
+      },
+      "notes": "From the FMA author. Heads up: TMDB may not resolve this if there's no series yet.",
+      "tags": [
+        "dark-fantasy",
+        "supernatural",
+        "manga-based"
+      ]
+    },
+    {
+      "id": "witch-hat-atelier",
+      "title": "Witch Hat Atelier",
+      "year": 2026,
+      "type": "anime",
+      "status": "queued",
+      "description": "A girl who thought magic was forbidden to her discovers anyone can do it — it's just drawn — and becomes a witch's apprentice. Gorgeous, gentle fantasy.",
+      "poster": "assets/posters/witch-hat-atelier.jpg",
+      "screenshots": [
+        "assets/screens/witch-hat-atelier-1.jpg",
+        "assets/screens/witch-hat-atelier-2.jpg",
+        "assets/screens/witch-hat-atelier-3.jpg",
+        "assets/screens/witch-hat-atelier-4.jpg"
+      ],
+      "personalRank": 38,
+      "externalRating": 8.7,
+      "externalSource": "tmdb",
+      "tmdbId": 196950,
+      "imdbId": "tt32550889",
+      "ratings": {
+        "sexualContent": 0,
+        "violence": 3,
+        "humor": 4
+      },
+      "notes": "The manga art is stunning. Queued off the upcoming adaptation; metadata may be sparse.",
+      "tags": [
+        "fantasy",
+        "adventure",
+        "magic",
+        "coming-of-age",
+        "manga-based"
+      ]
+    },
+    {
+      "id": "shangri-la-frontier",
+      "title": "Shangri-La Frontier",
+      "year": 2023,
+      "type": "anime",
+      "status": "queued",
+      "description": "A gamer who specializes in beating notoriously terrible 'trash games' takes on a genuinely great VRMMO. A smarter-than-average game anime.",
+      "poster": "assets/posters/shangri-la-frontier.jpg",
+      "screenshots": [
+        "assets/screens/shangri-la-frontier-1.jpg",
+        "assets/screens/shangri-la-frontier-2.jpg",
+        "assets/screens/shangri-la-frontier-3.jpg",
+        "assets/screens/shangri-la-frontier-4.jpg"
+      ],
+      "personalRank": 39,
+      "externalRating": 8.2,
+      "externalSource": "tmdb",
+      "tmdbId": 205050,
+      "imdbId": "tt28776190",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 4,
+        "humor": 6
+      },
+      "notes": "The 'kusoge expert' angle is a fresh spin on the genre. Low-commitment queue pick.",
+      "tags": [
+        "gaming",
+        "adventure",
+        "vrmmo",
+        "action",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "the-summer-hikaru-died",
+      "title": "The Summer Hikaru Died",
+      "year": 2025,
+      "type": "anime",
+      "status": "queued",
+      "description": "A rural teen realizes his best friend died months ago and something else is wearing his body — and he lets it stay. Queer-tinged folk horror.",
+      "poster": "assets/posters/the-summer-hikaru-died.jpg",
+      "screenshots": [
+        "assets/screens/the-summer-hikaru-died-1.jpg",
+        "assets/screens/the-summer-hikaru-died-2.jpg",
+        "assets/screens/the-summer-hikaru-died-3.jpg",
+        "assets/screens/the-summer-hikaru-died-4.jpg"
+      ],
+      "personalRank": 40,
+      "externalRating": 8.2,
+      "externalSource": "tmdb",
+      "tmdbId": 278196,
+      "imdbId": "tt33028568",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 5,
+        "humor": 2
+      },
+      "notes": "The dread-plus-intimacy premise is exactly my lane. High queue interest.",
+      "tags": [
+        "horror",
+        "supernatural",
+        "drama",
+        "rural",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "takopis-original-sin",
+      "title": "Takopi's Original Sin",
+      "year": 2025,
+      "type": "anime",
+      "status": "queued",
+      "description": "A relentlessly cheerful alien that wants to spread happiness meets a bullied, suicidal girl, and its meddling goes horribly wrong. Devastating in a very short package.",
+      "poster": "assets/posters/takopis-original-sin.jpg",
+      "screenshots": [
+        "assets/screens/takopis-original-sin-1.jpg",
+        "assets/screens/takopis-original-sin-2.jpg",
+        "assets/screens/takopis-original-sin-3.jpg",
+        "assets/screens/takopis-original-sin-4.jpg"
+      ],
+      "personalRank": 41,
+      "externalRating": 8.8,
+      "externalSource": "tmdb",
+      "tmdbId": 284445,
+      "imdbId": "tt36988358",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 6,
+        "humor": 1
+      },
+      "notes": "Warned it's brutal about bullying and abuse. Queuing carefully.",
+      "tags": [
+        "drama",
+        "tragedy",
+        "psychological",
+        "short",
+        "modern-animation"
+      ]
+    },
+    {
+      "id": "devil-may-cry",
+      "title": "Devil May Cry",
+      "year": 2025,
+      "type": "western",
+      "status": "queued",
+      "description": "Dante, the wisecracking demon-hunting mercenary, gets pulled into a war between the human and demon worlds. Adi Shankar's Netflix take on the game series.",
+      "poster": "assets/posters/devil-may-cry.jpg",
+      "screenshots": [
+        "assets/screens/devil-may-cry-1.jpg",
+        "assets/screens/devil-may-cry-2.jpg",
+        "assets/screens/devil-may-cry-3.jpg",
+        "assets/screens/devil-may-cry-4.jpg"
+      ],
+      "personalRank": 42,
+      "externalRating": 8.2,
+      "externalSource": "tmdb",
+      "tmdbId": 235930,
+      "imdbId": "tt15716776",
+      "ratings": {
+        "sexualContent": 3,
+        "violence": 9,
+        "humor": 4
+      },
+      "notes": "Studio Mir plus stylish action should be a good time. Queued.",
+      "tags": [
+        "action",
+        "dark-fantasy",
+        "demons",
+        "game-adaptation",
+        "western"
+      ]
+    },
+    {
+      "id": "steins-gate",
+      "title": "Steins;Gate",
+      "year": 2011,
+      "type": "anime",
+      "status": "queued",
+      "description": "A self-styled mad scientist discovers his microwave can text the past, and the consequences spiral into tragedy. The all-time time-travel anime I somehow never finished.",
+      "poster": "assets/posters/steins-gate.jpg",
+      "screenshots": [
+        "assets/screens/steins-gate-1.jpg",
+        "assets/screens/steins-gate-2.jpg",
+        "assets/screens/steins-gate-3.jpg",
+        "assets/screens/steins-gate-4.jpg"
+      ],
+      "personalRank": 43,
+      "externalRating": 8.5,
+      "externalSource": "tmdb",
+      "tmdbId": 42509,
+      "imdbId": "tt1910272",
+      "ratings": {
+        "sexualContent": 2,
+        "violence": 4,
+        "humor": 5
+      },
+      "notes": "Slow first act reputation is why it's still queued. Told the payoff is worth it.",
+      "tags": [
+        "sci-fi",
+        "thriller",
+        "time-travel",
+        "drama"
+      ]
+    }
+  ]
+}
