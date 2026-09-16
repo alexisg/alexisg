@@ -90,6 +90,10 @@ module.exports = function (config) {
     
     // Copy raw markdown files so they're accessible at /portfolio/filename.md
     config.addPassthroughCopy({ 'src/portfolio/*.md': 'portfolio' });
+
+    // Standalone watch-list app — copied verbatim to /lists (self-contained
+    // HTML + data/shows.json + assets; not processed as a template).
+    config.addPassthroughCopy('src/lists');
     
     // Ignore README files in static directories
     config.ignores.add('src/static/js/README.md');
