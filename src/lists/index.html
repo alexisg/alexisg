@@ -348,7 +348,7 @@ const state = {
   shows: [],
   byId: {},
   edits: {},                 // { id: { personalRank?, ratings?: {key:val} } }
-  view: "table",
+  view: "grid",
   sort: [],                  // [{ key, dir }]
   ranges: { sexualContent: [0, 10], violence: [0, 10], humor: [0, 10] },
   custom: false,
@@ -397,7 +397,7 @@ function changedRecords() {
 function serializeURL() {
   const p = new URLSearchParams();
   if (state.sort.length) p.set("sort", state.sort.map(s => `${s.key}:${s.dir}`).join(","));
-  if (state.view !== "table") p.set("view", state.view);
+  if (state.view !== "grid") p.set("view", state.view);
   if (state.custom) p.set("custom", "1");
   for (const k of RATING_KEYS) {
     const [mn, mx] = state.ranges[k];
@@ -420,7 +420,7 @@ function parseURL() {
       return SORT_KEYS.includes(key) ? { key, dir: dir === "desc" ? "desc" : "asc" } : null;
     }).filter(Boolean);
   }
-  if (p.get("view") === "grid") state.view = "grid";
+  if (p.get("view") === "table") state.view = "table";
   if (p.get("custom") === "1") state.custom = true;
   for (const k of RATING_KEYS) {
     const raw = p.get(RATING_META[k].short);
@@ -560,7 +560,7 @@ function renderTable(list) {
     { key: "personalRank", label: "Rank", sortable: true, num: true },
     { key: "externalRating", label: "TMDB", sortable: true, num: true },
     { key: "ratings", label: "Ratings" },
-    { key: "desc", label: "Description" },
+    { key: "desc", label: "Notes" },
   ];
   const thead = el("thead", {}, el("tr", {}, ...headers.map(h => {
     const si = state.sort.findIndex(s => s.key === h.key);
@@ -579,7 +579,7 @@ function renderTable(list) {
     tr.append(el("td", { class: "num" }, el("span", { class: "rank-badge" }, String(effRank(s)))));
     tr.append(el("td", { class: "num" }, extNode(s)));
     tr.append(el("td", {}, barsNode(s)));
-    tr.append(el("td", {}, el("div", { class: "desc" }, s.description)));
+    tr.append(el("td", {}, el("div", { class: "desc" }, s.notes)));
     tr.addEventListener("click", () => openDetail(s.id));
     tbody.append(tr);
   }
@@ -662,7 +662,7 @@ function gridCard(s) {
       el("div", {}, el("div", { class: "t" }, s.title), el("div", { class: "yr" }, s.year)),
       statusPill(s.status)),
     rankext, barsNode(s),
-    el("div", { class: "desc" }, s.description)));
+    el("div", { class: "desc" }, s.notes)));
   card.addEventListener("click", () => openDetail(s.id));
   return card;
 }
