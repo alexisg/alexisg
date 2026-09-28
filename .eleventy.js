@@ -91,11 +91,18 @@ module.exports = function (config) {
     // Copy raw markdown files so they're accessible at /portfolio/filename.md
     config.addPassthroughCopy({ 'src/portfolio/*.md': 'portfolio' });
 
-    // Standalone watch-list app → /lists (runtime files copied verbatim; the
-    // dev-only scripts/ and README.md under src/lists are intentionally excluded).
-    config.addPassthroughCopy('src/lists/index.html');
+    // Standalone watch-list app → /lists. index.html is a static shell that
+    // src/lists/index.11ty.js pre-renders at build time (shared markup from
+    // render.mjs), so the list is real HTML for crawlers. The dev-only
+    // scripts/ and README.md under src/lists are intentionally excluded.
+    config.addPassthroughCopy('src/lists/app.css');
+    config.addPassthroughCopy('src/lists/app.js');
+    config.addPassthroughCopy('src/lists/render.mjs');
     config.addPassthroughCopy('src/lists/data');
     config.addPassthroughCopy('src/lists/assets');
+    config.addWatchTarget('./src/lists/index.html');
+    config.addWatchTarget('./src/lists/render.mjs');
+    config.addWatchTarget('./src/lists/data/shows.json');
     
     // Ignore README files in static directories
     config.ignores.add('src/static/js/README.md');
