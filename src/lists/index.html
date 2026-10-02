@@ -20,17 +20,13 @@
         <button data-view="grid">Grid</button>
       </div>
       <button id="customBtn">Custom sort</button>
-      <label class="field" style="flex-direction:row;align-items:center;gap:6px">
-        <span style="font-size:12px;color:var(--muted)">Add sort</span>
-        <select id="addSort">
-          <option value="">…</option>
-        </select>
-      </label>
     </div>
   </div>
 
   <div class="sortchips" id="sortchips"></div>
 
+  <details class="filters-panel" id="filtersPanel">
+  <summary>Filters <span class="badge" id="filterBadge"></span></summary>
   <div class="filters" id="filters">
     <div class="field">
       <label>Sexual content <span class="val" id="sexVal"></span></label>
@@ -49,6 +45,7 @@
       <button id="resetFilters">Reset filters</button>
     </div>
   </div>
+  </details>
 </header>
 
 <main>

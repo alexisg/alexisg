@@ -446,23 +446,18 @@ $('#viewSeg').addEventListener('click', e => {
 
 $('#customBtn').addEventListener('click', () => { state.custom = !state.custom; update(); });
 
-const addSortSel = $('#addSort');
-addSortSel.insertAdjacentHTML('beforeend',
-  SORT_KEYS.map(k => `<option value="${k}">${SORT_LABEL[k]}</option>`).join(''));
-addSortSel.addEventListener('change', () => {
-  if (!addSortSel.value) return;
-  cycleSort(addSortSel.value, true);
-  addSortSel.value = '';
-});
-
 /* ---------- main render ---------- */
+
+function activeFilterCount() {
+  return RATING_KEYS.filter(k => state.ranges[k][0] !== 0 || state.ranges[k][1] !== 10).length;
+}
 
 function update(reserialize = true, { skipList = false } = {}) {
   [...$('#viewSeg').children].forEach(b => b.classList.toggle('active', b.dataset.view === state.view));
   $('#customBtn').classList.toggle('active', state.custom);
-  $('#filters').classList.toggle('hidden', state.custom);
+  $('#filtersPanel').hidden = state.custom;
+  $('#filterBadge').textContent = activeFilterCount() || '';
   $('#customHint').style.display = state.custom ? '' : 'none';
-  $('#addSort').disabled = state.custom;
   renderSortChips();
 
   const list = visibleShows(state.shows, state);
